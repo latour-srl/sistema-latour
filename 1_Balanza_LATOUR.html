@@ -33,11 +33,6 @@ header{background:var(--sur);border-bottom:1px solid var(--bd);padding:12px 20px
 .ms-warn{background:var(--red-d);color:var(--red);border:1px solid var(--red-b);}
 .stats{display:flex;gap:1px;background:var(--bd);}
 .stat{flex:1;background:var(--sur);padding:9px 10px;text-align:center;}
-.stat-btn{cursor:pointer;transition:background .15s;user-select:none;}
-.stat-btn:hover{background:var(--sur2);}
-.stat-btn.activo{background:var(--sur3);box-shadow:inset 0 -2px 0 var(--gold);}
-.filtro-badge{display:flex;align-items:center;justify-content:space-between;padding:6px 16px;background:var(--gold-d);border-bottom:1px solid var(--gold-b);font-size:11px;color:var(--gold);font-weight:600;}
-.filtro-badge button{background:none;border:none;color:var(--gold);cursor:pointer;font-size:13px;padding:0 4px;}
 .sv{font-family:var(--mono);font-size:20px;font-weight:500;line-height:1;margin-bottom:2px;}
 .sl{font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;}
 .layout{display:grid;grid-template-columns:380px 1fr;height:calc(100vh - 130px);}
@@ -191,11 +186,11 @@ table tr:hover td{background:var(--sur2);}
   <div class="hright"><div class="maestro-status ms-ok" id="maestro_st">✓ Maestro cargado</div><div class="clock" id="clock">--:--:--</div></div>
 </header>
 <div class="stats">
-  <div class="stat stat-btn" onclick="filtrarStat('planta')" id="stb0" title="Ver camiones en planta"><div class="sv" style="color:var(--tx)" id="st0">0</div><div class="sl">En planta</div></div>
-  <div class="stat stat-btn" onclick="filtrarStat('ingresos')" id="stb1" title="Ver ingresos de hoy"><div class="sv" style="color:var(--gold)" id="st1">0</div><div class="sl">Ingresos hoy</div></div>
-  <div class="stat stat-btn" onclick="filtrarStat('transito')" id="stb2" title="Ver en tránsito"><div class="sv" style="color:var(--cya)" id="st2">0</div><div class="sl">En tránsito</div></div>
-  <div class="stat stat-btn" onclick="filtrarStat('puerto')" id="stb3" title="Ver confirmados en puerto"><div class="sv" style="color:var(--grn)" id="st3">0</div><div class="sl">Confirm. puerto</div></div>
-  <div class="stat stat-btn" onclick="filtrarStat('historial')" id="stb4" title="Ver historial completo"><div class="sv" style="color:var(--pur)" id="st4">0</div><div class="sl">Total hoy</div></div>
+  <div class="stat"><div class="sv" style="color:var(--tx)" id="st0">0</div><div class="sl">En planta</div></div>
+  <div class="stat"><div class="sv" style="color:var(--gold)" id="st1">0</div><div class="sl">Ingresos hoy</div></div>
+  <div class="stat"><div class="sv" style="color:var(--cya)" id="st2">0</div><div class="sl">En tránsito</div></div>
+  <div class="stat"><div class="sv" style="color:var(--grn)" id="st3">0</div><div class="sl">Confirm. puerto</div></div>
+  <div class="stat"><div class="sv" style="color:var(--pur)" id="st4">0</div><div class="sl">Total hoy</div></div>
 </div>
 
 <div class="layout">
@@ -286,61 +281,9 @@ table tr:hover td{background:var(--sur2);}
     </div>
   </div>
 
-  <!-- PANEL DERECHO: tabs + cola + historial -->
-  <div style="display:flex;flex-direction:column;overflow:hidden;">
-
-    <!-- TABS DERECHO -->
-    <div style="background:var(--sur);border-bottom:1px solid var(--bd);display:flex;flex-shrink:0;">
-      <div class="rtab active" id="rtab_cola" onclick="setRTab('cola')">🚛 Cola activa</div>
-      <div class="rtab" id="rtab_hist" onclick="setRTab('hist')">📋 Historial completo</div>
-    </div>
-
-    <!-- BADGE FILTRO ACTIVO -->
-    <div id="filtro_badge" class="filtro-badge" style="display:none;">
-      <span id="filtro_label">Filtrando...</span>
-      <button onclick="limpiarFiltro()">✕ Quitar filtro</button>
-    </div>
-
-    <!-- COLA UNIFICADA -->
-    <div class="qpanel" id="qpanel">
-      <div style="text-align:center;padding:50px 20px;color:var(--mu);"><div style="font-size:36px;opacity:.3;margin-bottom:10px;">🚛</div><div>Sin movimientos activos.</div></div>
-    </div>
-
-    <!-- HISTORIAL COMPLETO -->
-    <div id="panel_hist" style="display:none;overflow-y:auto;padding:14px 16px;">
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center;">
-        <input id="h_buscar" placeholder="🔍 Patente, productor, transportista..." oninput="renderHistorial()"
-          style="background:var(--sur2);border:1px solid var(--bd);border-radius:6px;padding:7px 10px;color:var(--tx);font-size:12px;outline:none;flex:1;min-width:180px;">
-        <select id="h_tipo" onchange="renderHistorial()"
-          style="background:var(--sur2);border:1px solid var(--bd);border-radius:6px;padding:7px 10px;color:var(--tx);font-size:12px;outline:none;">
-          <option value="">Todos</option>
-          <option value="ingreso">Solo ingresos</option>
-          <option value="egreso">Solo egresos</option>
-        </select>
-        <select id="h_grano" onchange="renderHistorial()"
-          style="background:var(--sur2);border:1px solid var(--bd);border-radius:6px;padding:7px 10px;color:var(--tx);font-size:12px;outline:none;">
-          <option value="">Todos los granos</option>
-        </select>
-        <select id="h_fecha" onchange="renderHistorial()"
-          style="background:var(--sur2);border:1px solid var(--bd);border-radius:6px;padding:7px 10px;color:var(--tx);font-size:12px;outline:none;">
-          <option value="hoy">Hoy</option>
-          <option value="ayer">Ayer</option>
-          <option value="semana">Última semana</option>
-          <option value="mes">Último mes</option>
-          <option value="todo">Todo el historial</option>
-        </select>
-        <button onclick="exportarCSV()" style="padding:7px 14px;border-radius:6px;border:1px solid var(--bd);background:var(--sur);color:var(--mu);font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">⬇ CSV</button>
-      </div>
-      <div id="h_resumen" style="margin-bottom:10px;font-size:11px;color:var(--mu);"></div>
-      <div class="htable-wrap" style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;font-size:11px;">
-          <thead id="hthead"></thead>
-          <tbody id="htbody"></tbody>
-        </table>
-      </div>
-      <div id="hist_empty" style="text-align:center;padding:40px;color:var(--mu);font-size:12px;display:none;">Sin registros para los filtros seleccionados.</div>
-    </div>
-
+  <!-- COLA UNIFICADA -->
+  <div class="qpanel" id="qpanel">
+    <div style="text-align:center;padding:50px 20px;color:var(--mu);"><div style="font-size:36px;opacity:.3;margin-bottom:10px;">🚛</div><div>Sin movimientos activos.</div></div>
   </div>
 </div>
 
@@ -463,13 +406,14 @@ async function leerMaestro(){
   }catch(e){}
   return false;
 }
-// ── COLA: leer desde GitHub (fuente de verdad) con fallback a localStorage ──
+
+// ── GITHUB BACKEND ──
 const GH_USER  = 'latour-srl';
 const GH_REPO  = 'sistema-latour';
 const GH_TOKEN = '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';
-const GH_FILE  = 'latour_cola.json';
-const GH_RAW   = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/${GH_FILE}`;
-const GH_API   = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}`;
+const GH_RAW   = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/latour_cola.json`;
+const GH_API   = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/latour_cola.json`;
+let _ghSha = null;
 
 async function leerColaServidor(){
   try{
@@ -499,47 +443,23 @@ function guardarCola(){
   localStorage.setItem('latour_cola',JSON.stringify({cola,egresados,nid,ts:Date.now()}));
   localStorage.setItem('latour_transito',JSON.stringify({transito,despachados,ts:Date.now()}));
 }
-
-// ── PUBLICAR A GITHUB DIRECTO ──
-let _ghSha = null;
-
 async function publicarCola(){
   guardarCola();
-  const payload = {cola,egresados,nid,transito,despachados,ts:Date.now()};
-  const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload,null,2))));
-
+  const payload={cola,egresados,nid,transito,despachados,ts:Date.now()};
+  const content=btoa(unescape(encodeURIComponent(JSON.stringify(payload,null,2))));
   try{
-    // obtener SHA actual del archivo (necesario para actualizarlo)
     if(!_ghSha){
-      const r = await fetch(GH_API, {headers:{'Authorization':'token '+GH_TOKEN}});
-      if(r.ok){ const d=await r.json(); _ghSha=d.sha; }
+      const r=await fetch(GH_API,{headers:{'Authorization':'token '+GH_TOKEN}});
+      if(r.ok){const d=await r.json();_ghSha=d.sha;}
     }
-
-    const body = JSON.stringify({
-      message: 'Actualización cola — '+new Date().toLocaleString('es-AR'),
-      content: content,
-      sha: _ghSha,
-      branch: 'main'
+    const res=await fetch(GH_API,{
+      method:'PUT',
+      headers:{'Authorization':'token '+GH_TOKEN,'Content-Type':'application/json'},
+      body:JSON.stringify({message:'Cola — '+new Date().toLocaleString('es-AR'),content,sha:_ghSha,branch:'main'})
     });
-
-    const res = await fetch(GH_API, {
-      method: 'PUT',
-      headers: {'Authorization':'token '+GH_TOKEN, 'Content-Type':'application/json'},
-      body: body
-    });
-
-    if(res.ok){
-      const d = await res.json();
-      _ghSha = d.content.sha; // actualizar SHA para próxima vez
-      toast('✓ Cola sincronizada');
-    } else {
-      _ghSha = null; // resetear SHA para reintentar
-      toast('⚠ Error al sincronizar — reintentando...');
-    }
-  }catch(e){
-    console.warn('Error publicando a GitHub:', e);
-    toast('⚠ Sin conexión — datos guardados localmente');
-  }
+    if(res.ok){const d=await res.json();_ghSha=d.content.sha;toast('✓ Cola sincronizada');}
+    else{_ghSha=null;toast('⚠ Error al sincronizar — reintentando...');}
+  }catch(e){console.warn('Error GitHub:',e);toast('⚠ Sin conexión — datos guardados localmente');}
 }
 
 function setModo(m){
@@ -720,7 +640,7 @@ function confirmarPuerto(){
   e.horaConfirmacion=new Date().toISOString(); e.estado='confirmado';
   despachados.push({...e}); transito=transito.filter(x=>x.id!==modalPueId);
   guardarCola(); renderCola(); renderTransito(); cerrarModal('pue');
-  toast(`✓ Puerto OK — ${e.patente} · Despico: ${e.despico.kg>=0?'+':''}${N(e.despico.kg)} kg`);
+  toast(`✓ Puerto OK — ${e.patente} · Despico: ${e.despico.kg>=0?'+':''}${N(e.despico.kg)} kg`); publicarCola();
 }
 
 function getTelProductor(n){ const p=(M.productores||[]).find(x=>x.nombre===n); return p?(p.telefono||p.tel||''):''; }
@@ -742,16 +662,9 @@ const EST_ING={espera:{lbl:'⏳ Esperando',c:'var(--mu)'},calado:{lbl:'🔬 Cala
 function renderCola(){
   updateStats();
   const qp=document.getElementById('qpanel');
-
-  // Aplicar filtro activo
-  let colaFiltrada=[...cola];
-  let transitoFiltrado=[...transito];
-  if(filtroActivo==='planta'){ transitoFiltrado=[]; }
-  else if(filtroActivo==='transito'){ colaFiltrada=[]; }
-
-  if(!colaFiltrada.length&&!transitoFiltrado.length){ qp.innerHTML='<div style="text-align:center;padding:50px 20px;color:var(--mu);"><div style="font-size:36px;opacity:.3;margin-bottom:10px;">🚛</div><div>Sin movimientos'+(filtroActivo?' para este filtro':'.')+' </div></div>'; renderEgresados(); return; }
+  if(!cola.length&&!transito.length){ qp.innerHTML='<div style="text-align:center;padding:50px 20px;color:var(--mu);"><div style="font-size:36px;opacity:.3;margin-bottom:10px;">🚛</div><div>Sin movimientos activos.</div></div>'; renderEgresados(); return; }
   const ps=p=>p==='alta'?0:p==='media'?1:2;
-  const sorted=[...colaFiltrada].sort((a,b)=>{ if(a.tipo!==b.tipo)return a.tipo==='latour'?-1:1; const d=ps(a.prioridad)-ps(b.prioridad); return d||new Date(a.horaIngreso)-new Date(b.horaIngreso); });
+  const sorted=[...cola].sort((a,b)=>{ if(a.tipo!==b.tipo)return a.tipo==='latour'?-1:1; const d=ps(a.prioridad)-ps(b.prioridad); return d||new Date(a.horaIngreso)-new Date(b.horaIngreso); });
   let html='';
   if(sorted.length){
     html+='<div class="sec-hdr sh-ing">🟡 Ingresos en planta</div>';
@@ -778,9 +691,9 @@ function renderCola(){
       </div>`;
     });
   }
-  if(transitoFiltrado.length){
+  if(transito.length){
     html+='<div class="sec-hdr" style="color:var(--cya);">🔵 En tránsito a puerto</div>';
-    transitoFiltrado.forEach(e=>{
+    transito.forEach(e=>{
       html+=`<div class="ccard transito">
         <div class="prio-dot" style="background:var(--cya);box-shadow:0 0 5px var(--cya);"></div>
         <div class="tbadge-num">↑</div>
@@ -822,53 +735,6 @@ function renderEgresados(){
   }).join('');
 }
 
-let filtroActivo = null;
-
-function filtrarStat(tipo){
-  // Si hacen click en el mismo filtro activo, lo quitan
-  if(filtroActivo===tipo){ limpiarFiltro(); return; }
-  filtroActivo=tipo;
-  // Marcar stat activo
-  ['stb0','stb1','stb2','stb3','stb4'].forEach(id=>document.getElementById(id).classList.remove('activo'));
-  const mapa={planta:'stb0',ingresos:'stb1',transito:'stb2',puerto:'stb3',historial:'stb4'};
-  if(mapa[tipo]) document.getElementById(mapa[tipo]).classList.add('activo');
-
-  if(tipo==='historial'){
-    // Abrir historial con filtro de hoy
-    setRTab('hist');
-    limpiarFiltro();
-    return;
-  }
-  if(tipo==='ingresos'||tipo==='puerto'){
-    // Mostrar en historial filtrado
-    setRTab('hist');
-    document.getElementById('h_tipo').value= tipo==='ingresos'?'ingreso':'egreso';
-    document.getElementById('h_fecha').value='hoy';
-  } else {
-    // Mostrar en cola filtrada
-    setRTab('cola');
-  }
-
-  const labels={
-    planta:'Mostrando: camiones en planta',
-    ingresos:'Mostrando: ingresos de hoy',
-    transito:'Mostrando: camiones en tránsito',
-    puerto:'Mostrando: confirmados en puerto hoy',
-    historial:'Historial completo'
-  };
-  document.getElementById('filtro_badge').style.display='flex';
-  document.getElementById('filtro_label').textContent=labels[tipo]||'';
-  renderCola();
-  renderHistorial();
-}
-
-function limpiarFiltro(){
-  filtroActivo=null;
-  document.getElementById('filtro_badge').style.display='none';
-  ['stb0','stb1','stb2','stb3','stb4'].forEach(id=>document.getElementById(id).classList.remove('activo'));
-  renderCola();
-}
-
 function updateStats(){
   const hoy=new Date(); hoy.setHours(0,0,0,0);
   document.getElementById('st0').textContent=cola.length;
@@ -890,64 +756,25 @@ function setRTab(t){
   document.getElementById('rtab_hist').className='rtab'+(t==='hist'?' active':'');
   document.getElementById('qpanel').style.display=t==='cola'?'flex':'none';
   document.getElementById('panel_hist').style.display=t==='hist'?'block':'none';
-  if(t==='hist') renderHistorial();
+  if(t==='hist')renderHistorial();
 }
 
-// ── HISTORIAL COMPLETO ──
+// ── HISTORIAL ──
 function renderHistorial(){
   const buscar=(document.getElementById('h_buscar').value||'').toLowerCase();
   const tipo=document.getElementById('h_tipo').value;
-  const grano=document.getElementById('h_grano').value;
-  const fechaFiltro=document.getElementById('h_fecha').value||'hoy';
-
-  // calcular rango de fechas
-  const ahora=new Date();
   const hoy=new Date(); hoy.setHours(0,0,0,0);
-  const ayer=new Date(hoy); ayer.setDate(ayer.getDate()-1);
-  const semana=new Date(hoy); semana.setDate(semana.getDate()-7);
-  const mes=new Date(hoy); mes.setDate(mes.getDate()-30);
 
-  function enRango(iso){
-    const d=new Date(iso||0);
-    if(fechaFiltro==='hoy') return d>=hoy;
-    if(fechaFiltro==='ayer') return d>=ayer && d<hoy;
-    if(fechaFiltro==='semana') return d>=semana;
-    if(fechaFiltro==='mes') return d>=mes;
-    return true; // todo
-  }
-
-  // poblar select de granos dinámicamente
-  const selGrano=document.getElementById('h_grano');
-  const granosDisp=[...new Set([
-    ...egresados.map(e=>e.grano),
-    ...despachados.map(e=>e.grano)
-  ].filter(Boolean))].sort();
-  const valActual=selGrano.value;
-  selGrano.innerHTML='<option value="">Todos los granos</option>'+granosDisp.map(g=>`<option value="${g}"${g===valActual?'selected':''}>${g}</option>`).join('');
-
-  let listIng=egresados.filter(e=>enRango(e.horaEgreso||e.horaIngreso));
-  let listEgr=despachados.filter(e=>enRango(e.horaConfirmacion||e.horaSalida));
+  // ingresos finalizados hoy
+  let listIng=egresados.filter(e=>new Date(e.horaEgreso||e.horaIngreso)>=hoy);
+  // egresos confirmados hoy
+  let listEgr=despachados.filter(e=>new Date(e.horaConfirmacion||e.horaSalida)>=hoy);
 
   let all=[];
   if(!tipo||tipo==='ingreso') all=[...all,...listIng.map(e=>({...e,_tipo:'ingreso'}))];
   if(!tipo||tipo==='egreso')  all=[...all,...listEgr.map(e=>({...e,_tipo:'egreso'}))];
-  if(grano) all=all.filter(e=>e.grano===grano);
-  if(buscar) all=all.filter(e=>
-    (e.patente||'').toLowerCase().includes(buscar)||
-    (e.productor||'').toLowerCase().includes(buscar)||
-    (e.transportista||'').toLowerCase().includes(buscar)||
-    (e.grano||'').toLowerCase().includes(buscar)||
-    (e.destino||'').toLowerCase().includes(buscar)
-  );
+  if(buscar) all=all.filter(e=>(e.patente||'').toLowerCase().includes(buscar)||(e.productor||e.transportista||'').toLowerCase().includes(buscar));
   all.sort((a,b)=>new Date(b.horaEgreso||b.horaConfirmacion||b.horaIngreso)-new Date(a.horaEgreso||a.horaConfirmacion||a.horaIngreso));
-
-  // resumen
-  const ingCount=all.filter(x=>x._tipo==='ingreso').length;
-  const egrCount=all.filter(x=>x._tipo==='egreso').length;
-  const totalNeto=all.filter(x=>x._tipo==='ingreso').reduce((s,e)=>s+(e.romaneo?.nseco||0),0);
-  document.getElementById('h_resumen').innerHTML=
-    `<span style="color:var(--gold)">↓ ${ingCount} ingresos</span> &nbsp;·&nbsp; <span style="color:var(--cya)">↑ ${egrCount} egresos</span>`+
-    (totalNeto?` &nbsp;·&nbsp; <span style="color:var(--grn)">Neto seco total: ${N(totalNeto)} kg</span>`:'');
 
   const thead=document.getElementById('hthead');
   const tbody=document.getElementById('htbody');
@@ -956,7 +783,7 @@ function renderHistorial(){
   if(!all.length){tbody.innerHTML='';thead.innerHTML='';empty.style.display='block';return;}
   empty.style.display='none';
 
-  thead.innerHTML=`<th>Tipo</th><th>Fecha</th><th>Hora</th><th>Patente</th><th>Productor / Trans.</th><th>Grano</th><th>Bruto kg</th><th>Tara kg</th><th>Neto seco kg</th><th>Hum%</th><th>Merma kg</th><th>Destino/Silo</th><th>Despico kg</th><th>Estándar</th>`;
+  thead.innerHTML=`<th>Tipo</th><th>Hora</th><th>Patente</th><th>Productor / Trans.</th><th>Grano</th><th>Bruto kg</th><th>Tara kg</th><th>Neto kg</th><th>Hum%</th><th>Merma kg</th><th>Neto seco kg</th><th>Destino</th><th>Despico kg</th><th>Estándar</th>`;
 
   tbody.innerHTML=all.map(e=>{
     const r=e.romaneo||{};
@@ -964,21 +791,19 @@ function renderHistorial(){
     const pp=e.pesada_puerto||{};
     const d=e.despico||{};
     const esIng=e._tipo==='ingreso';
-    const fechaHora=new Date(e.horaEgreso||e.horaConfirmacion||e.horaIngreso||e.horaSalida);
-    const fecha=fechaHora.toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'2-digit'});
-    const hora=fechaHora.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
+    const hora=horaStr(e.horaEgreso||e.horaConfirmacion||e.horaIngreso||e.horaSalida);
     return `<tr>
       <td><span class="op-badge ${esIng?'op-ing':'op-egr'}">${esIng?'↓ ING':'↑ EGR'}</span></td>
-      <td class="tm" style="color:var(--mu)">${fecha}</td>
       <td class="tm">${hora}</td>
       <td class="tm ${esIng&&e.tipo==='latour'?'tok':''}">${e.patente||'—'}${esIng&&e.tipo==='latour'?' ⭐':''}</td>
-      <td style="max-width:130px;overflow:hidden;text-overflow:ellipsis;">${esIng?(e.productor||'—'):(e.transportista||'—')}</td>
+      <td>${esIng?(e.productor||'—'):(e.transportista||'—')}</td>
       <td>${e.grano||'—'}</td>
       <td class="tm">${esIng?(r.bruto?N(r.bruto):'—'):(ps.bruto?N(ps.bruto):'—')}</td>
       <td class="tm">${esIng?(r.tara?N(r.tara):'—'):(ps.tara?N(ps.tara):'—')}</td>
-      <td class="tm tok" style="font-weight:600;">${esIng?(r.nseco?N(r.nseco):'—'):(pp.neto?N(pp.neto):'—')}</td>
+      <td class="tm">${esIng?(r.neto?N(r.neto):'—'):(ps.neto?N(ps.neto):'—')}</td>
       <td class="tm ${r.hum>15.5?'talert':''}">${esIng?(r.hum?r.hum+'%':'—'):'—'}</td>
       <td class="tm">${esIng?(r.merma?N(r.merma):'—'):'—'}</td>
+      <td class="tm tok">${esIng?(r.nseco?N(r.nseco):'—'):(pp.neto?N(pp.neto):'—')}</td>
       <td>${esIng?(e.silo||'—'):(e.destino||'—')}</td>
       <td class="tm ${d.kg&&Math.abs(d.kg)>500?'talert':''}">${!esIng&&d.kg!=null?(d.kg>=0?'+':'')+N(d.kg)+' kg':'—'}</td>
       <td class="${e.fueraDeEstandar?'talert':'tok'}">${esIng?(e.fueraDeEstandar?'⚠ Fuera':'✓ Ok'):'—'}</td>
@@ -1040,7 +865,6 @@ function limpiarDatos(){
 document.getElementById('maestro_st').textContent='⟳ Cargando maestro...';
 document.getElementById('maestro_st').className='maestro-status ms-warn';
 
-// arrancar con datos del servidor (carpeta compartida), fallback a localStorage
 leerColaServidor().then(ok=>{
   if(!ok) leerCola();
   renderCola(); renderTransito();
@@ -1050,7 +874,7 @@ leerMaestro().then(ok=>{
   const st=document.getElementById('maestro_st');
   if(ok==='server'){
     st.className='maestro-status ms-ok';
-    st.textContent='✓ Maestro — servidor';
+    st.textContent='✓ Maestro — GitHub';
   } else if(ok==='local'){
     st.className='maestro-status ms-warn';
     st.textContent='⚠ Maestro — copia local';
@@ -1061,12 +885,13 @@ leerMaestro().then(ok=>{
   poblarSelects();
 });
 
-// refrescar maestro cada 5 minutos
 setInterval(()=>{
-  leerMaestro().then(ok=>{
-    if(ok) poblarSelects();
-  });
+  leerMaestro().then(ok=>{ if(ok) poblarSelects(); });
 }, 300000);
+
+setInterval(()=>{
+  leerColaServidor().then(ok=>{ if(ok){ renderCola(); renderTransito(); } });
+}, 20000);
 </script>
 </body>
 </html>

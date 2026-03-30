@@ -123,31 +123,19 @@ header{background:var(--sur);border-bottom:1px solid var(--bd);padding:11px 20px
 .btn-finalizar:hover{background:var(--grn-d);}
 
 /* ── SILOS ── */
-.silos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;}
-.silo-card{background:var(--sur);border:1.5px solid var(--bd);border-radius:12px;overflow:hidden;transition:border-color .2s;}
-.silo-card.alerta-hum{border-color:var(--red-b);}
-.silo-card.casi-lleno{border-color:var(--ora-b);}
-.silo-card-top{padding:13px 15px 10px;border-bottom:1px solid var(--bd);}
-.silo-name{font-size:15px;font-weight:700;margin-bottom:2px;display:flex;align-items:center;gap:8px;}
-.silo-tipo{font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.04em;}
-.silo-card-body{padding:12px 15px;}
-.silo-stat{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;}
+.silos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;}
+.silo-card{background:var(--sur);border:1.5px solid var(--bd);border-radius:10px;padding:14px 15px;}
+.silo-name{font-size:14px;font-weight:700;margin-bottom:4px;}
+.silo-tipo{font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px;}
+.silo-stat{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px;}
 .silo-lbl{font-size:11px;color:var(--mu);}
 .silo-val{font-family:var(--mono);font-size:13px;font-weight:500;}
-.silo-hum{display:flex;align-items:center;gap:6px;}
-.silo-hum-val{font-family:var(--mono);font-size:16px;font-weight:500;}
-.hum-ok{color:var(--grn);}
-.hum-warn{color:var(--ora);}
-.hum-bad{color:var(--red);}
-.silo-bar-wrap{height:7px;background:var(--sur3);border-radius:4px;overflow:hidden;margin:8px 0 6px;}
-.silo-bar{height:100%;border-radius:4px;background:var(--grn);transition:width .6s;}
+.silo-bar-wrap{height:6px;background:var(--sur3);border-radius:3px;overflow:hidden;margin:8px 0 10px;}
+.silo-bar{height:100%;border-radius:3px;background:var(--grn);transition:width .5s;}
 .silo-bar.lleno{background:var(--red);}
 .silo-bar.casi{background:var(--ora);}
-.silo-pct{font-size:10px;color:var(--mu);text-align:right;margin-bottom:8px;}
-.silo-card-footer{padding:8px 15px;background:var(--sur2);border-top:1px solid var(--bd);display:flex;flex-wrap:wrap;gap:4px;min-height:32px;align-items:center;}
-.silo-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;background:var(--grn-d);color:var(--grn);border:1px solid var(--grn-b);}
-.silo-empty-tag{font-size:10px;color:var(--mu2);font-style:italic;}
-.silo-alerta-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:var(--red-d);color:var(--red);border:1px solid var(--red-b);}
+.silo-camiones{font-size:10px;color:var(--mu);margin-top:4px;}
+.silo-tag{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:600;background:var(--grn-d);color:var(--grn);margin:2px 2px 0 0;}
 
 /* ── HISTORIAL ── */
 .htable-wrap{overflow-x:auto;margin-top:10px;}
@@ -247,7 +235,15 @@ let egresados = [];
 let nid = 1;
 const SERVICIOS = ['Zaranda','Secado','Fumigación','Acondicionamiento'];
 
-// ── MAESTRO ──
+// ── GITHUB BACKEND ──
+const GH_USER   = 'latour-srl';
+const GH_REPO   = 'sistema-latour';
+const GH_TOKEN  = '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';
+const GH_RAW    = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/latour_cola.json`;
+const GH_API    = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/latour_cola.json`;
+const GH_MAESTRO= `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/latour_maestro.json`;
+let _ghSha = null;
+
 async function leerMaestro(){
   try{
     const res=await fetch(GH_MAESTRO+'?v='+Date.now(),{cache:'no-store'});
@@ -265,24 +261,12 @@ async function leerMaestro(){
   return false;
 }
 
-// ── GITHUB BACKEND ──
-const GH_USER   = 'latour-srl';
-const GH_REPO   = 'sistema-latour';
-const GH_TOKEN  = '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';
-const GH_RAW    = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/latour_cola.json`;
-const GH_API    = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/latour_cola.json`;
-const GH_MAESTRO= `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/latour_maestro.json`;
-let _ghSha = null;
-
-// Lee la cola desde GitHub (fuente de verdad)
-// Preserva los estados locales (descarga, listo) que Planta ya modificó
 async function leerColaServidor(){
   try{
     const res=await fetch(GH_RAW+'?v='+Date.now(),{cache:'no-store'});
     if(res.ok){
       const d=await res.json();
       const colaRemota=d.cola||[];
-
       const estadosAvanzados=['descarga','servicios','listo'];
       const colaFinal=colaRemota.map(cr=>{
         if(!cr.tipDescarga) cr.tipDescarga='Hidráulica';
@@ -293,7 +277,6 @@ async function leerColaServidor(){
         }
         return cr;
       });
-
       cola=colaFinal;
       egresados=d.egresados||[];
       nid=d.nid||1;
@@ -334,7 +317,7 @@ async function publicarCola(){
     });
     if(res.ok){const d=await res.json();_ghSha=d.content.sha;}
     else _ghSha=null;
-  }catch(e){console.warn('Error publicando a GitHub desde Planta:',e);}
+  }catch(e){console.warn('Error GitHub Planta:',e);}
 }
 
 function actualizarBadgeSync(estado){
@@ -416,7 +399,7 @@ function toggleServicio(id,serv){
 function iniciarDescarga(id){
   const c=cola.find(x=>x.id===id);if(!c)return;
   if(!c.silo){alert('Asigná un silo/celda antes de iniciar la descarga.');return;}
-  if(!c.tipDescarga) c.tipDescarga='Hidráulica'; // por defecto hidráulica
+  if(!c.tipDescarga) c.tipDescarga='Hidráulica';
   c.estado='descarga';c.horaInicioDescarga=new Date().toISOString();
   guardarCola();renderCola();toast('⬇ Descarga iniciada — '+c.patente+' → '+c.silo);
   publicarCola();
@@ -487,12 +470,11 @@ function renderCola(){
       timerHtml=`<span class="tbadge tb-idle">Planta: ${timerStr(c.horaInicioProceso)}</span>`;
     }
 
-    // silo select — pre-seleccionar si ya viene asignado del romaneo
+    // silo select
     const siloSel=`<div class="asig-row">
       <span class="asig-label">Silo</span>
       <select class="asig-sel" onchange="asignarSilo(${c.id},this.value)">
         <option value="">— Asignar —</option>${silosOpts}
-        ${c.silo&&!(M.silos||[]).find(s=>s.nombre===c.silo)?`<option value="${c.silo}">${c.silo}</option>`:''}
       </select>
     </div>`;
 
@@ -561,97 +543,26 @@ function renderSilos(){
     document.getElementById('silos_grid').innerHTML=`<div class="empty"><div class="empty-icon">🏗</div><div>Sin silos configurados.<br><small style="font-size:11px;">Cargalos en Admin → Silos.</small></div></div>`;
     return;
   }
-
-  // Humedad base por grano (para alertas) — fallback si no está en maestro
-  const humBase={
-    'Soja':13.5,'Girasol':11.0,'Maíz':14.5,'Trigo':14.0,
-    'Cebada':13.5,'Sorgo':14.0,'Maní':9.0
-  };
-
   document.getElementById('silos_grid').innerHTML=silos.map(s=>{
     const enDesc=cola.filter(c=>c.silo===s.nombre);
     const cap=parseFloat(s.cap_tn)||0;
-
-    // Todos los ingresos asignados a este silo (sin filtro de fecha → histórico completo)
-    const ingresos=egresados.filter(e=>e.silo===s.nombre&&e.romaneo&&e.romaneo.nseco>0);
-
-    // Total kg neto seco ingresado
-    const totalNseco=ingresos.reduce((sum,e)=>sum+(e.romaneo.nseco||0),0);
-    const totalTn=totalNseco/1000;
-
-    // Promedio ponderado de humedad (ponderado por neto seco)
-    const sumHumPeso=ingresos.reduce((sum,e)=>{
-      const h=parseFloat(e.romaneo.hum)||0;
-      const p=e.romaneo.nseco||0;
-      return sum+(h*p);
-    },0);
-    const humProm=totalNseco>0?sumHumPeso/totalNseco:null;
-
-    // Cantidad de camiones ingresados
-    const cantCamiones=ingresos.length;
-
-    // Última fecha de ingreso
-    const ultIngreso=ingresos.length?
-      ingresos.reduce((max,e)=>new Date(e.horaEgreso||e.horaIngreso)>new Date(max.horaEgreso||max.horaIngreso)?e:max,ingresos[0])
-      :null;
-
-    // Capacidad disponible
-    const capDisp=cap>0?Math.max(0,cap-totalTn):null;
-    const pct=cap>0?Math.min(100,Math.round(totalTn/cap*100)):0;
+    // sumar neto seco de camiones egresados hoy asignados a este silo
+    const hoy=new Date(); hoy.setHours(0,0,0,0);
+    const ocupKg=egresados
+      .filter(e=>e.silo===s.nombre&&new Date(e.horaIngreso)>=hoy)
+      .reduce((sum,e)=>sum+((e.romaneo&&e.romaneo.nseco)||0),0);
+    const ocupTn=ocupKg/1000;
+    const pct=cap>0?Math.min(100,Math.round(ocupTn/cap*100)):0;
     const barCls=pct>90?'lleno':pct>70?'casi':'';
-
-    // Alerta de humedad
-    const granoActual=s.grano||(ingresos.length?ingresos[ingresos.length-1].grano:null);
-    const humLimite=humBase[granoActual]||13.5;
-    const alertaHum=humProm!==null&&humProm>humLimite+0.5;
-    const humCls=humProm===null?'':humProm>humLimite+1?'hum-bad':humProm>humLimite?'hum-warn':'hum-ok';
-
-    // Tags camiones en playa ahora
     const tags=enDesc.map(c=>`<span class="silo-tag">${c.patente}</span>`).join('');
-
-    // Fecha última entrada
-    const fechaUlt=ultIngreso?new Date(ultIngreso.horaEgreso||ultIngreso.horaIngreso).toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'2-digit'}):null;
-
-    return `<div class="silo-card ${alertaHum?'alerta-hum':pct>70?'casi-lleno':''}">
-      <div class="silo-card-top">
-        <div class="silo-name">
-          🏗 ${s.nombre}
-          ${alertaHum?`<span class="silo-alerta-badge">⚠ Hum. alta</span>`:''}
-        </div>
-        <div class="silo-tipo">${s.tipo||'—'} · ${s.descarga||'—'}${granoActual&&granoActual!=='—'?' · <span style="color:var(--blu)">'+granoActual+'</span>':''}</div>
-      </div>
-      <div class="silo-card-body">
-        <div class="silo-stat">
-          <span class="silo-lbl">💧 Humedad prom. ponderada</span>
-          <span class="silo-hum">
-            <span class="silo-hum-val ${humCls}">${humProm!==null?humProm.toFixed(2)+'%':'—'}</span>
-            ${humProm!==null?`<span style="font-size:9px;color:var(--mu);">base ${humLimite}%</span>`:''}
-          </span>
-        </div>
-        <div class="silo-stat">
-          <span class="silo-lbl">⚖ Neto seco ingresado</span>
-          <span class="silo-val" style="color:var(--grn)">${totalNseco>0?N(totalNseco)+' kg':'—'}</span>
-        </div>
-        <div class="silo-stat">
-          <span class="silo-lbl">📦 Capacidad teórica</span>
-          <span class="silo-val">${cap>0?N(cap*1000)+' kg':'—'}</span>
-        </div>
-        ${cap>0?`
-        <div class="silo-bar-wrap"><div class="silo-bar ${barCls}" style="width:${pct}%"></div></div>
-        <div class="silo-pct">${pct}% ocupado${capDisp!==null?' · Disponible: '+N(capDisp*1000)+' kg':''}</div>
-        `:''}
-        <div class="silo-stat">
-          <span class="silo-lbl">🚛 Camiones ingresados</span>
-          <span class="silo-val" style="color:var(--mu)">${cantCamiones||'—'}</span>
-        </div>
-        <div class="silo-stat">
-          <span class="silo-lbl">📅 Último ingreso</span>
-          <span class="silo-val" style="font-size:11px;color:var(--mu)">${fechaUlt||'—'}</span>
-        </div>
-      </div>
-      <div class="silo-card-footer">
-        ${enDesc.length?tags:`<span class="silo-empty-tag">Sin camiones en playa ahora</span>`}
-      </div>
+    return `<div class="silo-card">
+      <div class="silo-name">${s.nombre}</div>
+      <div class="silo-tipo">${s.tipo||'—'} · ${s.descarga||'—'}</div>
+      <div class="silo-stat"><span class="silo-lbl">Capacidad</span><span class="silo-val">${cap?N(cap)+' tn':'—'}</span></div>
+      <div class="silo-stat"><span class="silo-lbl">Ingresado hoy</span><span class="silo-val" style="color:var(--grn)">${ocupTn>0?N(ocupTn)+' tn':'—'}</span></div>
+      <div class="silo-stat"><span class="silo-lbl">Grano</span><span class="silo-val" style="font-size:12px;color:var(--blu)">${s.grano||'—'}</span></div>
+      <div class="silo-bar-wrap"><div class="silo-bar ${barCls}" style="width:${pct}%"></div></div>
+      <div class="silo-camiones">${enDesc.length?`${enDesc.length} camión/es en playa: ${tags}`:'Sin camiones asignados ahora'}</div>
     </div>`;
   }).join('');
 }
@@ -741,13 +652,12 @@ setInterval(()=>{
   document.getElementById('clock').textContent=new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
 },1000);
 
-// Cuando otra pestaña del mismo navegador cambia el localStorage (mismo equipo)
 window.addEventListener('storage',e=>{
   if(e.key==='latour_cola'){leerCola();renderAll();}
   if(e.key==='latour_maestro'){leerMaestro().then(()=>{});}
 });
 
-// Auto-refresh desde el JSON compartido cada 20 segundos
+// Auto-refresh desde GitHub cada 20 segundos
 setInterval(async()=>{
   const ok=await leerColaServidor();
   if(!ok) leerCola();
@@ -761,9 +671,8 @@ function toast(msg){
 }
 
 // ── INIT ──
-// Arrancar leyendo desde el JSON de la carpeta compartida (fuente de verdad)
 leerColaServidor().then(ok=>{
-  if(!ok){ leerCola(); } // fallback a localStorage si la red no responde
+  if(!ok) leerCola();
   renderAll();
 });
 
