@@ -1,8 +1,4 @@
-// latour_maestro_data.js
-// Generado automáticamente — NO editar directamente.
-// Para actualizar: modificar latour_maestro.json desde Admin y reemplazar este archivo.
-// Versión: 2026-03-22 15:42
-window.LATOUR_MAESTRO = {
+{
   "productores": [
     {
       "nombre": "AGN Sociedad Simple",
@@ -2334,4 +2330,4 @@ window.LATOUR_MAESTRO = {
     }
   ],
   "contratos": []
-};
+}
