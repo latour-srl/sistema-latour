@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planta — LATOUR SRL</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+:root{
+  --bg:#0c0e10;--sur:#14161a;--sur2:#1a1d22;--sur3:#21242b;
+  --bd:#272b34;--bd2:#323744;
+  --tx:#e8eaf0;--mu:#6b7280;--mu2:#4b5563;
+  --gold:#f0b429;--gold-d:rgba(240,180,41,.13);--gold-b:rgba(240,180,41,.28);
+  --grn:#34d399;--grn-d:rgba(52,211,153,.12);--grn-b:rgba(52,211,153,.28);
+  --red:#f87171;--red-d:rgba(248,113,113,.11);--red-b:rgba(248,113,113,.28);
+  --blu:#60a5fa;--blu-d:rgba(96,165,250,.11);--blu-b:rgba(96,165,250,.28);
+  --ora:#fb923c;--ora-d:rgba(251,146,60,.12);--ora-b:rgba(251,146,60,.28);
+  --pur:#a78bfa;--pur-d:rgba(167,139,250,.11);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--tx);min-height:100vh;font-size:14px;}
+
+/* HEADER */
+header{background:var(--sur);border-bottom:1px solid var(--bd);padding:11px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
+.hlogo{display:flex;align-items:center;gap:10px;}
+.hdot{width:9px;height:9px;border-radius:50%;background:var(--grn);box-shadow:0 0 8px var(--grn);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.htitle{font-size:13px;font-weight:700;}
+.hsub{font-size:10px;color:var(--mu);margin-top:1px;}
+.hright{display:flex;align-items:center;gap:12px;}
+.clock{font-family:var(--mono);font-size:17px;color:var(--grn);}
+.sync-badge{font-size:10px;padding:3px 9px;border-radius:8px;font-weight:600;cursor:pointer;user-select:none;}
+.sb-ok{background:var(--grn-d);color:var(--grn);border:1px solid var(--grn-b);}
+.sb-old{background:var(--ora-d);color:var(--ora);border:1px solid var(--ora-b);}
+
+/* STATS */
+.stats{display:flex;gap:1px;background:var(--bd);}
+.stat{flex:1;background:var(--sur);padding:8px 10px;text-align:center;}
+.sv{font-family:var(--mono);font-size:19px;font-weight:500;line-height:1;margin-bottom:2px;}
+.sl{font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;}
+
+/* TABS */
+.tabs{background:var(--sur);border-bottom:1px solid var(--bd);display:flex;padding:0 18px;gap:0;}
+.tab{padding:10px 16px;font-size:12px;font-weight:600;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;user-select:none;white-space:nowrap;}
+.tab.on{color:var(--grn);border-bottom-color:var(--grn);}
+
+/* PAGES */
+.page{display:none;padding:16px 18px 60px;max-width:1200px;margin:0 auto;}
+.page.on{display:block;}
+
+/* ── COLA ── */
+.cola-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;}
+
+.ccard{border-radius:11px;border:1.5px solid var(--bd);background:var(--sur);overflow:hidden;transition:border-color .2s;}
+.ccard.tipo-lat{border-color:var(--gold-b);}
+.ccard.tipo-lat .cc-top{background:linear-gradient(120deg,var(--sur2),var(--gold-d));}
+.ccard.en-desc{border-color:var(--grn-b);}
+.ccard.en-desc .cc-top{background:linear-gradient(120deg,var(--sur2),var(--grn-d));}
+.ccard.en-espera .cc-top{background:var(--sur2);}
+.ccard.fuera-estandar{border-color:var(--red-b);}
+
+.cc-top{padding:11px 13px 10px;display:flex;align-items:flex-start;gap:10px;}
+.cc-prio{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.prio-alta{background:var(--gold);box-shadow:0 0 6px var(--gold);}
+.prio-media{background:var(--blu);}
+.prio-normal{background:var(--mu2);}
+
+.cc-main{flex:1;min-width:0;}
+.cc-pat{font-family:var(--mono);font-size:16px;font-weight:500;letter-spacing:.06em;margin-bottom:3px;}
+.cc-meta{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-bottom:4px;}
+.chip{padding:2px 7px;border-radius:8px;font-size:10px;font-weight:600;}
+.ch-l{background:var(--gold-d);color:var(--gold);}
+.ch-g{background:var(--blu-d);color:var(--blu);}
+.ch-e{background:var(--pur-d);color:var(--pur);}
+.cc-prod{font-size:12px;color:var(--mu);}
+.cc-hora{font-family:var(--mono);font-size:10px;color:var(--mu2);margin-top:2px;}
+
+/* romaneo badge — datos de balanza */
+.rom-badge{margin:0 13px 0;padding:8px 10px;background:var(--sur3);border-radius:6px;border-left:2px solid var(--gold);display:none;}
+.rom-badge.visible{display:block;}
+.rom-row{display:flex;justify-content:space-between;font-size:11px;margin-bottom:2px;}
+.rom-lbl{color:var(--mu);}
+.rom-val{font-family:var(--mono);font-weight:500;}
+.rom-neto{font-size:13px;color:var(--gold);}
+.rom-alerta{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--red);font-weight:600;margin-top:4px;}
+
+/* fotos strip (solo lectura) */
+.foto-strip{display:flex;gap:4px;flex-wrap:wrap;padding:6px 13px 0;}
+.foto-thumb{width:36px;height:36px;border-radius:4px;object-fit:cover;border:1px solid var(--bd);cursor:pointer;}
+.foto-thumb:hover{opacity:.8;}
+
+.cc-estado{padding:7px 13px;background:var(--sur3);display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.estado-txt{font-size:11px;font-weight:700;}
+.tbadge{padding:2px 8px;border-radius:6px;font-family:var(--mono);font-size:11px;font-weight:500;}
+.tb-ok{background:var(--grn-d);color:var(--grn);}
+.tb-w{background:rgba(251,146,60,.15);color:var(--ora);}
+.tb-a{background:var(--red-d);color:var(--red);}
+.tb-idle{background:var(--sur3);color:var(--mu);}
+
+.cc-body{padding:10px 13px;display:flex;flex-direction:column;gap:7px;}
+.asig-row{display:flex;gap:6px;align-items:center;}
+.asig-label{font-size:10px;color:var(--mu);font-weight:700;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;width:80px;}
+.asig-sel{flex:1;background:var(--sur2);border:1px solid var(--bd);border-radius:5px;padding:6px 8px;color:var(--tx);font-family:var(--sans);font-size:12px;outline:none;transition:border-color .15s;}
+.asig-sel:focus{border-color:var(--grn);}
+
+.desc-btns{display:flex;gap:5px;}
+.desc-btn{flex:1;padding:7px 6px;border-radius:6px;border:1.5px solid var(--bd);background:var(--sur2);color:var(--mu);font-size:11px;font-weight:700;cursor:pointer;text-align:center;transition:all .15s;user-select:none;}
+.desc-btn.sel-hid{border-color:var(--grn-b);background:var(--grn-d);color:var(--grn);}
+.desc-btn.sel-grav{border-color:var(--blu-b);background:var(--blu-d);color:var(--blu);}
+
+.serv-pills{display:flex;flex-wrap:wrap;gap:4px;}
+.serv-pill{padding:4px 9px;border-radius:12px;border:1.5px solid var(--bd);background:var(--sur2);color:var(--mu);font-size:10px;font-weight:600;cursor:pointer;transition:all .15s;user-select:none;}
+.serv-pill.on{border-color:var(--ora-b);background:var(--ora-d);color:var(--ora);}
+
+.cc-footer{padding:10px 13px 12px;display:flex;gap:6px;}
+.btn-accion{flex:1;padding:8px 6px;border-radius:7px;border:none;font-family:var(--sans);font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;}
+.btn-iniciar{background:var(--grn);color:#0c0e10;}
+.btn-iniciar:hover{opacity:.85;}
+.btn-fin-desc{background:var(--blu);color:#0c0e10;}
+.btn-fin-desc:hover{opacity:.85;}
+.btn-finalizar{background:var(--sur2);border:1.5px solid var(--grn-b);color:var(--grn);}
+.btn-finalizar:hover{background:var(--grn-d);}
+
+/* ── SILOS ── */
+.silos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;}
+.silo-card{background:var(--sur);border:1.5px solid var(--bd);border-radius:12px;overflow:hidden;transition:border-color .2s;}
+.silo-card.alerta-hum{border-color:var(--red-b);}
+.silo-card.casi-lleno{border-color:var(--ora-b);}
+.silo-card-top{padding:13px 15px 10px;border-bottom:1px solid var(--bd);}
+.silo-name{font-size:15px;font-weight:700;margin-bottom:2px;display:flex;align-items:center;gap:8px;}
+.silo-tipo{font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.04em;}
+.silo-card-body{padding:12px 15px;}
+.silo-stat{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px;}
+.silo-lbl{font-size:11px;color:var(--mu);}
+.silo-val{font-family:var(--mono);font-size:13px;font-weight:500;}
+.silo-hum{display:flex;align-items:center;gap:6px;}
+.silo-hum-val{font-family:var(--mono);font-size:16px;font-weight:500;}
+.hum-ok{color:var(--grn);}
+.hum-warn{color:var(--ora);}
+.hum-bad{color:var(--red);}
+.silo-bar-wrap{height:7px;background:var(--sur3);border-radius:4px;overflow:hidden;margin:8px 0 6px;}
+.silo-bar{height:100%;border-radius:4px;background:var(--grn);transition:width .6s;}
+.silo-bar.lleno{background:var(--red);}
+.silo-bar.casi{background:var(--ora);}
+.silo-pct{font-size:10px;color:var(--mu);text-align:right;margin-bottom:8px;}
+.silo-card-footer{padding:8px 15px;background:var(--sur2);border-top:1px solid var(--bd);display:flex;flex-wrap:wrap;gap:4px;min-height:32px;align-items:center;}
+.silo-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;background:var(--grn-d);color:var(--grn);border:1px solid var(--grn-b);}
+.silo-empty-tag{font-size:10px;color:var(--mu2);font-style:italic;}
+.silo-alerta-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700;background:var(--red-d);color:var(--red);border:1px solid var(--red-b);}
+
+/* ── HISTORIAL ── */
+.htable-wrap{overflow-x:auto;margin-top:10px;}
+table{width:100%;border-collapse:collapse;font-size:11px;}
+th{background:var(--sur2);color:var(--mu);padding:7px 9px;text-align:left;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;border-bottom:1px solid var(--bd);}
+td{padding:7px 9px;border-bottom:1px solid var(--bd);white-space:nowrap;}
+tr:hover td{background:var(--sur2);}
+.tm{font-family:var(--mono);}
+.tok{color:var(--grn);}.twarn{color:var(--ora);}.talert{color:var(--red);}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;display:none;align-items:center;justify-content:center;}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:92vw;max-height:88vh;border-radius:8px;}
+.lightbox-close{position:absolute;top:16px;right:20px;background:none;border:none;color:white;font-size:28px;cursor:pointer;}
+
+.empty{text-align:center;padding:50px 20px;color:var(--mu);}
+.empty-icon{font-size:40px;opacity:.25;margin-bottom:10px;}
+.toast{position:fixed;bottom:18px;right:18px;background:var(--grn);color:#0c0e10;padding:9px 16px;border-radius:7px;font-size:12px;font-weight:700;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;}
+.toast.show{opacity:1;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hlogo">
+    <div class="hdot"></div>
+    <div>
+      <div class="htitle">LATOUR SRL — Planta</div>
+      <div class="hsub">Silo · Descarga · Servicios</div>
+    </div>
+  </div>
+  <div class="hright">
+    <div class="sync-badge sb-ok" id="sync_badge" onclick="sincronizar()" title="Clic para sincronizar">↻ En vivo</div>
+    <div class="clock" id="clock">--:--:--</div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat"><div class="sv" style="color:var(--tx)" id="st0">0</div><div class="sl">En planta</div></div>
+  <div class="stat"><div class="sv" style="color:var(--gold)" id="st1">0</div><div class="sl">LATOUR</div></div>
+  <div class="stat"><div class="sv" style="color:var(--ora)" id="st2">0</div><div class="sl">Esperando</div></div>
+  <div class="stat"><div class="sv" style="color:var(--grn)" id="st3">0</div><div class="sl">En descarga</div></div>
+  <div class="stat"><div class="sv" style="color:var(--pur)" id="st4">0</div><div class="sl">Egresados hoy</div></div>
+</div>
+
+<div class="tabs">
+  <div class="tab on" onclick="showTab('cola',this)">🚛 Cola de camiones</div>
+  <div class="tab" onclick="showTab('silos',this)">🏗 Silos / Celdas</div>
+  <div class="tab" onclick="showTab('historial',this)">📋 Historial del día</div>
+</div>
+
+<!-- COLA -->
+<div class="page on" id="tab_cola">
+  <div class="cola-grid" id="cola_grid">
+    <div class="empty"><div class="empty-icon">🚛</div><div>Sin camiones en planta.<br><small style="font-size:11px;">Los ingresos aparecen automáticamente desde Balanza.</small></div></div>
+  </div>
+</div>
+
+<!-- SILOS -->
+<div class="page" id="tab_silos">
+  <div class="silos-grid" id="silos_grid"></div>
+</div>
+
+<!-- HISTORIAL -->
+<div class="page" id="tab_historial">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center;">
+    <input id="h_buscar" placeholder="Buscar patente, productor..." oninput="renderHistorial()"
+      style="background:var(--sur);border:1px solid var(--bd);border-radius:6px;padding:7px 10px;color:var(--tx);font-size:12px;outline:none;width:220px;">
+    <button onclick="exportarCSV()" style="padding:7px 14px;border-radius:6px;border:1px solid var(--bd);background:var(--sur);color:var(--mu);font-size:11px;font-weight:600;cursor:pointer;">⬇ Exportar CSV</button>
+  </div>
+  <div class="htable-wrap"><table>
+    <thead><tr>
+      <th>Hora ingreso</th><th>Patente</th><th>Productor</th><th>Grano</th>
+      <th>Flete</th><th>Descarga</th><th>Silo</th>
+      <th>Inicio desc.</th><th>Fin desc.</th><th>Duración</th>
+      <th>Bruto</th><th>Tara</th><th>Neto seco</th><th>Hum%</th>
+      <th>Servicios</th><th>Estándar</th><th>Fotos</th>
+    </tr></thead>
+    <tbody id="htbody"></tbody>
+  </table></div>
+  <div id="hist_empty" style="text-align:center;padding:40px;color:var(--mu);font-size:12px;display:none;">Sin registros finalizados aún.</div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
+  <button class="lightbox-close" onclick="cerrarLightbox()">✕</button>
+  <img id="lightbox_img" src="" alt="">
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let M = {};
+let cola = [];
+let egresados = [];
+let nid = 1;
+const SERVICIOS = ['Zaranda','Secado','Fumigación','Acondicionamiento'];
+
+// ── MAESTRO ──
+async function leerMaestro(){
+  try{
+    const res=await fetch(GH_MAESTRO+'?v='+Date.now(),{cache:'no-store'});
+    if(res.ok){
+      const data=await res.json();
+      M=data;
+      try{localStorage.setItem('latour_maestro',JSON.stringify(data));}catch(e){}
+      return 'server';
+    }
+  }catch(e){}
+  try{
+    const r=localStorage.getItem('latour_maestro');
+    if(r){M=JSON.parse(r);return 'local';}
+  }catch(e){}
+  return false;
+}
+
+// ── GITHUB BACKEND ──
+const GH_USER   = 'latour-srl';
+const GH_REPO   = 'sistema-latour';
+const GH_TOKEN  = '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';
+const GH_RAW    = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/latour_cola.json`;
+const GH_API    = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/latour_cola.json`;
+const GH_MAESTRO= `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/latour_maestro.json`;
+let _ghSha = null;
+
+// Lee la cola desde GitHub (fuente de verdad)
+// Preserva los estados locales (descarga, listo) que Planta ya modificó
+async function leerColaServidor(){
+  try{
+    const res=await fetch(GH_RAW+'?v='+Date.now(),{cache:'no-store'});
+    if(res.ok){
+      const d=await res.json();
+      const colaRemota=d.cola||[];
+
+      const estadosAvanzados=['descarga','servicios','listo'];
+      const colaFinal=colaRemota.map(cr=>{
+        if(!cr.tipDescarga) cr.tipDescarga='Hidráulica';
+        if(cr.silo && cr.silo.match(/^(MZ|GR|TR)\d+$/i)) cr.silo='';
+        const cl=cola.find(x=>x.id===cr.id);
+        if(cl && estadosAvanzados.includes(cl.estado)){
+          return {...cr, estado:cl.estado, horaInicioDescarga:cl.horaInicioDescarga, horaFinDescarga:cl.horaFinDescarga, silo:cl.silo||'', tipDescarga:cl.tipDescarga||'Hidráulica', servicios:cl.servicios||cr.servicios};
+        }
+        return cr;
+      });
+
+      cola=colaFinal;
+      egresados=d.egresados||[];
+      nid=d.nid||1;
+      try{localStorage.setItem('latour_cola',JSON.stringify({cola,egresados,nid,ts:Date.now()}));}catch(e){}
+      actualizarBadgeSync('ok');
+      return true;
+    }
+  }catch(e){}
+  actualizarBadgeSync('err');
+  return false;
+}
+
+function leerCola(){
+  try{
+    const r=localStorage.getItem('latour_cola');
+    if(r){const d=JSON.parse(r);cola=d.cola||[];egresados=d.egresados||[];nid=d.nid||1;}
+  }catch(e){}
+}
+
+function guardarCola(){
+  const colaClean=cola.map(c=>({...c,opsDone:Array.isArray(c.opsDone)?c.opsDone:[...(c.opsDone||[])]}));
+  localStorage.setItem('latour_cola',JSON.stringify({cola:colaClean,egresados,nid,ts:Date.now()}));
+}
+
+async function publicarCola(){
+  guardarCola();
+  const payload={cola,egresados,nid,ts:Date.now()};
+  const content=btoa(unescape(encodeURIComponent(JSON.stringify(payload,null,2))));
+  try{
+    if(!_ghSha){
+      const r=await fetch(GH_API,{headers:{'Authorization':'token '+GH_TOKEN}});
+      if(r.ok){const d=await r.json();_ghSha=d.sha;}
+    }
+    const res=await fetch(GH_API,{
+      method:'PUT',
+      headers:{'Authorization':'token '+GH_TOKEN,'Content-Type':'application/json'},
+      body:JSON.stringify({message:'Planta — '+new Date().toLocaleString('es-AR'),content,sha:_ghSha,branch:'main'})
+    });
+    if(res.ok){const d=await res.json();_ghSha=d.content.sha;}
+    else _ghSha=null;
+  }catch(e){console.warn('Error publicando a GitHub desde Planta:',e);}
+}
+
+function actualizarBadgeSync(estado){
+  const st=document.getElementById('sync_badge');
+  if(estado==='ok'){
+    st.className='sync-badge sb-ok';
+    st.textContent='↻ En vivo · '+new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
+  } else {
+    st.className='sync-badge sb-old';
+    st.textContent='⚠ Sin datos de red';
+  }
+}
+
+async function sincronizar(){
+  document.getElementById('sync_badge').textContent='⟳ Sincronizando...';
+  const ok=await leerColaServidor();
+  if(!ok) leerCola();
+  renderAll();
+}
+
+// ── TABS ──
+function showTab(t,el){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+  document.getElementById('tab_'+t).classList.add('on');
+  el.classList.add('on');
+  if(t==='silos')renderSilos();
+  if(t==='historial')renderHistorial();
+}
+
+// ── HELPERS ──
+function horaStr(iso){return iso?new Date(iso).toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'}):'—';}
+function N(v){return new Intl.NumberFormat('es-AR').format(Math.round(v));}
+function minDesde(iso){if(!iso)return 0;return Math.round((Date.now()-new Date(iso))/60000);}
+function durStr(iso1,iso2){
+  if(!iso1||!iso2)return '—';
+  const m=Math.round((new Date(iso2)-new Date(iso1))/60000);
+  return m<60?m+' min':Math.floor(m/60)+'h '+(m%60)+'m';
+}
+function timerStr(iso){
+  if(!iso)return '—';
+  const m=Math.round((Date.now()-new Date(iso))/60000);
+  if(m<60)return m+' min';
+  return Math.floor(m/60)+'h '+(m%60)+'m';
+}
+function timerClass(iso){
+  const m=minDesde(iso);
+  if(m>90)return 'tb-a';
+  if(m>45)return 'tb-w';
+  return 'tb-ok';
+}
+const ESTADOS={
+  espera:{lbl:'⏳ Esperando calado',color:'var(--mu)'},
+  calado:{lbl:'🔬 Calado',color:'var(--gold)'},
+  descarga:{lbl:'⬇ En descarga',color:'var(--grn)'},
+  servicios:{lbl:'⚙ Servicios',color:'var(--ora)'},
+  listo:{lbl:'✓ Listo para egresar',color:'var(--blu)'},
+};
+function estadoLbl(e){return(ESTADOS[e]||ESTADOS.espera).lbl;}
+function estadoColor(e){return(ESTADOS[e]||ESTADOS.espera).color;}
+
+// ── ACCIONES PLANTA ──
+function asignarSilo(id,val){
+  const c=cola.find(x=>x.id===id);if(!c)return;
+  c.silo=val;guardarCola();
+  toast('Silo asignado: '+val+' → '+c.patente);
+}
+function setTipoDescarga(id,tipo){
+  const c=cola.find(x=>x.id===id);if(!c)return;
+  c.tipDescarga=tipo;guardarCola();renderCola();
+}
+function toggleServicio(id,serv){
+  const c=cola.find(x=>x.id===id);if(!c)return;
+  if(!c.servicios)c.servicios=[];
+  const idx=c.servicios.indexOf(serv);
+  if(idx>=0)c.servicios.splice(idx,1);else c.servicios.push(serv);
+  guardarCola();renderCola();
+}
+function iniciarDescarga(id){
+  const c=cola.find(x=>x.id===id);if(!c)return;
+  if(!c.silo){alert('Asigná un silo/celda antes de iniciar la descarga.');return;}
+  if(!c.tipDescarga) c.tipDescarga='Hidráulica'; // por defecto hidráulica
+  c.estado='descarga';c.horaInicioDescarga=new Date().toISOString();
+  guardarCola();renderCola();toast('⬇ Descarga iniciada — '+c.patente+' → '+c.silo);
+  publicarCola();
+}
+function finDescarga(id){
+  const c=cola.find(x=>x.id===id);if(!c)return;
+  c.horaFinDescarga=new Date().toISOString();
+  c.estado=c.servicios&&c.servicios.length?'servicios':'listo';
+  guardarCola();renderCola();toast('✓ Descarga finalizada — '+c.patente);
+  publicarCola();
+}
+function marcarListo(id){
+  const c=cola.find(x=>x.id===id);if(!c)return;
+  c.estado='listo';guardarCola();renderCola();publicarCola();
+}
+
+// ── LIGHTBOX ──
+function abrirLightbox(src){
+  document.getElementById('lightbox_img').src=src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function cerrarLightbox(){document.getElementById('lightbox').classList.remove('open');}
+
+// ── RENDER COLA ──
+function renderCola(){
+  updateStats();
+  const grid=document.getElementById('cola_grid');
+  if(!cola.length){
+    grid.innerHTML=`<div class="empty"><div class="empty-icon">🚛</div><div>Sin camiones en planta.<br><small style="font-size:11px;">Los ingresos aparecen automáticamente desde Balanza.</small></div></div>`;
+    return;
+  }
+  const ps=p=>p==='alta'?0:p==='media'?1:2;
+  const sorted=[...cola].sort((a,b)=>
+    a.tipo!==b.tipo?(a.tipo==='latour'?-1:1):ps(a.prioridad)-ps(b.prioridad)||new Date(a.horaIngreso)-new Date(b.horaIngreso)
+  );
+  const silosOpts=(M.silos||[]).map(s=>`<option value="${s.nombre}">${s.nombre}</option>`).join('');
+
+  grid.innerHTML=sorted.map(c=>{
+    const enDesc=c.estado==='descarga';
+    const enEsp=c.estado==='espera'||c.estado==='calado';
+    const r=c.romaneo||null;
+
+    // badge datos de balanza (readonly)
+    const romBadge=r?`<div class="rom-badge visible">
+      <div class="rom-row"><span class="rom-lbl">Bruto</span><span class="rom-val">${N(r.bruto)} kg</span></div>
+      <div class="rom-row"><span class="rom-lbl">Tara</span><span class="rom-val">${N(r.tara)} kg</span></div>
+      <div class="rom-row"><span class="rom-lbl">Humedad</span><span class="rom-val">${r.hum?r.hum+'%':'—'}</span></div>
+      <div class="rom-row"><span class="rom-lbl">Neto seco</span><span class="rom-val rom-neto">${N(r.nseco||0)} kg</span></div>
+      ${c.fueraDeEstandar?'<div class="rom-alerta">⚠ Fuera de estándar</div>':''}
+    </div>`:'';
+
+    // fotos (solo lectura)
+    const fotos=c.fotos||[];
+    const fotoStrip=fotos.length?`<div class="foto-strip">${fotos.slice(0,5).map(f=>`<img class="foto-thumb" src="${f.dataUrl}" onclick="abrirLightbox('${f.dataUrl}')">`).join('')}${fotos.length>5?`<span style="font-size:10px;color:var(--mu);align-self:center;padding-left:4px;">+${fotos.length-5} fotos</span>`:''}</div>`:'';
+
+    // chips
+    const chips=[
+      c.tipo==='latour'?`<span class="chip ch-l">⭐</span>`:'',
+      c.grano&&c.grano!=='—'?`<span class="chip ch-g">${c.grano}</span>`:'',
+      c.establecimiento&&c.establecimiento!=='—'?`<span class="chip ch-e">${c.establecimiento.substring(0,12)}</span>`:'',
+    ].filter(Boolean).join('');
+
+    // timer
+    let timerHtml='';
+    if(enDesc&&c.horaInicioDescarga){
+      timerHtml=`<span class="tbadge ${timerClass(c.horaInicioDescarga)}">⬇ ${timerStr(c.horaInicioDescarga)}</span>`;
+    } else if(c.horaInicioProceso){
+      timerHtml=`<span class="tbadge tb-idle">Planta: ${timerStr(c.horaInicioProceso)}</span>`;
+    }
+
+    // silo select — pre-seleccionar si ya viene asignado del romaneo
+    const siloSel=`<div class="asig-row">
+      <span class="asig-label">Silo</span>
+      <select class="asig-sel" onchange="asignarSilo(${c.id},this.value)">
+        <option value="">— Asignar —</option>${silosOpts}
+        ${c.silo&&!(M.silos||[]).find(s=>s.nombre===c.silo)?`<option value="${c.silo}">${c.silo}</option>`:''}
+      </select>
+    </div>`;
+
+    // tipo descarga
+    const descBtns=`<div class="asig-row">
+      <span class="asig-label">Descarga</span>
+      <div class="desc-btns" style="flex:1;">
+        <div class="desc-btn${c.tipDescarga==='Hidráulica'?' sel-hid':''}" onclick="setTipoDescarga(${c.id},'Hidráulica')">💧 Hidráulica</div>
+        <div class="desc-btn${c.tipDescarga==='Gravedad'?' sel-grav':''}" onclick="setTipoDescarga(${c.id},'Gravedad')">⚖ Gravedad</div>
+      </div>
+    </div>`;
+
+    // servicios
+    const servPills=SERVICIOS.map(s=>`<div class="serv-pill${(c.servicios||[]).includes(s)?' on':''}" onclick="toggleServicio(${c.id},'${s}')">${s}</div>`).join('');
+
+    // footer
+    let footer='';
+    if(enEsp){
+      footer=`<button class="btn-accion btn-iniciar" onclick="iniciarDescarga(${c.id})">⬇ Iniciar descarga</button>`;
+    } else if(enDesc){
+      footer=`<button class="btn-accion btn-fin-desc" onclick="finDescarga(${c.id})">✓ Fin descarga</button>`;
+    } else if(c.estado==='servicios'){
+      footer=`<button class="btn-accion btn-finalizar" onclick="marcarListo(${c.id})">✓ Servicios ok</button>`;
+    } else if(c.estado==='listo'){
+      footer=`<button class="btn-accion btn-finalizar" style="opacity:.5;cursor:default;">✓ Listo — esperando egreso (Balanza)</button>`;
+    }
+
+    return `<div class="ccard tipo-${c.tipo==='latour'?'lat':'lib'} ${enDesc?'en-desc':''} ${enEsp?'en-espera':''} ${c.fueraDeEstandar?'fuera-estandar':''}">
+      <div class="cc-top">
+        <div class="cc-prio prio-${c.prioridad||'normal'}"></div>
+        <div class="cc-main">
+          <div class="cc-pat">${c.patente}${c.fueraDeEstandar?' <span style="font-size:12px;color:var(--red)">⚠</span>':''}</div>
+          <div class="cc-meta">${chips}<span style="font-size:11px;color:var(--mu)">${c.productor||'—'}</span></div>
+          <div class="cc-hora">Ingreso ${horaStr(c.horaIngreso)} · CP: ${c.cp||'—'}</div>
+        </div>
+      </div>
+      ${romBadge}
+      ${fotoStrip}
+      <div class="cc-estado">
+        <span class="estado-txt" style="color:${estadoColor(c.estado)}">${estadoLbl(c.estado)}</span>
+        ${timerHtml}
+      </div>
+      <div class="cc-body">
+        ${siloSel}
+        ${descBtns}
+        <div class="asig-row">
+          <span class="asig-label">Servicios</span>
+          <div class="serv-pills">${servPills}</div>
+        </div>
+      </div>
+      <div class="cc-footer">${footer}</div>
+    </div>`;
+  }).join('');
+
+  // restaurar selects silo
+  sorted.forEach(c=>{
+    const sel=document.querySelector(`select[onchange="asignarSilo(${c.id},this.value)"]`);
+    if(sel&&c.silo)sel.value=c.silo;
+  });
+}
+
+// ── RENDER SILOS ──
+function renderSilos(){
+  const silos=M.silos||[];
+  if(!silos.length){
+    document.getElementById('silos_grid').innerHTML=`<div class="empty"><div class="empty-icon">🏗</div><div>Sin silos configurados.<br><small style="font-size:11px;">Cargalos en Admin → Silos.</small></div></div>`;
+    return;
+  }
+
+  // Humedad base por grano (para alertas) — fallback si no está en maestro
+  const humBase={
+    'Soja':13.5,'Girasol':11.0,'Maíz':14.5,'Trigo':14.0,
+    'Cebada':13.5,'Sorgo':14.0,'Maní':9.0
+  };
+
+  document.getElementById('silos_grid').innerHTML=silos.map(s=>{
+    const enDesc=cola.filter(c=>c.silo===s.nombre);
+    const cap=parseFloat(s.cap_tn)||0;
+
+    // Todos los ingresos asignados a este silo (sin filtro de fecha → histórico completo)
+    const ingresos=egresados.filter(e=>e.silo===s.nombre&&e.romaneo&&e.romaneo.nseco>0);
+
+    // Total kg neto seco ingresado
+    const totalNseco=ingresos.reduce((sum,e)=>sum+(e.romaneo.nseco||0),0);
+    const totalTn=totalNseco/1000;
+
+    // Promedio ponderado de humedad (ponderado por neto seco)
+    const sumHumPeso=ingresos.reduce((sum,e)=>{
+      const h=parseFloat(e.romaneo.hum)||0;
+      const p=e.romaneo.nseco||0;
+      return sum+(h*p);
+    },0);
+    const humProm=totalNseco>0?sumHumPeso/totalNseco:null;
+
+    // Cantidad de camiones ingresados
+    const cantCamiones=ingresos.length;
+
+    // Última fecha de ingreso
+    const ultIngreso=ingresos.length?
+      ingresos.reduce((max,e)=>new Date(e.horaEgreso||e.horaIngreso)>new Date(max.horaEgreso||max.horaIngreso)?e:max,ingresos[0])
+      :null;
+
+    // Capacidad disponible
+    const capDisp=cap>0?Math.max(0,cap-totalTn):null;
+    const pct=cap>0?Math.min(100,Math.round(totalTn/cap*100)):0;
+    const barCls=pct>90?'lleno':pct>70?'casi':'';
+
+    // Alerta de humedad
+    const granoActual=s.grano||(ingresos.length?ingresos[ingresos.length-1].grano:null);
+    const humLimite=humBase[granoActual]||13.5;
+    const alertaHum=humProm!==null&&humProm>humLimite+0.5;
+    const humCls=humProm===null?'':humProm>humLimite+1?'hum-bad':humProm>humLimite?'hum-warn':'hum-ok';
+
+    // Tags camiones en playa ahora
+    const tags=enDesc.map(c=>`<span class="silo-tag">${c.patente}</span>`).join('');
+
+    // Fecha última entrada
+    const fechaUlt=ultIngreso?new Date(ultIngreso.horaEgreso||ultIngreso.horaIngreso).toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'2-digit'}):null;
+
+    return `<div class="silo-card ${alertaHum?'alerta-hum':pct>70?'casi-lleno':''}">
+      <div class="silo-card-top">
+        <div class="silo-name">
+          🏗 ${s.nombre}
+          ${alertaHum?`<span class="silo-alerta-badge">⚠ Hum. alta</span>`:''}
+        </div>
+        <div class="silo-tipo">${s.tipo||'—'} · ${s.descarga||'—'}${granoActual&&granoActual!=='—'?' · <span style="color:var(--blu)">'+granoActual+'</span>':''}</div>
+      </div>
+      <div class="silo-card-body">
+        <div class="silo-stat">
+          <span class="silo-lbl">💧 Humedad prom. ponderada</span>
+          <span class="silo-hum">
+            <span class="silo-hum-val ${humCls}">${humProm!==null?humProm.toFixed(2)+'%':'—'}</span>
+            ${humProm!==null?`<span style="font-size:9px;color:var(--mu);">base ${humLimite}%</span>`:''}
+          </span>
+        </div>
+        <div class="silo-stat">
+          <span class="silo-lbl">⚖ Neto seco ingresado</span>
+          <span class="silo-val" style="color:var(--grn)">${totalNseco>0?N(totalNseco)+' kg':'—'}</span>
+        </div>
+        <div class="silo-stat">
+          <span class="silo-lbl">📦 Capacidad teórica</span>
+          <span class="silo-val">${cap>0?N(cap*1000)+' kg':'—'}</span>
+        </div>
+        ${cap>0?`
+        <div class="silo-bar-wrap"><div class="silo-bar ${barCls}" style="width:${pct}%"></div></div>
+        <div class="silo-pct">${pct}% ocupado${capDisp!==null?' · Disponible: '+N(capDisp*1000)+' kg':''}</div>
+        `:''}
+        <div class="silo-stat">
+          <span class="silo-lbl">🚛 Camiones ingresados</span>
+          <span class="silo-val" style="color:var(--mu)">${cantCamiones||'—'}</span>
+        </div>
+        <div class="silo-stat">
+          <span class="silo-lbl">📅 Último ingreso</span>
+          <span class="silo-val" style="font-size:11px;color:var(--mu)">${fechaUlt||'—'}</span>
+        </div>
+      </div>
+      <div class="silo-card-footer">
+        ${enDesc.length?tags:`<span class="silo-empty-tag">Sin camiones en playa ahora</span>`}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── RENDER HISTORIAL ──
+function renderHistorial(){
+  const buscar=(document.getElementById('h_buscar').value||'').toLowerCase();
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  let list=egresados.filter(e=>{
+    if(new Date(e.horaIngreso)<hoy)return false;
+    if(buscar&&!e.patente.toLowerCase().includes(buscar)&&!(e.productor||'').toLowerCase().includes(buscar))return false;
+    return true;
+  });
+  const tbody=document.getElementById('htbody');
+  const empty=document.getElementById('hist_empty');
+  if(!list.length){tbody.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
+  tbody.innerHTML=[...list].reverse().map(e=>{
+    const r=e.romaneo||{};
+    const dur=durStr(e.horaInicioDescarga,e.horaFinDescarga);
+    const fotoCount=(e.fotos||[]).length;
+    return `<tr>
+      <td class="tm">${horaStr(e.horaIngreso)}</td>
+      <td class="tm ${e.tipo==='latour'?'tok':''}">${e.patente}${e.tipo==='latour'?' ⭐':''}${e.fueraDeEstandar?' <span style="color:var(--red)">⚠</span>':''}</td>
+      <td>${e.productor||'—'}</td>
+      <td>${e.grano||'—'}</td>
+      <td>${e.tipo==='latour'?'LATOUR':'Propio'}</td>
+      <td>${e.tipDescarga||'—'}</td>
+      <td>${e.silo||'—'}</td>
+      <td class="tm">${horaStr(e.horaInicioDescarga)}</td>
+      <td class="tm">${horaStr(e.horaFinDescarga)}</td>
+      <td class="tm ${dur==='—'?'':'tok'}">${dur}</td>
+      <td class="tm">${r.bruto?N(r.bruto):'—'}</td>
+      <td class="tm">${r.tara?N(r.tara):'—'}</td>
+      <td class="tm tok">${r.nseco?N(r.nseco):'—'}</td>
+      <td class="tm ${r.hum>15.5?'talert':''}">${r.hum?r.hum+'%':'—'}</td>
+      <td>${(e.servicios||[]).join(', ')||'—'}</td>
+      <td class="${e.fueraDeEstandar?'talert':'tok'}">${e.fueraDeEstandar?'⚠ Fuera est.':'✓ Ok'}</td>
+      <td class="tm">${fotoCount?`<span style="color:var(--blu);cursor:pointer;" onclick="verFotosHistorial(${e.id})">📷 ${fotoCount}</span>`:'—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+function verFotosHistorial(id){
+  const e=egresados.find(x=>x.id===id);
+  if(!e||!e.fotos||!e.fotos.length)return;
+  abrirLightbox(e.fotos[0].dataUrl);
+}
+
+// ── EXPORT CSV ──
+function exportarCSV(){
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  const list=egresados.filter(e=>new Date(e.horaIngreso)>=hoy);
+  if(!list.length){alert('Sin registros para exportar.');return;}
+  const cols=['Fecha','Hora ingreso','Patente','Productor','Transportista','Grano','Campaña','C.Porte','Flete','Descarga','Silo','Inicio desc.','Fin desc.','Duración','Bruto','Tara','Neto','Hum%','Merma','Neto seco','Servicios','Estándar','Fotos','Obs'];
+  const rows=list.map(e=>{
+    const r=e.romaneo||{};
+    return [
+      new Date(e.horaIngreso).toLocaleDateString('es-AR'),horaStr(e.horaIngreso),
+      e.patente,e.productor||'',e.transportista||'',e.grano||'',e.campania||'',r.cp||e.cp||'',
+      e.tipo==='latour'?'LATOUR':'Propio',e.tipDescarga||'',e.silo||'',
+      horaStr(e.horaInicioDescarga),horaStr(e.horaFinDescarga),durStr(e.horaInicioDescarga,e.horaFinDescarga),
+      r.bruto||'',r.tara||'',r.neto||'',r.hum||'',Math.round(r.merma||0)||'',Math.round(r.nseco||0)||'',
+      (e.servicios||[]).join(' | '),e.fueraDeEstandar?'Fuera de estándar':'Ok',(e.fotos||[]).length,r.obs||''
+    ];
+  });
+  const csv=[cols,...rows].map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
+  a.download=`Planta_LATOUR_${new Date().toLocaleDateString('es-AR').replace(/\//g,'-')}.csv`;
+  a.click();
+}
+
+// ── STATS ──
+function updateStats(){
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  document.getElementById('st0').textContent=cola.length;
+  document.getElementById('st1').textContent=cola.filter(c=>c.tipo==='latour').length;
+  document.getElementById('st2').textContent=cola.filter(c=>c.estado==='espera'||c.estado==='calado').length;
+  document.getElementById('st3').textContent=cola.filter(c=>c.estado==='descarga').length;
+  document.getElementById('st4').textContent=egresados.filter(e=>new Date(e.horaIngreso)>=hoy).length;
+}
+
+function renderAll(){renderCola();updateStats();}
+
+setInterval(()=>{
+  document.getElementById('clock').textContent=new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+},1000);
+
+// Cuando otra pestaña del mismo navegador cambia el localStorage (mismo equipo)
+window.addEventListener('storage',e=>{
+  if(e.key==='latour_cola'){leerCola();renderAll();}
+  if(e.key==='latour_maestro'){leerMaestro().then(()=>{});}
+});
+
+// Auto-refresh desde el JSON compartido cada 20 segundos
+setInterval(async()=>{
+  const ok=await leerColaServidor();
+  if(!ok) leerCola();
+  renderAll();
+},20000);
+
+function toast(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg;el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),2500);
+}
+
+// ── INIT ──
+// Arrancar leyendo desde el JSON de la carpeta compartida (fuente de verdad)
+leerColaServidor().then(ok=>{
+  if(!ok){ leerCola(); } // fallback a localStorage si la red no responde
+  renderAll();
+});
+
+leerMaestro().then(ok=>{
+  const st=document.getElementById('sync_badge');
+  if(ok==='server'){
+    st.className='sync-badge sb-ok';
+    st.textContent='✓ Maestro cargado';
+  } else if(ok==='local'){
+    st.className='sync-badge sb-old';
+    st.textContent='⚠ Maestro local';
+  }
+});
+
+setInterval(()=>{ leerMaestro(); }, 300000);
+</script>
+</body>
+</html>

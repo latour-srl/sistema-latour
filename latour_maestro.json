@@ -1,0 +1,2337 @@
+// latour_maestro_data.js
+// Generado automáticamente — NO editar directamente.
+// Para actualizar: modificar latour_maestro.json desde Admin y reemplazar este archivo.
+// Versión: 2026-03-22 15:42
+window.LATOUR_MAESTRO = {
+  "productores": [
+    {
+      "nombre": "AGN Sociedad Simple",
+      "cuit": "27283931671"
+    },
+    {
+      "nombre": "Agrijo SA",
+      "cuit": "33708600259"
+    },
+    {
+      "nombre": "Agropack Insumo S.R.L",
+      "cuit": "30708770422"
+    },
+    {
+      "nombre": "Agropecuaria Latour SA",
+      "cuit": "30712171975"
+    },
+    {
+      "nombre": "Agropecuaria Monte Union S.A",
+      "cuit": "33712464459"
+    },
+    {
+      "nombre": "Agrotero SH",
+      "cuit": "33712492509"
+    },
+    {
+      "nombre": "Argentinagro S.R.L",
+      "cuit": "30712215743"
+    },
+    {
+      "nombre": "Boyer Juan Carlos y Turchi Carlos S.A",
+      "cuit": "30634129878"
+    },
+    {
+      "nombre": "Caffaratti Alberto Orlando",
+      "cuit": "30717295753"
+    },
+    {
+      "nombre": "Caffaratti Hermanos S.S",
+      "cuit": "30717295753"
+    },
+    {
+      "nombre": "Campo Cuatro SA",
+      "cuit": "30716546779"
+    },
+    {
+      "nombre": "Carreño Pablo Martin",
+      "cuit": "20243110190"
+    },
+    {
+      "nombre": "Chopa Marta Sonia",
+      "cuit": "27200499757"
+    },
+    {
+      "nombre": "Club de Planeadores TL",
+      "cuit": "20203598433"
+    },
+    {
+      "nombre": "Costa Bernardo",
+      "cuit": "20265833838"
+    },
+    {
+      "nombre": "Costa Jorge",
+      "cuit": "23314223489"
+    },
+    {
+      "nombre": "De la Fuente Gonzalo",
+      "cuit": "27241552514"
+    },
+    {
+      "nombre": "De la Mata Raul Alberto",
+      "cuit": "20085651391"
+    },
+    {
+      "nombre": "Digiglio Julio Cesar",
+      "cuit": "20120374878"
+    },
+    {
+      "nombre": "Egañas Andres",
+      "cuit": "20110908351"
+    },
+    {
+      "nombre": "Erdozia Oscar Amadeo",
+      "cuit": "20112361384"
+    },
+    {
+      "nombre": "Espain Maria Lucia",
+      "cuit": "27257261412"
+    },
+    {
+      "nombre": "Euskaldunak S.Cap",
+      "cuit": "30718569911"
+    },
+    {
+      "nombre": "Fedea S.A",
+      "cuit": "30685141694"
+    },
+    {
+      "nombre": "Fossati Armando Edmundo",
+      "cuit": "20102274300"
+    },
+    {
+      "nombre": "Garcia Marta Nelida",
+      "cuit": "27233089880"
+    },
+    {
+      "nombre": "Gastaldi Hector",
+      "cuit": "20118319568"
+    },
+    {
+      "nombre": "Grippo Juan Pedro",
+      "cuit": "20248977087"
+    },
+    {
+      "nombre": "Grosso Rodolfo",
+      "cuit": "20123964102"
+    },
+    {
+      "nombre": "Guerin Santiago",
+      "cuit": "20314819692"
+    },
+    {
+      "nombre": "Hernandez Laureano",
+      "cuit": "20268393057"
+    },
+    {
+      "nombre": "Hufehue S.R.L",
+      "cuit": "30709790605"
+    },
+    {
+      "nombre": "Irrazabal Martin Ricardo",
+      "cuit": "20244419411"
+    },
+    {
+      "nombre": "Irrazabal Pablo Agustin",
+      "cuit": "20232143593"
+    },
+    {
+      "nombre": "Jauregui Maria Cristina",
+      "cuit": "27136998620"
+    },
+    {
+      "nombre": "Juan Carlos Latour S.R.L",
+      "cuit": "30708456914"
+    },
+    {
+      "nombre": "Lopes DaCosta Marcelo",
+      "cuit": "20236654320"
+    },
+    {
+      "nombre": "Los de las S.Cap",
+      "cuit": "33717558559"
+    },
+    {
+      "nombre": "Los Grobos-Clasisems S.A",
+      "cuit": "30604456475"
+    },
+    {
+      "nombre": "Manos Brujas SRL",
+      "cuit": "30711998477"
+    },
+    {
+      "nombre": "Manos Verdes SRL",
+      "cuit": "30708532017"
+    },
+    {
+      "nombre": "Marta Garcia",
+      "cuit": "27233089880"
+    },
+    {
+      "nombre": "Maschietto Raul",
+      "cuit": "20238740356"
+    },
+    {
+      "nombre": "Milanesse Humberto",
+      "cuit": "20301454385"
+    },
+    {
+      "nombre": "Minvielle Marta Maria",
+      "cuit": "27099923550"
+    },
+    {
+      "nombre": "MLG S.R.L",
+      "cuit": "30715552295"
+    },
+    {
+      "nombre": "Moreno Carlos Maria",
+      "cuit": "23078495839"
+    },
+    {
+      "nombre": "Moreno Oscar Alberto",
+      "cuit": "20055021482"
+    },
+    {
+      "nombre": "Ona S.S",
+      "cuit": "30710394233"
+    },
+    {
+      "nombre": "Pedreira Hugo",
+      "cuit": "23238743079"
+    },
+    {
+      "nombre": "Ramos Marcelo",
+      "cuit": "20228001385"
+    },
+    {
+      "nombre": "Ressia  Hugo",
+      "cuit": "23083650699"
+    },
+    {
+      "nombre": "Rignon S.A",
+      "cuit": "30708562595"
+    },
+    {
+      "nombre": "Ripa Raul Javier",
+      "cuit": "20181367602"
+    },
+    {
+      "nombre": "Rojas Carlos",
+      "cuit": "20206186853"
+    },
+    {
+      "nombre": "Sartoris",
+      "cuit": "20142470447"
+    },
+    {
+      "nombre": "Suc.de Ruben P. Arbelbide SH",
+      "cuit": "20227173980"
+    },
+    {
+      "nombre": "Sucesores de Jorge Costa S.R.L",
+      "cuit": "33708666829"
+    },
+    {
+      "nombre": "TNS Agropecuaria SA",
+      "cuit": "30714214795"
+    },
+    {
+      "nombre": "Trio Ley",
+      "cuit": "23276032089"
+    },
+    {
+      "nombre": "Vicente Cesar",
+      "cuit": "20232143755"
+    }
+  ],
+  "establecimientos": [
+    {
+      "nombre": "La Porfia",
+      "productor": "Agropecuaria Latour SA",
+      "partido": "Trenque Lauquen",
+      "km_planta": 20
+    },
+    {
+      "nombre": "Albertino",
+      "productor": "Rignon S.A",
+      "partido": "Trenque Laquen",
+      "km_planta": 36
+    },
+    {
+      "nombre": "El Despegue",
+      "productor": "Agrop.Monte Union S.A",
+      "partido": "Garre",
+      "km_planta": 65
+    },
+    {
+      "nombre": "Piedras Blanca",
+      "productor": "Marta Garcia",
+      "partido": "Trenque Lauquen",
+      "km_planta": 9
+    },
+    {
+      "nombre": "Urquizu",
+      "productor": "Agrop.Monte Union S.A",
+      "partido": "Garre",
+      "km_planta": 90
+    },
+    {
+      "nombre": "San Jose",
+      "productor": "Costa Jorge",
+      "partido": "Trenque Lauquen",
+      "km_planta": 33
+    },
+    {
+      "nombre": "San Jose",
+      "productor": "Costa Bernardo",
+      "partido": "Trenque Llauquen",
+      "km_planta": 33
+    },
+    {
+      "nombre": "San Jose",
+      "productor": "Sucesores de Costa",
+      "partido": "Primera Junta",
+      "km_planta": 33
+    },
+    {
+      "nombre": "El Despilchado",
+      "productor": "Agrop.Monte Union S.A",
+      "partido": "Garre",
+      "km_planta": 60
+    },
+    {
+      "nombre": "El Miguelito",
+      "productor": "Rojas Carlos",
+      "partido": "Trenque Lauquen",
+      "km_planta": 10
+    },
+    {
+      "nombre": "Maya",
+      "productor": "Sucesores de Costa",
+      "partido": "Berutti"
+    },
+    {
+      "nombre": "Los Medanos",
+      "productor": "Agricola Ganadero STA Clara",
+      "partido": "Trenque Lauquen",
+      "km_planta": 11
+    },
+    {
+      "nombre": "Unico",
+      "productor": "Argentinagro S.R.L",
+      "partido": "Trenque Lauquen"
+    },
+    {
+      "nombre": "Campo Chico",
+      "productor": "Manos Verdes SRL",
+      "partido": "Trenque Lauquen",
+      "km_planta": 6
+    },
+    {
+      "nombre": "Palomeque",
+      "productor": "Maschietto Raul",
+      "partido": "Trenque Lauquen",
+      "km_planta": 37
+    },
+    {
+      "nombre": "El Tropel",
+      "productor": "Sucesores de Costa",
+      "partido": "Berotti"
+    },
+    {
+      "nombre": "Campo Chico",
+      "productor": "Minvielle Marta",
+      "partido": "Trenque Lauquen",
+      "km_planta": 6
+    },
+    {
+      "nombre": "Cotignola",
+      "productor": "Manos Brujas SRL",
+      "partido": "Trenque Lauquen",
+      "km_planta": 15
+    },
+    {
+      "nombre": "Pastisalez",
+      "productor": "Vicente Cesar",
+      "partido": "Trenque Lauquen",
+      "km_planta": 22
+    },
+    {
+      "nombre": "Miro",
+      "productor": "Agrop.Monte Union S.A",
+      "partido": "Guamini",
+      "km_planta": 72
+    },
+    {
+      "nombre": "Gaita",
+      "productor": "Agrop.Monte Union S.A",
+      "partido": "Garre",
+      "km_planta": 78
+    },
+    {
+      "nombre": "Pastisalez",
+      "productor": "Maschietto Raul",
+      "partido": "Barutti",
+      "km_planta": 22
+    },
+    {
+      "nombre": "Molinari",
+      "productor": "Ramos Marcelo",
+      "partido": "J.J.Paso",
+      "km_planta": 38
+    },
+    {
+      "nombre": "La Marianela",
+      "productor": "Vicente Cesar",
+      "partido": "Trenque Lauquen",
+      "km_planta": 21
+    },
+    {
+      "nombre": "La Marianela",
+      "productor": "Maschietto Raul",
+      "partido": "Trenque Lauquen",
+      "km_planta": 21
+    },
+    {
+      "nombre": "Cobo",
+      "productor": "Ramos Marcelo",
+      "partido": "Trenque Lauquen",
+      "km_planta": 7
+    },
+    {
+      "nombre": "La Constancia",
+      "productor": "Ramos Marcelo",
+      "partido": "Trenque Lauquen",
+      "km_planta": 9
+    },
+    {
+      "nombre": "Palomeque",
+      "productor": "Vicente Cesar",
+      "partido": "Trenque Lauquen",
+      "km_planta": 42
+    },
+    {
+      "nombre": "Palomeque",
+      "productor": "Maschietto Raul",
+      "partido": "Trenque Lauquen",
+      "km_planta": 42
+    },
+    {
+      "nombre": "El Yugo",
+      "productor": "Gastaldi, Hector",
+      "partido": "Trenque Lauquen",
+      "km_planta": 34
+    },
+    {
+      "nombre": "Los Terito",
+      "productor": "Marta Garcia",
+      "partido": "Primera Junta",
+      "km_planta": 14
+    },
+    {
+      "nombre": "Vicente",
+      "productor": "Maschietto Raul",
+      "partido": "Trenque Lauquen",
+      "km_planta": 43
+    },
+    {
+      "nombre": "Vicente",
+      "productor": "Vicente Cesar",
+      "partido": "Trenque Lauquen",
+      "km_planta": 43
+    },
+    {
+      "nombre": "Mussolino",
+      "productor": "TNS Agropecuaria SA",
+      "partido": "30 De Agosto",
+      "km_planta": 61
+    },
+    {
+      "nombre": "America",
+      "productor": "Ramos Marcelo",
+      "partido": "America",
+      "km_planta": 74
+    },
+    {
+      "nombre": "El Infinito",
+      "productor": "MLG",
+      "partido": "Pehuajo",
+      "km_planta": 75.5
+    },
+    {
+      "nombre": "La Lala",
+      "productor": "El Resuello",
+      "partido": "Trenque Lauquen",
+      "km_planta": 40
+    },
+    {
+      "nombre": "12 de enero",
+      "productor": "Ressia, Hugo",
+      "partido": "Trenque Lauquen",
+      "km_planta": 40
+    },
+    {
+      "nombre": "Dahir",
+      "productor": "Agrop.Monte Union S.A",
+      "partido": "Garre",
+      "km_planta": 90
+    },
+    {
+      "nombre": "Adan",
+      "productor": "Galeazzi Santiago",
+      "partido": "Garre",
+      "km_planta": 72
+    },
+    {
+      "nombre": "Los Cardales",
+      "productor": "Truffa",
+      "partido": "Escuela 9",
+      "km_planta": 13
+    },
+    {
+      "nombre": "Adan",
+      "productor": "Agrop.Monte Union S.A",
+      "partido": "Garre",
+      "km_planta": 72
+    },
+    {
+      "nombre": "Martin",
+      "productor": "Agrop.Monte Union S.A",
+      "partido": "Garre",
+      "km_planta": 73
+    },
+    {
+      "nombre": "Rodriguez",
+      "productor": "Grosso,Rodolfo",
+      "partido": "Rivadavia",
+      "km_planta": 60
+    },
+    {
+      "nombre": "Morce",
+      "productor": "Los Grobos-Clasisems S.A",
+      "partido": "La Pampa",
+      "km_planta": 280
+    },
+    {
+      "nombre": "Unico",
+      "productor": "Los Grobos-Clasisems S.A",
+      "partido": "H. Lagos",
+      "km_planta": 240
+    },
+    {
+      "nombre": "San Pedro",
+      "productor": "Grippo Juan Pedro",
+      "partido": "T.Lauquen",
+      "km_planta": 25
+    },
+    {
+      "nombre": "La Joaquina",
+      "productor": "Minvielle Marta",
+      "partido": "Trenque Lauquen",
+      "km_planta": 10
+    },
+    {
+      "nombre": "El Amanecer",
+      "productor": "Rojas Carlos",
+      "partido": "Trenque Lauquen",
+      "km_planta": 3.8
+    },
+    {
+      "nombre": "Thomas",
+      "productor": "Rojas Carlos",
+      "partido": "Trenque Lauquen",
+      "km_planta": 10
+    },
+    {
+      "nombre": "Thomas",
+      "productor": "Lopes DaCosta Marcelo",
+      "partido": "Trenque Lauquen",
+      "km_planta": 10
+    },
+    {
+      "nombre": "Echanis",
+      "productor": "Euskaldunak S.Cap",
+      "partido": "T.Lauquen",
+      "km_planta": 53
+    },
+    {
+      "nombre": "San Luis",
+      "productor": "TNS Agropecuaria SA",
+      "partido": "Corazzi",
+      "km_planta": 69
+    },
+    {
+      "nombre": "Semillero",
+      "productor": "Juan Carlos Latour S.R.L",
+      "partido": "Trenque Lauquen"
+    },
+    {
+      "nombre": "La Porteña",
+      "productor": "Agropack Insumo S.R.L",
+      "partido": "Trenque Lauquen30"
+    },
+    {
+      "nombre": "San Jose",
+      "productor": "Hufehue S.R.L",
+      "partido": "Trenque Lauquen",
+      "km_planta": 30
+    },
+    {
+      "nombre": "Unico",
+      "productor": "Fedea S.A",
+      "partido": "Trenque Lauquen"
+    },
+    {
+      "nombre": "El Pintado",
+      "productor": "Agrijo SA",
+      "partido": "Garre",
+      "km_planta": 74
+    },
+    {
+      "nombre": "La Bara",
+      "productor": "Agrijo SA",
+      "partido": "Primera Junta",
+      "km_planta": 33
+    },
+    {
+      "nombre": "El Medano",
+      "productor": "Echaniz Ana Maria",
+      "partido": "Martin Fierro",
+      "km_planta": 47
+    },
+    {
+      "nombre": "Erdozia",
+      "productor": "Erdozia Oscar Amadeo",
+      "partido": "Roosevelt",
+      "km_planta": 70
+    },
+    {
+      "nombre": "La Gringa",
+      "productor": "Manos Verdes SRL",
+      "partido": "Trenque Lauquen",
+      "km_planta": 15
+    },
+    {
+      "nombre": "La Gringa",
+      "productor": "Minvielle Marta",
+      "partido": "Trenque Lauquen",
+      "km_planta": 15
+    },
+    {
+      "nombre": "La Gringa",
+      "productor": "Manos Brujas SRL",
+      "partido": "Trenque Lauquen",
+      "km_planta": 15
+    },
+    {
+      "nombre": "Unico",
+      "productor": "MLG",
+      "partido": "America"
+    },
+    {
+      "nombre": "San Pedro",
+      "productor": "Gastaldi, Hector",
+      "partido": "La Zanja",
+      "km_planta": 23
+    },
+    {
+      "nombre": "Pennella",
+      "productor": "Ramos Marcelo",
+      "partido": "Trenque Lauquen",
+      "km_planta": 25
+    },
+    {
+      "nombre": "NILO",
+      "productor": "Minvielle Marta",
+      "partido": "Trenque Laquen",
+      "km_planta": 10
+    },
+    {
+      "nombre": "Azulabarrena",
+      "productor": "Boyer Juan Carlos y Turchi",
+      "partido": "Trenque Lauquen",
+      "km_planta": 37
+    },
+    {
+      "nombre": "Peaje",
+      "productor": "Pietrobelli, Edgardo",
+      "partido": "Trenque Lauquen",
+      "km_planta": 20
+    },
+    {
+      "nombre": "La Solita",
+      "productor": "Hernandez, Laureano",
+      "partido": "J.J.Paso",
+      "km_planta": 48
+    },
+    {
+      "nombre": "Semillero",
+      "productor": "Juan Carlos Latour S.R.L",
+      "partido": "Trenque Lauquen",
+      "km_planta": 1
+    },
+    {
+      "nombre": "Unico",
+      "productor": "Hufehue S.R.L",
+      "partido": "Trenque Lauquen",
+      "km_planta": 30
+    },
+    {
+      "nombre": "Unico",
+      "productor": "Agropack Insumo S.R.L",
+      "partido": "Trenque Lauquen",
+      "km_planta": 20
+    },
+    {
+      "nombre": "La Loma",
+      "productor": "Milanesse Humberto",
+      "partido": "Escuela 9",
+      "km_planta": 15
+    },
+    {
+      "nombre": "La Blanqueada",
+      "productor": "5 Hermanos Sociedad"
+    },
+    {
+      "nombre": "Primera Junta",
+      "productor": "AGN Sociedad Simple",
+      "partido": "Primera Junta",
+      "km_planta": 16.5
+    },
+    {
+      "nombre": "Silgani",
+      "productor": "Agrijo SA",
+      "km_planta": 85
+    },
+    {
+      "nombre": "Santa Teresa",
+      "productor": "Agrijo SA",
+      "partido": "Lertora",
+      "km_planta": 35
+    },
+    {
+      "nombre": "Tronge",
+      "productor": "Agrijo SA",
+      "km_planta": 69
+    },
+    {
+      "nombre": "Los Alamos",
+      "productor": "Agrijo SA",
+      "km_planta": 65
+    },
+    {
+      "nombre": "El Talero",
+      "productor": "Agrijo SA",
+      "km_planta": 35
+    },
+    {
+      "nombre": "San Bartolome",
+      "productor": "Agrijo SA",
+      "km_planta": 40
+    },
+    {
+      "nombre": "La Vera",
+      "productor": "Agrijo SA",
+      "km_planta": 40
+    },
+    {
+      "nombre": "Ressia",
+      "productor": "Agropecuaria El PatriarcaSA",
+      "partido": "Esc.14",
+      "km_planta": 14
+    },
+    {
+      "nombre": "La Union",
+      "productor": "Agropecuaria Latour SA",
+      "partido": "30 de Agosto",
+      "km_planta": 40
+    },
+    {
+      "nombre": "San Miguel",
+      "productor": "Agropecuaria Latour SA",
+      "partido": "T.Lauquen",
+      "km_planta": 30
+    },
+    {
+      "nombre": "La Porteña",
+      "productor": "Agropecuaria Latour SA",
+      "partido": "30 De Agosto",
+      "km_planta": 50
+    },
+    {
+      "nombre": "San Jose",
+      "productor": "Agropecuaria Latour SA",
+      "partido": "T.Lauquen",
+      "km_planta": 25
+    },
+    {
+      "nombre": "La Oracion",
+      "productor": "Agrotero SH",
+      "partido": "T.Lauquen",
+      "km_planta": 40
+    },
+    {
+      "nombre": "El Zocalo",
+      "productor": "Agrotero SH",
+      "partido": "T.Lauquen",
+      "km_planta": 37
+    },
+    {
+      "nombre": "Tio Miguel",
+      "productor": "Agrotero SH",
+      "partido": "T.Lauquen",
+      "km_planta": 37
+    },
+    {
+      "nombre": "San Damian",
+      "productor": "Agrotero SH",
+      "partido": "T.Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "El Abuelo",
+      "productor": "Agrotero SH",
+      "partido": "T.Lauquen"
+    },
+    {
+      "nombre": "Echaniz",
+      "productor": "Alvira Facundo"
+    },
+    {
+      "nombre": "Ave Fenix",
+      "productor": "Bahl Maria Selene",
+      "partido": "Berutti",
+      "km_planta": 20
+    },
+    {
+      "nombre": "Piche",
+      "productor": "Bahl Maria Selene",
+      "partido": "T.Lauquen",
+      "km_planta": 20
+    },
+    {
+      "nombre": "La Oracion",
+      "productor": "Bartolome Alicia",
+      "km_planta": 40
+    },
+    {
+      "nombre": "Doña Adelina",
+      "productor": "Boyer Juan Carlos y Turchi",
+      "partido": "T.Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "Don Coco",
+      "productor": "Boyer Juan Carlos y Turchi",
+      "partido": "Azurrabarrena",
+      "km_planta": 40
+    },
+    {
+      "nombre": "Don Javier",
+      "productor": "Boyer Juan Carlos y Turchi",
+      "km_planta": 50
+    },
+    {
+      "nombre": "El Recuerdo",
+      "productor": "Boyer Juan Carlos y Turchi",
+      "partido": "T.Lauquen",
+      "km_planta": 38
+    },
+    {
+      "nombre": "Vicente",
+      "productor": "Boyer Juan Carlos y Turchi",
+      "partido": "T.Lauquen",
+      "km_planta": 43
+    },
+    {
+      "nombre": "Martin Fierro",
+      "productor": "Boyer Juan Carlos y Turchi",
+      "km_planta": 35
+    },
+    {
+      "nombre": "Manga Blanca",
+      "productor": "Boyer Juan Carlos y Turchi",
+      "partido": "T.Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "Molino Alto",
+      "productor": "Boyer Juan Carlos y Turchi",
+      "partido": "T.Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "Don Ramon",
+      "productor": "Boyer Juan Carlos y Turchi"
+    },
+    {
+      "nombre": "Moro Viejo",
+      "productor": "Boyer Juan Carlos y Turchi"
+    },
+    {
+      "nombre": "San Silvestre",
+      "productor": "Boyer Juan Carlos y Turchi",
+      "partido": "T.Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "Las Marias",
+      "productor": "Caffaratti Alberto Orlando",
+      "partido": "Trenque Lauquen",
+      "km_planta": 25
+    },
+    {
+      "nombre": "Las Marias",
+      "productor": "Caffaratti, Hermanos S.S",
+      "partido": "Trenque Lauquen",
+      "km_planta": 25
+    },
+    {
+      "nombre": "San jose (Tambo)",
+      "productor": "Campo Cuatro SA",
+      "partido": "Trenque Lauquen",
+      "km_planta": 34
+    },
+    {
+      "nombre": "Santa Margarita",
+      "productor": "Campo Cuatro SA",
+      "km_planta": 40
+    },
+    {
+      "nombre": "Chañarez",
+      "productor": "Campo Cuatro SA",
+      "km_planta": 60
+    },
+    {
+      "nombre": "El Mate",
+      "productor": "Carreño Pablo Martin",
+      "partido": "T.Lauquen",
+      "km_planta": 15
+    },
+    {
+      "nombre": "La Zanja",
+      "productor": "Carreño Pablo Martin",
+      "partido": "Trenque Lauquen",
+      "km_planta": 20
+    },
+    {
+      "nombre": "Doña Filo",
+      "productor": "Castello Jorge Adolfo",
+      "km_planta": 65
+    },
+    {
+      "nombre": "La Distancia",
+      "productor": "Chopa Marta Sonia",
+      "partido": "T.Lauquen",
+      "km_planta": 1
+    },
+    {
+      "nombre": "Club De Plan.",
+      "productor": "Club de Planeadores TL",
+      "partido": "Trenque Lauquen",
+      "km_planta": 2.5
+    },
+    {
+      "nombre": "Campos Chico",
+      "productor": "Club de Planeadores TL",
+      "partido": "Trenque Lauquen",
+      "km_planta": 6
+    },
+    {
+      "nombre": "Muñiz",
+      "productor": "Cotignola Elva Iri",
+      "km_planta": 15
+    },
+    {
+      "nombre": "La Gringa",
+      "productor": "Cotignola Elva Iri",
+      "km_planta": 10
+    },
+    {
+      "nombre": "Ave Fenix",
+      "productor": "De la Fuente Gonzalo",
+      "partido": "Berutti",
+      "km_planta": 25
+    },
+    {
+      "nombre": "Piche",
+      "productor": "De la Fuente Gonzalo",
+      "partido": "Berutti",
+      "km_planta": 20
+    },
+    {
+      "nombre": "El Jaramayu",
+      "productor": "De la Mata Raul Alberto",
+      "partido": "J.J.Paso",
+      "km_planta": 45
+    },
+    {
+      "nombre": "Doña Adelina",
+      "productor": "De la Mata Raul Alberto",
+      "partido": "T.Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "KM 411",
+      "productor": "De la Mata Raul Alberto",
+      "partido": "J.J.Paso",
+      "km_planta": 33
+    },
+    {
+      "nombre": "La Julia(KM 409)",
+      "productor": "De la Mata Raul Alberto",
+      "partido": "J.J.Paso",
+      "km_planta": 35
+    },
+    {
+      "nombre": "La Beba",
+      "productor": "De la Mata Raul Alberto",
+      "km_planta": 70
+    },
+    {
+      "nombre": "Doña Filo",
+      "productor": "Digiglio Julio Cesar",
+      "partido": "T.Lauquen",
+      "km_planta": 55
+    },
+    {
+      "nombre": "La Veva",
+      "productor": "Digiglio Julio Cesar",
+      "partido": "T.Lauquen",
+      "km_planta": 50
+    },
+    {
+      "nombre": "Astelli",
+      "productor": "Digiglio Julio Cesar",
+      "partido": "T.Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "Echaniz",
+      "productor": "Echaniz Ana Maria",
+      "km_planta": 62
+    },
+    {
+      "nombre": "Mate Chico",
+      "productor": "Egañas Andres",
+      "partido": "T.Lauquen",
+      "km_planta": 20
+    },
+    {
+      "nombre": "Erdozia",
+      "productor": "Erdozia Oscar Amadeo",
+      "partido": "Martin Fierro",
+      "km_planta": 65
+    },
+    {
+      "nombre": "Ave Fenix",
+      "productor": "Espain Maria Lucia",
+      "partido": "Berutti",
+      "km_planta": 25
+    },
+    {
+      "nombre": "Piche",
+      "productor": "Espain Maria Lucia",
+      "partido": "Berutti",
+      "km_planta": 20
+    },
+    {
+      "nombre": "Ave Fenix",
+      "productor": "Espain Maria Lucia",
+      "partido": "Berutti",
+      "km_planta": 25
+    },
+    {
+      "nombre": "Los Chañares",
+      "productor": "Campo Cuatro SA",
+      "km_planta": 60
+    },
+    {
+      "nombre": "Escuela 14",
+      "productor": "Fossati Armando Edmundo",
+      "partido": "T.Lauquen",
+      "km_planta": 14
+    },
+    {
+      "nombre": "Planta de Asfalto",
+      "productor": "Fossati Armando Edmundo",
+      "partido": "T.Lauquen",
+      "km_planta": 10
+    },
+    {
+      "nombre": "San Eduardo",
+      "productor": "Garcia Marta Nelida",
+      "partido": "T. Lauquen",
+      "km_planta": 45
+    },
+    {
+      "nombre": "Km 437",
+      "productor": "Garcia Marta Nelida",
+      "partido": "T.Lauquen",
+      "km_planta": 7
+    },
+    {
+      "nombre": "El Suceso",
+      "productor": "Garcia Marta Nelida",
+      "partido": "T. Lauquen",
+      "km_planta": 20
+    },
+    {
+      "nombre": "Lertora",
+      "productor": "Gastaldi, hector",
+      "partido": "Lertora",
+      "km_planta": 35
+    },
+    {
+      "nombre": "Las cañas",
+      "productor": "Gastaldi, hector",
+      "km_planta": 50
+    },
+    {
+      "nombre": "Milanesse",
+      "productor": "Gastaldi, hector",
+      "partido": "T.Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "El mangrullo",
+      "productor": "Gastaldi, hector",
+      "partido": "T.Lauquen",
+      "km_planta": 13
+    },
+    {
+      "nombre": "Km 461",
+      "productor": "Gastaldi, hector",
+      "km_planta": 83
+    },
+    {
+      "nombre": "Primera Junta(Km436)",
+      "productor": "Grippo Juan Pedro",
+      "partido": "T.Lauquen",
+      "km_planta": 60
+    },
+    {
+      "nombre": "Peaje",
+      "productor": "Grippo Juan Pedro",
+      "partido": "T.Lauquen",
+      "km_planta": 15
+    },
+    {
+      "nombre": "Club De Pesca",
+      "productor": "Grippo Juan Pedro",
+      "partido": "T.Lauquen",
+      "km_planta": 15
+    },
+    {
+      "nombre": "San Pedro",
+      "productor": "Grippo Juan Pedro"
+    },
+    {
+      "nombre": "La Cecilia",
+      "productor": "Grippo Juan Pedro"
+    },
+    {
+      "nombre": "El Medio",
+      "productor": "Grosso,Rodolfo",
+      "partido": "Rivadavia",
+      "km_planta": 65
+    },
+    {
+      "nombre": "Lertora",
+      "productor": "Grosso,Rodolfo",
+      "partido": "Lertora",
+      "km_planta": 33
+    },
+    {
+      "nombre": "Roosvelt",
+      "productor": "Grosso,Rodolfo",
+      "partido": "Roosvelt",
+      "km_planta": 79
+    },
+    {
+      "nombre": "La Porfia",
+      "productor": "Guerin Santiago",
+      "partido": "T.Lauquen",
+      "km_planta": 25
+    },
+    {
+      "nombre": "El Piche",
+      "productor": "Hernandez, Laureano",
+      "partido": "Berutti",
+      "km_planta": 20
+    },
+    {
+      "nombre": "Doña Adelina",
+      "productor": "Irrazabal Martin Ricardo",
+      "partido": "T.Lauquen",
+      "km_planta": 37
+    },
+    {
+      "nombre": "Don Coco",
+      "productor": "Irrazabal Pablo Agustin",
+      "partido": "T.Lauquen",
+      "km_planta": 40
+    },
+    {
+      "nombre": "San Antonio",
+      "productor": "Irrazabal Pablo Agustin",
+      "partido": "T.Lauquen"
+    },
+    {
+      "nombre": "Don Miguel",
+      "productor": "Irrazabal Pablo Agustin",
+      "partido": "T.Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "El Despilchado",
+      "productor": "Irrazabal Pablo Agustin",
+      "partido": "T.Lauquen"
+    },
+    {
+      "nombre": "Azurabarrena",
+      "productor": "Irrazabal Pablo Agustin",
+      "partido": "T.Lauquen",
+      "km_planta": 40
+    },
+    {
+      "nombre": "La Sarita",
+      "productor": "Irrazabal Pablo Agustin",
+      "partido": "La Pampa",
+      "km_planta": 105
+    },
+    {
+      "nombre": "Don Jose",
+      "productor": "Irrazabal Pablo Agustin",
+      "partido": "T.Lauquen"
+    },
+    {
+      "nombre": "Doña Adelina",
+      "productor": "Irrazabal Pablo Agustin",
+      "partido": "T.Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "La Juanita",
+      "productor": "Jala la Juanita SA"
+    },
+    {
+      "nombre": "El Talero",
+      "productor": "Jala la Juanita SA",
+      "km_planta": 42
+    },
+    {
+      "nombre": "Doña Filo",
+      "productor": "Jauregui Maria Cristina",
+      "km_planta": 55
+    },
+    {
+      "nombre": "La Maria Lujan",
+      "productor": "La Chara S.A",
+      "partido": "T. Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "J.J.`Paso",
+      "productor": "Lasca Gonzalo Ezequiel",
+      "partido": "J.J.Paso",
+      "km_planta": 40
+    },
+    {
+      "nombre": "El Chuli",
+      "productor": "Lasca Gonzalo Ezequiel"
+    },
+    {
+      "nombre": "J.J.Paso",
+      "productor": "Lasca Gustavo Guzman",
+      "partido": "J.J.Paso",
+      "km_planta": 40
+    },
+    {
+      "nombre": "La Maria Lujan",
+      "productor": "Lopes Dacosta Marcelo",
+      "partido": "T. Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "Los Baguales",
+      "productor": "Los Baguales Agrop. SRL"
+    },
+    {
+      "nombre": "La Julia(km409)",
+      "productor": "Los de las S.Cap",
+      "partido": "J.J.Paso",
+      "km_planta": 35
+    },
+    {
+      "nombre": "El Jaramayu",
+      "productor": "Los de las S.Cap",
+      "partido": "J.J.Paso",
+      "km_planta": 45
+    },
+    {
+      "nombre": "La Delia",
+      "productor": "Manos Brujas SRL",
+      "partido": "Tres Lomas",
+      "km_planta": 78
+    },
+    {
+      "nombre": "Los 3",
+      "productor": "Manos Brujas SRL",
+      "partido": "T.Lauquen",
+      "km_planta": 10
+    },
+    {
+      "nombre": "Tres Lomas",
+      "productor": "Manos Brujas SRL",
+      "partido": "Tres Lomas",
+      "km_planta": 75
+    },
+    {
+      "nombre": "Los Tres",
+      "productor": "Manos Brujas SRL"
+    },
+    {
+      "nombre": "La Pava Verde",
+      "productor": "Manos Brujas SRL"
+    },
+    {
+      "nombre": "Nilo",
+      "productor": "Manos Brujas SRL",
+      "partido": "T.Lauquen",
+      "km_planta": 10
+    },
+    {
+      "nombre": "Bocayuba",
+      "productor": "Manos Brujas SRL"
+    },
+    {
+      "nombre": "San Jose",
+      "productor": "Manos Brujas SRL",
+      "partido": "Tres Lomas",
+      "km_planta": 65
+    },
+    {
+      "nombre": "Campo Chico",
+      "productor": "Manos Brujas SRL",
+      "partido": "T.Lauquen",
+      "km_planta": 6
+    },
+    {
+      "nombre": "La Juaquina",
+      "productor": "Manos Brujas SRL"
+    },
+    {
+      "nombre": "Nilo",
+      "productor": "Manos Verdes SRL",
+      "partido": "T.Lauquen",
+      "km_planta": 20
+    },
+    {
+      "nombre": "Martin Fierro",
+      "productor": "Manos Verdes SRL"
+    },
+    {
+      "nombre": "Tres Lomas",
+      "productor": "Manos Verdes SRL",
+      "partido": "Tres Lomas",
+      "km_planta": 75
+    },
+    {
+      "nombre": "La Pava Verde",
+      "productor": "Manos Verdes SRL"
+    },
+    {
+      "nombre": "Cotignola",
+      "productor": "Manos Verdes SRL"
+    },
+    {
+      "nombre": "La Joaquina",
+      "productor": "Manos Verdes SRL"
+    },
+    {
+      "nombre": "El Milagro",
+      "productor": "Manos Verdes SRL"
+    },
+    {
+      "nombre": "Bocayuba",
+      "productor": "Manos Verdes SRL"
+    },
+    {
+      "nombre": "Muñiz",
+      "productor": "Manos Verdes SRL"
+    },
+    {
+      "nombre": "San Jose",
+      "productor": "Manos Verdes SRL",
+      "km_planta": 65
+    },
+    {
+      "nombre": "San Jose Thomas",
+      "productor": "Manos Verdes SRL",
+      "partido": "Trenque Lauquen",
+      "km_planta": 20
+    },
+    {
+      "nombre": "Los Alamos",
+      "productor": "Maria Gemma SA",
+      "km_planta": 60
+    },
+    {
+      "nombre": "San Bartolome",
+      "productor": "Maria Gemma SA",
+      "km_planta": 40
+    },
+    {
+      "nombre": "La Constancia",
+      "productor": "Maria Gemma SA"
+    },
+    {
+      "nombre": "La Vera",
+      "productor": "Maria Gemma SA",
+      "km_planta": 70
+    },
+    {
+      "nombre": "El Talero",
+      "productor": "Maria Gemma SA",
+      "km_planta": 42
+    },
+    {
+      "nombre": "Rivadavia",
+      "productor": "Mestre, Rene",
+      "partido": "Rivadavia",
+      "km_planta": 50
+    },
+    {
+      "nombre": "Martin Fierro",
+      "productor": "Milanesse Humberto",
+      "partido": "Trenque Lauquen",
+      "km_planta": 45
+    },
+    {
+      "nombre": "Vicente",
+      "productor": "Milanesse Humberto",
+      "km_planta": 35
+    },
+    {
+      "nombre": "San Jose",
+      "productor": "Minvielle Marta",
+      "partido": "Tres Lomas",
+      "km_planta": 65
+    },
+    {
+      "nombre": "La Pava Verde",
+      "productor": "Minvielle Marta",
+      "partido": "Trenque Lauquen",
+      "km_planta": 30
+    },
+    {
+      "nombre": "La Zanja",
+      "productor": "Moreno Carlos Maria",
+      "partido": "La Zanja",
+      "km_planta": 18
+    },
+    {
+      "nombre": "La Maria Flor",
+      "productor": "Moreno Oscar Alberto",
+      "partido": "Trenque Lauquen",
+      "km_planta": 36
+    },
+    {
+      "nombre": "Fogon Grande",
+      "productor": "Moreno Oscar Alberto",
+      "partido": "T.Lauquen",
+      "km_planta": 25
+    },
+    {
+      "nombre": "Garre",
+      "productor": "Moreno Oscar Alberto",
+      "partido": "Garre",
+      "km_planta": 50
+    },
+    {
+      "nombre": "Club de Pesca",
+      "productor": "Oderiz Juan Jose",
+      "partido": "T.Lauquen",
+      "km_planta": 21
+    },
+    {
+      "nombre": "Loma Alta",
+      "productor": "Ona S.S",
+      "partido": "Berutti",
+      "km_planta": 25
+    },
+    {
+      "nombre": "La Ester Chica",
+      "productor": "Pedreira Hugo"
+    },
+    {
+      "nombre": "El Piche",
+      "productor": "Pedreira Hugo",
+      "partido": "Berutti",
+      "km_planta": 20
+    },
+    {
+      "nombre": "Satelite",
+      "productor": "Pedreira Hugo",
+      "partido": "T.Lauquen",
+      "km_planta": 15
+    },
+    {
+      "nombre": "Don Troba",
+      "productor": "Pedreira Hugo",
+      "km_planta": 47
+    },
+    {
+      "nombre": "La Solita",
+      "productor": "Pedreira Hugo",
+      "km_planta": 40
+    },
+    {
+      "nombre": "La Joya",
+      "productor": "Pedreira Hugo",
+      "partido": "Berutti",
+      "km_planta": 43
+    },
+    {
+      "nombre": "Branca",
+      "productor": "Pedreira Hugo",
+      "km_planta": 40
+    },
+    {
+      "nombre": "La Solita",
+      "productor": "Pedreira Hugo",
+      "partido": "J.J.Paso",
+      "km_planta": 55
+    },
+    {
+      "nombre": "Trompo",
+      "productor": "Penella Angel Antonio",
+      "partido": "T.Lauquen",
+      "km_planta": 10
+    },
+    {
+      "nombre": "La Blanqueada",
+      "productor": "Porris Hnos SH"
+    },
+    {
+      "nombre": "Gauchito Gil",
+      "productor": "Porris Hnos SH"
+    },
+    {
+      "nombre": "Herrados(Km 440)",
+      "productor": "Ramos Marcelo",
+      "partido": "Trenque Lauquen",
+      "km_planta": 5
+    },
+    {
+      "nombre": "J.J.Paso",
+      "productor": "Ramos Marcelo",
+      "partido": "J.J.Paso",
+      "km_planta": 50
+    },
+    {
+      "nombre": "Berutti",
+      "productor": "Ramos Marcelo",
+      "partido": "Berutti",
+      "km_planta": 38
+    },
+    {
+      "nombre": "La Aurorita",
+      "productor": "Ramos Marcelo",
+      "km_planta": 43
+    },
+    {
+      "nombre": "El Tropel",
+      "productor": "Ramos Marcelo"
+    },
+    {
+      "nombre": "30 de Junio",
+      "productor": "Ramos Marcelo",
+      "partido": "T.Lauquen",
+      "km_planta": 45
+    },
+    {
+      "nombre": "Peaje",
+      "productor": "Ramos Marcelo",
+      "partido": "T.Lauquen",
+      "km_planta": 15
+    },
+    {
+      "nombre": "Salgueiro",
+      "productor": "Ramos Marcelo"
+    },
+    {
+      "nombre": "La Veva",
+      "productor": "Ramos Marcelo",
+      "km_planta": 70
+    },
+    {
+      "nombre": "Don Ramon",
+      "productor": "Ripa Raul Javier",
+      "km_planta": 35
+    },
+    {
+      "nombre": "Luan Toro",
+      "productor": "Ripa Raul Javier",
+      "partido": "La Pampa",
+      "km_planta": 270
+    },
+    {
+      "nombre": "J.J.Paso",
+      "productor": "Ripa Raul Javier",
+      "partido": "J.J.Paso",
+      "km_planta": 40
+    },
+    {
+      "nombre": "La Maria Lujan",
+      "productor": "Rojas Carlos",
+      "partido": "T. Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "El Resuello",
+      "productor": "Sartoris"
+    },
+    {
+      "nombre": "El Lazo",
+      "productor": "Sartoris",
+      "partido": "Lertora",
+      "km_planta": 25
+    },
+    {
+      "nombre": "La Lala",
+      "productor": "Sartoris",
+      "partido": "T.Lauquen",
+      "km_planta": 40
+    },
+    {
+      "nombre": "Planta de Asfalto",
+      "productor": "Sert Sociedad De Echo"
+    },
+    {
+      "nombre": "Escuela14",
+      "productor": "Sert Sociedad De Echo",
+      "partido": "T.Lauquen",
+      "km_planta": 30
+    },
+    {
+      "nombre": "Mangrullo",
+      "productor": "Sifre Oscar Alberto",
+      "partido": "T.Lauquen",
+      "km_planta": 35
+    },
+    {
+      "nombre": "Ave Fenix",
+      "productor": "Suc.de Ruben P. Arbelbide SH",
+      "partido": "Berutti",
+      "km_planta": 25
+    },
+    {
+      "nombre": "Piche",
+      "productor": "Suc.de Ruben P. Arbelbide SH",
+      "partido": "Berutti",
+      "km_planta": 20
+    },
+    {
+      "nombre": "El Lazo",
+      "productor": "TNS Agropecuaria SA",
+      "partido": "Lertora",
+      "km_planta": 25
+    },
+    {
+      "nombre": "La Lala",
+      "productor": "TNS Agropecuaria SA",
+      "partido": "Corazzi",
+      "km_planta": 40
+    },
+    {
+      "nombre": "Campo Chico",
+      "productor": "Trio Ley",
+      "partido": "T.Lauquen",
+      "km_planta": 6
+    }
+  ],
+  "transportistas": [
+    {
+      "nombre": "Trnsp y Log. San Agustin",
+      "patentes": "AC149SQ, AH207WT, STY813, UII491, BBR937, UVV306, ESX806, FXI457, RKU176, CUH653, FWP846, GLZ949, JOQ110, AC189MF, VIR609, AES932, HGL335, ENB120, AQJ611, ANO260, AMI457, CSW499, OJH992, AF048DZ, BXI792, JQV696, CMU369, FJK517, TDU285, DNP115, FKI457, AE751YU, AE274EE, NRQ500, GSQ866",
+      "cuit": "33712636209",
+      "telefono": "2392-111111",
+      "tipo": "Trabaja con LATOUR"
+    },
+    {
+      "nombre": "Cortese Adan",
+      "patentes": "HNA504, HAF628, WWP792, OEY903, EMZ947, FLJ555, AI023GR, AH835BO, KHM268, JIH988, GHX172, AE625YM, SWE317, DCZ748, STY813, UII491, HYN828, OEI260, EDW403, EJE406, CMU369, FJK517, EKZ960, FHE235, GEV046, HHD399, USZ379, WWZ556, FVC658, FVC657, EOC032, CSN836, AA377UP, AA511ZY, OAA758, OXX795, GMY692, AH201TQ, JEN519, OAC218, FVQ622, SKT989, OEN272, AG692XL, RNF357, EAX447, AMO406, OCY881, CWE918, GWX087, WYF709, UTW281, VXJ773, TNF866, RXT465, EGU787, BAU866, CLB287, VIO229, SEJ544, ARJ858, AMH775, EEQ941, AE922ON, TWN351, TQW375, FFA861, FDH799, AE473ED, AE473EC, AH107TB, ONO894, EQO858, EUN533, MAX598, AE149XM, IYG086, DDN145, AJW729, LSK402, MOR908, POU658, ECB872, AC266TQ, WRK680, SBQ446, CTK375, BSQ239",
+      "cuit": "20312232511"
+    },
+    {
+      "nombre": "Tran-Sar",
+      "patentes": "LOD585, JXT438, BAN349, GYJ373, HCR535, GIJ554, HIB081, HWM045, EMU176, GIM088, NSH662, NBP889, HMF810, KJU119, GRP189, GRP 189, HWM 045, SOC 100, AB 538 YR, HIY246, OND257, HCG811, AB156KP, EFL 946, MWH 622, HIF081",
+      "cuit": "30711574413"
+    },
+    {
+      "nombre": "Chaves Scardino",
+      "patentes": "GFP495, FTA618",
+      "cuit": "20350423207"
+    },
+    {
+      "nombre": "Ghinzani Jorge",
+      "patentes": "EFI365, GSV199",
+      "cuit": "20123962096"
+    },
+    {
+      "nombre": "Logistica S.N",
+      "patentes": "HNA504, HAF628, ATW963, FNK456, FVK543, CBM160, WGO430, AB021SG, KGO671, LAL775, RGU023, VPC182, BAH390, UOC236, EPW829, AA149VR, FKD338, AH847YL, RQM480, JHF101, RIK585, GZX264, CWT155, EBI024, LZG377, GOA604, PBW572, AC929WA, DJN865, WZG992, VIF118, RYD279, TDX979, SXT777, KYI403, AD044YP, JQJ290, AC906PD, OJH992, AF048DZ, GOF428, AE477ON, NLF349, AF586TC, AB090NJ, AE168PO, MKL987, AF048EB, LRU431, AF4330WA, FKJ168, HKQ707, WPR584, SZU458, AB055ME, AF308US, AH697XB, AH697XE, EQE928, ENZ218, OVH680, AE897CO, LPZ461, AA493NF, RKY571, TZU334, NLX153, AG475MK, IAK321, LFP454, MFZ889, AA722MJ, GJH332, OGN212, WJF617, BOI215, DLK980, FKE448, COQ292, MUS078, MOF338, AB156KN, LOD599, AG515IY, PAR045, AE800VB, HWD100, AE846CQ, ENR552, PQV762, EPB505, HZN055, AC146AB, AE089ME, WPA793, WSK070, AH508YX, ENA559, EBF610, SZZ998, JLN582, OFJ329, AF504KT, WQP874, VCJ774, AH570PP, AF499BS, AE216YA, AF326MM, AH146HW, AF760ZN, AH146HX, AG572AD, AF760ZH, AF527EF, AF527EG, KQK952, AE510YR, AH697TU, AF254UH, IAQ463, AA412WD, RJE634, EKX972, HCG811, AB156KP, AD044YR, PEV165, EIH399, FXO841, AH179LX, AH447DM, JMP866, AB201PK, DPG066, AH777EG, MYO306, LNA155, AC366WL, AH292ZZ, AF410SC, AH177KS, AH287DW, AH675ME, NTE222, AH349TA, AH201TT, HMZ860, KID483, AH578QJ, PCE043, AF430WA, SKS548, LON262, BVV673, IWW217, BCR911, GIS709, HQN909, AF537UA, AD237DZ, NKO305, DVM004, MUQ616, IXK908, GUX019, EQP828, PGO189, TYV366, SQK595, FTU696, FLZ100, BLN597, GCB395, OME072, WGW301, EMB853, DTB387, NLV540, AF666TY, GEO842, NQO181, NEP064, OZR301, NCN283, AE948XM, AC259JY, AC692TP, ATC903, CKX408, LMC006, AE477OK, CKA203, TWQ887, HGZ203, KMX072, ERY085, KUI205, EYT656, BGG433, TAQ314, HSU628, MBH251, AC3354DU, SXV507, LFO336, DLC948, BJD920, EKY084, AB937EF, AH004IM, AH071IX, VLZ267, SXS387, RMJ267, CGQ240, ULK679, WVH164, VXJ774, HIY246, OND257, AMO368, KPV334, EIJ806, FJF677, AXX148, GCM715, FKU470, MPL552, AB567RT, AB678YO, AC089UY, EDX048, FZQ255, RYQ947, RWD788, VFF280, UXB509, EWA968, GJG366, AA762JT, AB442VK, FTU969, JDQ323, EEJ671, CQD156, GXN053, HFV603, CZV871, HPT501, ETJ709, OND256, KYM557, AE437CP, FKC198, AB281LP, TNJ231, VAW460, SKN557, FCY916, VZQ975, BSG068, VCP551, UXG579, AA377VE, HJS066, CXS297, PAU110, AC643VA, AD878ZR, FDV063, EJY436, AB078ID, AF422OD, CSY744, DSD545, GHN106, AE516YM, AG166FH, AD132PB, AC937DZ, AE269VJ, AB422LQ, AC906PF, AD955FY, AC548ML, PIF123, AC403BP, TJD664, CQB681, ERQ607, KEJ111, ELT044, GZQ563, IVT603, OQJ948, DIB438, AB207FS, RUJ561, JXX240, AE954KG, FSF481, AF524CX, SDN495, PFV359, OXL758, LRF501, AAF172, LKI178, MRQ540, AFY303, EKKK519, KWO357, AB369WX, RPN336, VKR970, SDM269, EIA402, HET268, EYT646, JRK443, JSD124, FEQ886, JWC718, FPF313, SYP383, ELD110, MFV570, TPV233, GSW127, KQKK959, AC589AK, LAE821, LAE822, RJH636, PFL572, LGL182, MIC706, AE788QL, AYJ981, HQH367, FQF209, AB055MM, MQI050, LAA000, SUS645, HLO954, GVD091, NFI803, EQA513, AF905MZ, EQJ790, GYK064, GKX707, AH590UE, GNT402, MWH619, RNS769, UKB701, FEC005, HOC162, EEO916, FVC639, EUP636, FCS136, KKX101, IXP165, CIK813, PMU241, EPK870, HKK041, RLR895, HBF379, BVA492, CFT432, TUJ762, UFU789, WOB236, UFB579, EWA535, ISY994, EUC524, FIU423, ESB384, AB194LV, WEZ684, WIU496, ESX992, UQK044, GRA164, LSW051, MLN594, KBU223, WGC388, ARJ353, DCS982, LHN907, TQD159, EED441, AD250NL, AE948XI, AA629IH, AB630NQ, UUE212, CBO099, MVV281, LWN153, EHE167, FOJ568, AB545LT, AF682HW, RYP947, JJZ263, WBG736, RYE637, SHA611, XAO252, WPF776, UMK286, RQH116, TNY368, MSD731, BGJ335, FKS010, LJC611, FDH797, AC354DU, USZ379, UUF155, ASI427, JQL233, AA359ZP, AA693JH, FKD056, RWD",
+      "cuit": "30716986647"
+    },
+    {
+      "nombre": "Broto, Ricardo",
+      "patentes": "BMS626, AF537UA, EVI930, AF252PU, HQN909",
+      "cuit": "30716986647"
+    },
+    {
+      "nombre": "Lasca Walter",
+      "patentes": "EDW403, EJE406, LFO336, DLC948",
+      "cuit": "20142472792"
+    },
+    {
+      "nombre": "Heredia Emmanuel",
+      "patentes": "EPM262, MJC206, CMN243, RJQ762, HXZ199, AF611KS, FBE939, NXG807, HLH844, AH702QA, AAA777, AAA888, HRI775, OVU466, AB407OT, AF415YN, AH484RO, AA338BX",
+      "cuit": "20352407152"
+    },
+    {
+      "nombre": "Colla Emilia",
+      "patentes": "ELX856, UFG989",
+      "cuit": "27335869309"
+    },
+    {
+      "nombre": "Marcantonio",
+      "patentes": "MJG825, AA598RL, JVJ366, AH373DB, AD964II, PIJ417, AH373OB, PIY417, HQH369, FRR185, MJG828, FKU 125, AB 255 AH, JVJ 366, MJG 839, AD 964 II, PIY 417",
+      "cuit": "20173745363"
+    },
+    {
+      "nombre": "Denari Gaston",
+      "patentes": "SUP931, GAT742",
+      "cuit": "20408449104"
+    },
+    {
+      "nombre": "Andy",
+      "patentes": "AG095FT, 0",
+      "cuit": "20302787167"
+    },
+    {
+      "nombre": "Franco Gerardo",
+      "patentes": "FFK355, FQM657",
+      "cuit": "20223186603"
+    },
+    {
+      "nombre": "Grupo Canlom",
+      "patentes": "HVY333, AE340QZ, EUP636, FCS136",
+      "cuit": "30711878706"
+    },
+    {
+      "nombre": "Baleani Alan",
+      "patentes": "GLF927, IPO528",
+      "cuit": "30716986647"
+    },
+    {
+      "nombre": "Agropecuaria Latour S.A",
+      "patentes": "AE016JO, AE016JT, AD647TH, AD827BP, AD250NO",
+      "cuit": "30712171975"
+    },
+    {
+      "nombre": "Machinandearena",
+      "patentes": "HFT600, AE340PS, HML464, AA359ZH, BAN335, AB255PI, FLG419, GVE872, RXR786, MTA852, AC0000OW, OJX251, AF524HB, LIE329, AD207VP",
+      "cuit": "20249529207"
+    },
+    {
+      "nombre": "Puron David",
+      "patentes": "AF417JU, AF439CX",
+      "cuit": "30716752476"
+    },
+    {
+      "nombre": "Gonzalez Hector",
+      "patentes": "EIY627, AG600XI",
+      "cuit": "20208504453"
+    },
+    {
+      "nombre": "Estevez Jorge",
+      "patentes": "ESE594, FBW519",
+      "cuit": "20363191461"
+    },
+    {
+      "nombre": "Rotela Carla",
+      "patentes": "CCV391, BIM859",
+      "cuit": "27341704699"
+    },
+    {
+      "nombre": "Argentinagro",
+      "patentes": "LMW572, 0",
+      "cuit": "30712215743"
+    },
+    {
+      "nombre": "La Nueva Lauquen SRL",
+      "patentes": "RIK585, GZX264",
+      "cuit": "30715503294"
+    },
+    {
+      "nombre": "Capeletti Leonardo",
+      "patentes": "BMA841, MTB683, LWE824, AC523PP, AB720US, AA713BQ, AB657AP, AA019ML, AA338TE, AB751HR, AD729FP, AD522ZF, AE214LM, AC698KT, AB383IB, AC780FP, VIW766, DWE734, AG609OO, AG209CW, AB087NL, AE891YO, AC855NW, AC450XZ, DCN039, AC184ID, COI298, AC153OW, CIA533, SRG388, HUG903, AF420DJ",
+      "cuit": "20321489290"
+    },
+    {
+      "nombre": "Logistica Casadei",
+      "patentes": "AC040KM, AE178IO, AF319MV, AA656WH, AD274AC, AD351LE, AE103QT, LCW632, OTJ117, JXO699, OTB470, OXB007, AG761OS, AE761OS",
+      "cuit": "30716804840"
+    },
+    {
+      "nombre": "Troca S.R.L",
+      "patentes": "OKI336, PIJ877, AE897AV, AF046RI, AB617JL, AA682VC, AD250NG, AF363ZO, AA637MK, GKC860",
+      "cuit": "30709977837"
+    },
+    {
+      "nombre": "Holgado Juan",
+      "patentes": "GKO902, AD309DU",
+      "cuit": "20343826843"
+    },
+    {
+      "nombre": "Bravo Alejandro",
+      "patentes": "VSA876, XVP275, IEF874, OAM127",
+      "cuit": "20160890445"
+    },
+    {
+      "nombre": "Bravo, Luis",
+      "patentes": "FQB340, WTS730",
+      "cuit": "20160890445"
+    },
+    {
+      "nombre": "Antonia",
+      "patentes": "RKB676, BLT397",
+      "cuit": "20297290526"
+    },
+    {
+      "nombre": "Castro, Jorge",
+      "patentes": "RDU989, MQU169, TPZ050, HQQ397",
+      "cuit": "202246993754"
+    },
+    {
+      "nombre": "Ikes Carlos Gabriel",
+      "patentes": "AF071OU, AF071OO, AG948KS, AF585OU, KWG832, AF576NW, AD312MN, PDN413, AA741JQ, OIE177, OYI922, AF022BX, FCO723, AB795UP, AG706RM, AF225KR, GRD382, AE920VA, AF645NX, AF231ZI, NDK097, OZS818, AA941OP, AA941PY, LPA896, AE88XG, HMJ990, AG772KH, EYK787, AD942PY, DCN751, DUX016, AF467CZ, AF504VL",
+      "cuit": "20352403904"
+    },
+    {
+      "nombre": "Ingetran S.S",
+      "patentes": "LAV684, AF825CF, EPE514, AD48PH, AD483PH, EPE 514, AD 483 PH, MTH 497, OYH 515",
+      "cuit": "30715337912"
+    },
+    {
+      "nombre": "Giacciani, Gustavo",
+      "patentes": "HEJ523, FGU446",
+      "cuit": "20235304245"
+    },
+    {
+      "nombre": "Viscardi, Marcelo",
+      "patentes": "RTL863, FXB530",
+      "cuit": "20229474287"
+    },
+    {
+      "nombre": "Castañeda, Juan",
+      "patentes": "AJW729, LSK402",
+      "cuit": "20223189262"
+    },
+    {
+      "nombre": "TL.Logistica del Oeste",
+      "patentes": "KHM268, FJK517, WRS054, RPR538, UOG361, VCK313, JOB110, AC189MF, THL899, UBC559, BKT313, GTT694, VHO904, HAL891, SJF718, AQB847, WXB260, UYR312, TRJ428, DRB813, ALP094, JOQ110, AB291GP, JUH957",
+      "cuit": "33712636209"
+    },
+    {
+      "nombre": "Salomone, Jorge",
+      "patentes": "ROB138, TKU479",
+      "cuit": "20309022824"
+    },
+    {
+      "nombre": "Ortega, Marcelo",
+      "patentes": "UGT266, HIF099, SHC005, EIU988",
+      "cuit": "23256396939"
+    },
+    {
+      "nombre": "Alvarez, Guillermo",
+      "patentes": "UZB976, HIF099, VUX710, EUJ724",
+      "cuit": "20264579563"
+    },
+    {
+      "nombre": "Frias, Cristian",
+      "patentes": "SYW065, TOJ155, TYV366, TRC328, CRY258, WGA467",
+      "cuit": "20303178504"
+    },
+    {
+      "nombre": "La Doble AA",
+      "patentes": "WRG381, SHB925",
+      "cuit": "30715677322"
+    },
+    {
+      "nombre": "Scarfo, Oscar",
+      "patentes": "AF223PK, AF410TJ",
+      "cuit": "23231505709"
+    },
+    {
+      "nombre": "Felipe, Martin",
+      "patentes": "ECI003, CJV791",
+      "cuit": "20349505038"
+    },
+    {
+      "nombre": "Cortes, Marcelo",
+      "patentes": "REC016, ITB012",
+      "cuit": "20214506026"
+    },
+    {
+      "nombre": "Bussmann, Gaston",
+      "patentes": "RPA747, UGI836",
+      "cuit": "20245469757"
+    },
+    {
+      "nombre": "Gripo, Jose",
+      "patentes": "BUT009",
+      "cuit": "20050674038"
+    },
+    {
+      "nombre": "Giacobbe",
+      "patentes": "AE974UL",
+      "cuit": "23398105419"
+    },
+    {
+      "nombre": "Propio",
+      "patentes": "GOS157, BLT397, TZU486, TKW937",
+      "cuit": "20238696357"
+    },
+    {
+      "nombre": "Transp.Walter",
+      "patentes": "JJY245, CUD183, LCZ762, IIH949, HDC066, AA607GO, NQO205, AC541AP, HCG811, AB156KP, MCX458, JTP463, EVE693, JUC784, NCN283, AE948XM, ICQ728, NQO188, HEE077, CSN794, RQQ374, STF064, LCZ745, AB901EP, EEO916, FVC639, EKQ239, EZI354, JUC874, ERJ922, LPX073, LJQ822, FXF556, VDM021, RGC680, CPH632, AYB336, UMM611, RAW468, BSW043, CRS219",
+      "cuit": "30708401311"
+    },
+    {
+      "nombre": "Transp.Pipo",
+      "patentes": "NVM191, NZZ508, AA377VP, AA566HY, AOO309, GMM264, RLR895, HBF379, AE302VC, AE383EC, AE302SV, HCB 907, JYG 936, CKN946, HBX502, NNE347, NLR734, BFM131, EVX618, AF 600 PD, AF 612 DH, AB480YV, KAT146, AE788PU, AB050GI, MRB 793, MKZ 333",
+      "cuit": "20200355440"
+    },
+    {
+      "nombre": "Rosales",
+      "patentes": "MBR654, UXQ332",
+      "cuit": "20228002055"
+    },
+    {
+      "nombre": "Cabrera, Jorge",
+      "patentes": "AB194NI, JRV596",
+      "cuit": "20230631531"
+    },
+    {
+      "nombre": "Cereales 30 De Agosto",
+      "patentes": "EWA535, LSY994, FEC005, HOC162, UPW238, BPH214",
+      "cuit": "30714768448"
+    },
+    {
+      "nombre": "Lanati, Jose",
+      "patentes": "UIG766, VYH139",
+      "cuit": "20200353294"
+    },
+    {
+      "nombre": "Romero, Pablo",
+      "patentes": "TXD059, ROI537",
+      "cuit": "20298601339"
+    },
+    {
+      "nombre": "Garnica, German",
+      "patentes": "SFG692, RGK114, RUB400, VXZ786",
+      "cuit": "20362925070"
+    },
+    {
+      "nombre": "Pagano, Federico",
+      "patentes": "SDJ956, BSD653",
+      "cuit": "20374020545"
+    },
+    {
+      "nombre": "Transp. La Amistad",
+      "patentes": "JNJ490, EHN031",
+      "cuit": "30718276469"
+    },
+    {
+      "nombre": "Lucho",
+      "patentes": "AA693JG, HBD099",
+      "cuit": "20185221300"
+    },
+    {
+      "nombre": "Abraham Jose",
+      "patentes": "CDF573, JZV397",
+      "cuit": "20208070623"
+    },
+    {
+      "nombre": "Gallo, Mirta",
+      "patentes": "NFH828, DOP558",
+      "cuit": "27106343972"
+    },
+    {
+      "nombre": "Ripa, Raul",
+      "patentes": "AB405YV, AB350AC",
+      "cuit": "20181367602"
+    },
+    {
+      "nombre": "Chopa Marta Sonia",
+      "patentes": "GRD927, LMO013",
+      "cuit": "27200499757"
+    },
+    {
+      "nombre": "El Viejo Tito S.R.L",
+      "patentes": "LRU431, AF430WA, NVM210, OKI331",
+      "cuit": "30716047012"
+    },
+    {
+      "nombre": "Lapasset Garcia agustin",
+      "patentes": "ASO 947, GSX 244",
+      "cuit": "20355633951"
+    },
+    {
+      "nombre": "Sem. Santa Cecilia",
+      "patentes": "HHY084, AE622BO, GYO 420, LNT 948",
+      "cuit": "30709895237"
+    },
+    {
+      "nombre": "America Pampa",
+      "patentes": "EDM 966, GQB 419",
+      "cuit": "30710301790"
+    },
+    {
+      "nombre": "Fuentes, Matias",
+      "patentes": "DDY664, AF310LE",
+      "cuit": "20268675788"
+    },
+    {
+      "nombre": "Asociacion de Alberti",
+      "patentes": "AA198NC, AC304RY",
+      "cuit": "30712514112"
+    },
+    {
+      "nombre": "Garcia, Graciela",
+      "patentes": "DCX 197, TQA 156",
+      "cuit": "23142471884"
+    },
+    {
+      "nombre": "Hernandez, Walter",
+      "patentes": "TOM989, AE788PE",
+      "cuit": "20164637442"
+    },
+    {
+      "nombre": "Irrazabal, Ruben",
+      "patentes": "XRF 447, s/n",
+      "cuit": "20050655785"
+    },
+    {
+      "nombre": "El Chucho",
+      "patentes": "GXL281, AB459BD",
+      "cuit": "20209665329"
+    },
+    {
+      "nombre": "Perez, Ricardo",
+      "patentes": "UNB011, JWO129",
+      "cuit": "20126026707"
+    },
+    {
+      "nombre": "Ramos Marcelo",
+      "patentes": "URR 141, 0",
+      "cuit": "20228001385"
+    },
+    {
+      "nombre": "Simon, Jorge",
+      "patentes": "EWY513, HXG350",
+      "cuit": "20120673743"
+    }
+  ],
+  "granos": [
+    {
+      "nombre": "Soja",
+      "campania": "2025/26",
+      "hum_base": 13.5,
+      "pe_kg_m3": 700,
+      "factor_vs_trigo": 0.875
+    },
+    {
+      "nombre": "Trigo",
+      "campania": "2025/26",
+      "hum_base": 14.0,
+      "pe_kg_m3": 800,
+      "factor_vs_trigo": 1.0
+    },
+    {
+      "nombre": "Maíz",
+      "campania": "2025/26",
+      "hum_base": 14.5,
+      "pe_kg_m3": 720,
+      "factor_vs_trigo": 0.9
+    },
+    {
+      "nombre": "Girasol",
+      "campania": "2025/26",
+      "hum_base": 11.0,
+      "pe_kg_m3": 400,
+      "factor_vs_trigo": 0.5
+    },
+    {
+      "nombre": "Cebada Forrajera",
+      "campania": "2025/26",
+      "hum_base": 13.5,
+      "pe_kg_m3": 600,
+      "factor_vs_trigo": 0.75
+    },
+    {
+      "nombre": "Girasol Oleico",
+      "campania": "2025/26",
+      "hum_base": 11.0,
+      "pe_kg_m3": 400,
+      "factor_vs_trigo": 0.5
+    },
+    {
+      "nombre": "Girasol Confitero",
+      "campania": "2025/26",
+      "hum_base": 11.0,
+      "pe_kg_m3": 400,
+      "factor_vs_trigo": 0.5
+    },
+    {
+      "nombre": "Cebada Cervecera",
+      "campania": "2025/26",
+      "hum_base": 13.5,
+      "pe_kg_m3": 650,
+      "factor_vs_trigo": 0.8125
+    }
+  ],
+  "silos": [
+    {
+      "nombre": "Silo 1",
+      "tipo": "Silo metálico",
+      "cap_tn_trigo": 1500.0,
+      "cap_por_cereal": {
+        "Soja": 1312,
+        "Trigo": 1500,
+        "Maíz": 1350,
+        "Girasol": 750,
+        "Cebada Forrajera": 1125,
+        "Girasol Oleico": 750,
+        "Girasol Confitero": 750,
+        "Cebada Cervecera": 1219
+      }
+    },
+    {
+      "nombre": "Silo 2",
+      "tipo": "Silo metálico",
+      "cap_tn_trigo": 1500.0,
+      "cap_por_cereal": {
+        "Soja": 1312,
+        "Trigo": 1500,
+        "Maíz": 1350,
+        "Girasol": 750,
+        "Cebada Forrajera": 1125,
+        "Girasol Oleico": 750,
+        "Girasol Confitero": 750,
+        "Cebada Cervecera": 1219
+      }
+    },
+    {
+      "nombre": "Silo 3",
+      "tipo": "Silo metálico",
+      "cap_tn_trigo": 1500.0,
+      "cap_por_cereal": {
+        "Soja": 1312,
+        "Trigo": 1500,
+        "Maíz": 1350,
+        "Girasol": 750,
+        "Cebada Forrajera": 1125,
+        "Girasol Oleico": 750,
+        "Girasol Confitero": 750,
+        "Cebada Cervecera": 1219
+      }
+    },
+    {
+      "nombre": "Silo 4",
+      "tipo": "Silo metálico",
+      "cap_tn_trigo": 1500.0,
+      "cap_por_cereal": {
+        "Soja": 1312,
+        "Trigo": 1500,
+        "Maíz": 1350,
+        "Girasol": 750,
+        "Cebada Forrajera": 1125,
+        "Girasol Oleico": 750,
+        "Girasol Confitero": 750,
+        "Cebada Cervecera": 1219
+      }
+    },
+    {
+      "nombre": "Silo 5",
+      "tipo": "Silo metálico",
+      "cap_tn_trigo": 750.0,
+      "cap_por_cereal": {
+        "Soja": 656,
+        "Trigo": 750,
+        "Maíz": 675,
+        "Girasol": 375,
+        "Cebada Forrajera": 562,
+        "Girasol Oleico": 375,
+        "Girasol Confitero": 375,
+        "Cebada Cervecera": 609
+      }
+    },
+    {
+      "nombre": "Silo 6",
+      "tipo": "Silo metálico",
+      "cap_tn_trigo": 750.0,
+      "cap_por_cereal": {
+        "Soja": 656,
+        "Trigo": 750,
+        "Maíz": 675,
+        "Girasol": 375,
+        "Cebada Forrajera": 562,
+        "Girasol Oleico": 375,
+        "Girasol Confitero": 375,
+        "Cebada Cervecera": 609
+      }
+    },
+    {
+      "nombre": "Silo 7",
+      "tipo": "Silo metálico",
+      "cap_tn_trigo": 8000.0,
+      "cap_por_cereal": {
+        "Soja": 7000,
+        "Trigo": 8000,
+        "Maíz": 7200,
+        "Girasol": 4000,
+        "Cebada Forrajera": 6000,
+        "Girasol Oleico": 4000,
+        "Girasol Confitero": 4000,
+        "Cebada Cervecera": 6500
+      }
+    },
+    {
+      "nombre": "Silobolsa 1",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 2",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 3",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 4",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 5",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 6",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 7",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 8",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 9",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 10",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 11",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 12",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 13",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 14",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    },
+    {
+      "nombre": "Silobolsa 15",
+      "tipo": "Silo plástico",
+      "cap_tn_trigo": null,
+      "cap_por_cereal": {}
+    }
+  ],
+  "destinos_flete": [
+    {
+      "nombre": "Daireaux",
+      "km": 120,
+      "tarifa_tn": 22000
+    },
+    {
+      "nombre": "Junín",
+      "km": 200,
+      "tarifa_tn": 27000
+    },
+    {
+      "nombre": "Bahía Blanca",
+      "km": 340,
+      "tarifa_tn": 34000
+    },
+    {
+      "nombre": "Rosario",
+      "km": 430,
+      "tarifa_tn": 38000
+    },
+    {
+      "nombre": "Las Palmas",
+      "km": 480,
+      "tarifa_tn": 41000
+    }
+  ],
+  "contratos": []
+};

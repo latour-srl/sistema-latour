@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balanza — LATOUR SRL</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+:root{
+  --bg:#0e0f11;--sur:#16181c;--sur2:#1e2026;--sur3:#252830;
+  --bd:#2a2d35;--bd2:#343844;
+  --tx:#e8eaf0;--mu:#6b7280;--mu2:#4b5563;
+  --gold:#f0b429;--gold-d:rgba(240,180,41,.13);--gold-b:rgba(240,180,41,.3);
+  --grn:#34d399;--grn-d:rgba(52,211,153,.12);--grn-b:rgba(52,211,153,.3);
+  --red:#f87171;--red-d:rgba(248,113,113,.12);--red-b:rgba(248,113,113,.3);
+  --blu:#60a5fa;--blu-d:rgba(96,165,250,.12);--blu-b:rgba(96,165,250,.3);
+  --pur:#a78bfa;--pur-d:rgba(167,139,250,.12);
+  --ora:#fb923c;--ora-d:rgba(251,146,60,.12);--ora-b:rgba(251,146,60,.28);
+  --cya:#22d3ee;--cya-d:rgba(34,211,238,.11);--cya-b:rgba(34,211,238,.28);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--tx);min-height:100vh;font-size:14px;}
+header{background:var(--sur);border-bottom:1px solid var(--bd);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.hlogo{display:flex;align-items:center;gap:10px;}
+.hdot{width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.htitle{font-size:13px;font-weight:700;}.hsub{font-size:10px;color:var(--mu);margin-top:1px;}
+.hright{display:flex;align-items:center;gap:14px;}
+.clock{font-family:var(--mono);font-size:18px;color:var(--gold);}
+.maestro-status{font-size:10px;padding:4px 10px;border-radius:10px;font-weight:600;}
+.ms-ok{background:var(--grn-d);color:var(--grn);border:1px solid var(--grn-b);}
+.ms-warn{background:var(--red-d);color:var(--red);border:1px solid var(--red-b);}
+.stats{display:flex;gap:1px;background:var(--bd);}
+.stat{flex:1;background:var(--sur);padding:9px 10px;text-align:center;}
+.stat-btn{cursor:pointer;transition:background .15s;user-select:none;}
+.stat-btn:hover{background:var(--sur2);}
+.stat-btn.activo{background:var(--sur3);box-shadow:inset 0 -2px 0 var(--gold);}
+.filtro-badge{display:flex;align-items:center;justify-content:space-between;padding:6px 16px;background:var(--gold-d);border-bottom:1px solid var(--gold-b);font-size:11px;color:var(--gold);font-weight:600;}
+.filtro-badge button{background:none;border:none;color:var(--gold);cursor:pointer;font-size:13px;padding:0 4px;}
+.sv{font-family:var(--mono);font-size:20px;font-weight:500;line-height:1;margin-bottom:2px;}
+.sl{font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;}
+.layout{display:grid;grid-template-columns:380px 1fr;height:calc(100vh - 130px);}
+@media(max-width:850px){.layout{grid-template-columns:1fr;height:auto;}}
+.fpanel{background:var(--sur);border-right:1px solid var(--bd);overflow-y:auto;display:flex;flex-direction:column;}
+.modo-tabs{display:flex;border-bottom:1px solid var(--bd);flex-shrink:0;}
+.modo-tab{flex:1;padding:12px 8px;text-align:center;font-size:11px;font-weight:700;cursor:pointer;user-select:none;transition:all .15s;border-bottom:3px solid transparent;letter-spacing:.02em;line-height:1.4;}
+.modo-tab.active-ing{border-bottom-color:var(--gold);background:var(--gold-d);color:var(--gold);}
+.modo-tab.active-egr{border-bottom-color:var(--cya);background:var(--cya-d);color:var(--cya);}
+.modo-tab:not(.active-ing):not(.active-egr){color:var(--mu);}
+.fform{padding:14px 16px;display:flex;flex-direction:column;gap:10px;flex:1;}
+.fform.hidden{display:none;}
+.ptitle{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--mu);margin-bottom:2px;}
+.field{display:flex;flex-direction:column;gap:4px;}
+.field label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--mu);}
+.field input,.field select{background:var(--sur2);border:1px solid var(--bd);border-radius:6px;padding:8px 10px;color:var(--tx);font-family:var(--sans);font-size:13px;outline:none;transition:border-color .15s;width:100%;}
+.field input:focus,.field select:focus{border-color:var(--gold);}
+.field input::placeholder{color:var(--mu2);}
+.frow2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.tipo-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.tipo-btn{padding:9px 8px;border-radius:7px;border:1.5px solid var(--bd);background:var(--sur2);color:var(--mu);font-size:11px;font-weight:700;cursor:pointer;text-align:center;transition:all .15s;user-select:none;line-height:1.3;}
+.tipo-btn small{display:block;font-size:9px;font-weight:400;margin-top:2px;opacity:.7;}
+.tb-lat{border-color:var(--gold-b);background:var(--gold-d);color:var(--gold);}
+.tb-lib{border-color:var(--bd2);background:var(--sur3);color:var(--tx);}
+.ops-wrap{display:flex;flex-wrap:wrap;gap:5px;}
+.op-pill{padding:5px 11px;border-radius:20px;border:1.5px solid var(--bd);background:var(--sur2);color:var(--mu);font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;user-select:none;}
+.op-pill.on{border-color:var(--grn-b);background:var(--grn-d);color:var(--grn);}
+.prio-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;}
+.prio-btn{padding:7px 4px;border-radius:6px;border:1.5px solid var(--bd);background:var(--sur2);color:var(--mu);font-size:10px;font-weight:700;cursor:pointer;text-align:center;transition:all .15s;user-select:none;}
+.pb-alta{border-color:var(--gold-b);background:var(--gold-d);color:var(--gold);}
+.pb-media{border-color:var(--blu-b);background:var(--blu-d);color:var(--blu);}
+.tramo-grid{display:grid;grid-template-columns:1fr;gap:5px;}
+.tramo-btn{padding:9px 12px;border-radius:7px;border:1.5px solid var(--bd);background:var(--sur2);color:var(--mu);font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;user-select:none;display:flex;justify-content:space-between;align-items:center;}
+.tramo-btn small{font-size:9px;font-weight:400;opacity:.7;}
+.tb-corto{border-color:var(--grn-b);background:var(--grn-d);color:var(--grn);}
+.tb-ldirecto{border-color:rgba(167,139,250,.3);background:var(--pur-d);color:var(--pur);}
+.tb-lplanta{border-color:var(--cya-b);background:var(--cya-d);color:var(--cya);}
+.divider{height:1px;background:var(--bd);margin:2px 0;}
+.btn-ingresar{width:100%;padding:11px;border-radius:8px;border:none;background:var(--gold);color:#0e0f11;font-family:var(--sans);font-size:14px;font-weight:700;cursor:pointer;transition:opacity .15s;}
+.btn-ingresar:hover{opacity:.85;}.btn-ingresar:active{transform:scale(.98);}
+.btn-egresar{width:100%;padding:11px;border-radius:8px;border:none;background:var(--cya);color:#0e0f11;font-family:var(--sans);font-size:14px;font-weight:700;cursor:pointer;transition:opacity .15s;}
+.btn-egresar:hover{opacity:.85;}.btn-egresar:active{transform:scale(.98);}
+.contrato-badge{background:var(--pur-d);border:1px solid rgba(167,139,250,.3);border-radius:6px;padding:7px 10px;font-size:11px;color:var(--pur);display:none;}
+.qpanel{overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:8px;}
+.sec-hdr{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;display:flex;align-items:center;gap:8px;padding:4px 0;}
+.sec-hdr::after{content:'';flex:1;height:1px;background:var(--bd);}
+.sh-ing{color:var(--gold);}.sh-trans{color:var(--cya);}
+.op-badge{display:inline-flex;align-items:center;padding:1px 7px;border-radius:5px;font-size:10px;font-weight:700;font-family:var(--mono);}
+.op-ing{background:var(--gold-d);color:var(--gold);border:1px solid var(--gold-b);}
+.op-egr{background:var(--cya-d);color:var(--cya);border:1px solid var(--cya-b);}
+.ccard{border-radius:9px;border:1.5px solid var(--bd);background:var(--sur);padding:11px 13px;display:flex;gap:10px;align-items:flex-start;}
+.ccard.cl{border-color:var(--gold-b);background:linear-gradient(120deg,var(--sur) 50%,var(--gold-d));}
+.ccard.cp{border-color:var(--grn-b);background:linear-gradient(120deg,var(--sur) 50%,var(--grn-d));}
+.ccard.transito{border-color:var(--cya-b);background:linear-gradient(120deg,var(--sur) 50%,var(--cya-d));}
+.tbadge-num{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:500;flex-shrink:0;margin-top:1px;background:var(--sur2);color:var(--mu);}
+.ccard.cl .tbadge-num{background:var(--gold-d);color:var(--gold);}
+.ccard.transito .tbadge-num{background:var(--cya-d);color:var(--cya);}
+.cinfo{flex:1;min-width:0;}
+.cpat{font-family:var(--mono);font-size:15px;font-weight:500;letter-spacing:.06em;margin-bottom:4px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.cmeta{font-size:11px;color:var(--mu);display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:4px;}
+.chip{padding:2px 7px;border-radius:8px;font-size:10px;font-weight:600;}
+.ch-l{background:var(--gold-d);color:var(--gold);}
+.ch-g{background:var(--blu-d);color:var(--blu);}
+.ch-tramo{background:var(--cya-d);color:var(--cya);}
+.ctime{font-family:var(--mono);font-size:10px;color:var(--mu);}
+.ctime.w{color:#fbbf24;}.ctime.a{color:var(--red);}
+.cacts{display:flex;flex-direction:column;gap:4px;flex-shrink:0;}
+.bsm{padding:5px 9px;border-radius:5px;border:1px solid var(--bd);background:var(--sur2);color:var(--mu);font-size:10px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all .15s;}
+.bsm:hover{color:var(--tx);border-color:var(--bd2);}
+.bsm-ini{border-color:var(--grn-b);color:var(--grn);background:var(--grn-d);}
+.bsm-rom{border-color:var(--gold-b);color:var(--gold);background:var(--gold-d);}
+.bsm-pue{border-color:var(--cya-b);color:var(--cya);background:var(--cya-d);}
+.bsm-del{border-color:var(--red-b);color:var(--red);background:var(--red-d);}
+.prio-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.pd-alta{background:var(--gold);box-shadow:0 0 5px var(--gold);}
+.pd-media{background:var(--blu);}.pd-normal{background:var(--mu2);}
+.foto-strip{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px;}
+.foto-thumb{width:36px;height:36px;border-radius:4px;object-fit:cover;border:1px solid var(--bd);cursor:pointer;}
+.egr-card{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--sur);border:1px solid var(--bd);border-radius:6px;}
+.egr-wa{padding:4px 8px;border-radius:5px;border:1px solid rgba(37,211,102,.3);background:rgba(37,211,102,.08);color:#25d366;font-size:10px;font-weight:600;text-decoration:none;white-space:nowrap;}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:300;display:none;align-items:center;justify-content:center;padding:12px;}
+.overlay.open{display:flex;}
+.modal{background:var(--sur);border:1px solid var(--bd);border-radius:13px;width:100%;max-width:680px;max-height:94vh;overflow-y:auto;padding:20px;}
+.modal-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.modal-title{font-size:15px;font-weight:700;}
+.modal-close{background:none;border:none;color:var(--mu);font-size:20px;cursor:pointer;padding:2px 6px;}
+.modal-sec{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mu);margin:14px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--bd);}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.mgrid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;}
+@media(max-width:500px){.mgrid,.mgrid3{grid-template-columns:1fr 1fr;}}
+.mfield{display:flex;flex-direction:column;gap:3px;}
+.mfield label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--mu);}
+.mfield input,.mfield select,.mfield textarea{background:var(--sur2);border:1px solid var(--bd);border-radius:5px;padding:7px 9px;color:var(--tx);font-family:var(--sans);font-size:12px;outline:none;transition:border-color .15s;width:100%;}
+.mfield input:focus,.mfield textarea:focus{border-color:var(--gold);}
+.mfield input[readonly]{opacity:.65;cursor:default;}
+.mfield textarea{resize:vertical;min-height:54px;}
+.hum-row{display:flex;gap:6px;align-items:center;}
+.hum-chip{padding:3px 9px;border-radius:5px;border:1px solid var(--bd);background:var(--sur2);font-family:var(--mono);font-size:11px;color:var(--mu);white-space:nowrap;}
+.hc-ok{border-color:var(--grn-b);color:var(--grn);background:var(--grn-d);}
+.hc-bad{border-color:var(--red-b);color:var(--red);background:var(--red-d);}
+.check-row{display:flex;gap:6px;flex-wrap:wrap;}
+.check-opt{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:5px;border:1.5px solid var(--bd);background:var(--sur2);cursor:pointer;font-size:11px;user-select:none;transition:all .15s;}
+.co-ok{border-color:var(--grn-b);background:var(--grn-d);color:var(--grn);}
+.co-bad{border-color:var(--red-b);background:var(--red-d);color:var(--red);}
+.neto-box{background:var(--gold-d);border:1.5px solid var(--gold-b);border-radius:8px;padding:12px 16px;text-align:center;margin-top:6px;}
+.nb-lbl{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px;}
+.nb-val{font-family:var(--mono);font-size:26px;font-weight:500;color:var(--gold);}
+.nb-sub{font-size:11px;color:var(--mu);margin-top:3px;}
+.despico-box{border-radius:8px;padding:12px 16px;margin-top:10px;border:1.5px solid var(--bd);}
+.despico-box.ok{border-color:var(--grn-b);background:var(--grn-d);}
+.despico-box.alerta{border-color:var(--red-b);background:var(--red-d);}
+.despico-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;}
+.despico-lbl{font-size:11px;color:var(--mu);}
+.despico-val{font-family:var(--mono);font-size:13px;font-weight:500;}
+.foto-upload-area{border:1.5px dashed var(--bd2);border-radius:8px;padding:14px;text-align:center;cursor:pointer;transition:border-color .2s;position:relative;}
+.foto-upload-area:hover{border-color:var(--gold);}
+.foto-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.foto-upload-label{font-size:12px;color:var(--mu);pointer-events:none;}
+.foto-upload-label span{display:block;font-size:20px;margin-bottom:4px;}
+.fotos-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.foto-prev-wrap{position:relative;width:70px;height:70px;}
+.foto-prev-wrap img{width:70px;height:70px;object-fit:cover;border-radius:6px;border:1px solid var(--bd);}
+.foto-del{position:absolute;top:-5px;right:-5px;width:18px;height:18px;border-radius:50%;background:var(--red);color:white;border:none;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.foto-alerta-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:5px;border:1.5px solid var(--ora-b);background:var(--ora-d);color:var(--ora);font-size:11px;font-weight:600;cursor:pointer;user-select:none;margin-top:4px;}
+.foto-alerta-badge.on{border-color:var(--red-b);background:var(--red-d);color:var(--red);}
+.btn-wa-send{width:100%;padding:11px;border-radius:8px;border:none;background:#25d366;color:#0e0f11;font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;text-decoration:none;}
+.btn-wa-send:hover{opacity:.88;}
+.btn-wa-send.disabled{background:var(--sur3);color:var(--mu);cursor:default;pointer-events:none;}
+.btn-guardar{width:100%;padding:11px;border-radius:8px;border:none;background:var(--gold);color:#0e0f11;font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;margin-top:8px;}
+.btn-guardar:hover{opacity:.85;}
+.btn-guardar-cya{width:100%;padding:11px;border-radius:8px;border:none;background:var(--cya);color:#0e0f11;font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;margin-top:8px;}
+.btn-guardar-cya:hover{opacity:.85;}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;display:none;align-items:center;justify-content:center;}
+.lightbox.open{display:flex;}
+.lightbox img{max-width:92vw;max-height:88vh;border-radius:8px;}
+.lightbox-close{position:absolute;top:16px;right:20px;background:none;border:none;color:white;font-size:28px;cursor:pointer;}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--grn);color:#0e0f11;padding:9px 16px;border-radius:7px;font-size:12px;font-weight:700;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;}
+.toast.show{opacity:1;}
+.rtab{padding:11px 18px;font-size:12px;font-weight:600;color:var(--mu);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;user-select:none;white-space:nowrap;}
+.rtab.active{color:var(--grn);border-bottom-color:var(--grn);}
+table th{background:var(--sur2);color:var(--mu);padding:7px 9px;text-align:left;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;border-bottom:1px solid var(--bd);}
+table td{padding:7px 9px;border-bottom:1px solid var(--bd);white-space:nowrap;color:var(--tx);}
+table tr:hover td{background:var(--sur2);}
+.tm{font-family:var(--mono);}
+.tok{color:var(--grn);}.twarn{color:var(--ora);}.talert{color:var(--red);}
+</style>
+</head>
+<body>
+<header>
+  <div class="hlogo"><div class="hdot"></div><div><div class="htitle">LATOUR SRL — Balanza</div><div class="hsub">Ingreso · Egreso · Romaneo · Fotos · WhatsApp</div></div></div>
+  <div class="hright"><div class="maestro-status ms-ok" id="maestro_st">✓ Maestro cargado</div><div class="clock" id="clock">--:--:--</div></div>
+</header>
+<div class="stats">
+  <div class="stat stat-btn" onclick="filtrarStat('planta')" id="stb0" title="Ver camiones en planta"><div class="sv" style="color:var(--tx)" id="st0">0</div><div class="sl">En planta</div></div>
+  <div class="stat stat-btn" onclick="filtrarStat('ingresos')" id="stb1" title="Ver ingresos de hoy"><div class="sv" style="color:var(--gold)" id="st1">0</div><div class="sl">Ingresos hoy</div></div>
+  <div class="stat stat-btn" onclick="filtrarStat('transito')" id="stb2" title="Ver en tránsito"><div class="sv" style="color:var(--cya)" id="st2">0</div><div class="sl">En tránsito</div></div>
+  <div class="stat stat-btn" onclick="filtrarStat('puerto')" id="stb3" title="Ver confirmados en puerto"><div class="sv" style="color:var(--grn)" id="st3">0</div><div class="sl">Confirm. puerto</div></div>
+  <div class="stat stat-btn" onclick="filtrarStat('historial')" id="stb4" title="Ver historial completo"><div class="sv" style="color:var(--pur)" id="st4">0</div><div class="sl">Total hoy</div></div>
+</div>
+
+<div class="layout">
+  <div class="fpanel">
+    <div class="modo-tabs">
+      <div class="modo-tab active-ing" id="tab_ing" onclick="setModo('ing')">🟡 INGRESO<br><small style="font-size:9px;font-weight:400;opacity:.7;">Campo → Planta</small></div>
+      <div class="modo-tab" id="tab_egr" onclick="setModo('egr')">🔵 EGRESO<br><small style="font-size:9px;font-weight:400;opacity:.7;">Planta → Puerto</small></div>
+    </div>
+
+    <!-- FORM INGRESO -->
+    <div class="fform" id="form_ing">
+      <div class="ptitle">Registrar ingreso de cereal</div>
+      <div class="field"><label>Patente</label><input id="i_pat" placeholder="ABC 123" maxlength="10" oninput="this.value=this.value.toUpperCase();buscarPatente(this.value,'ing')"></div>
+      <div class="frow2">
+        <div class="field"><label>Productor</label><select id="i_prod" onchange="onProductorChange()"><option value="">— Seleccionar —</option></select></div>
+        <div class="field"><label>Transportista</label><select id="i_trans"><option value="">— Seleccionar —</option></select></div>
+      </div>
+      <div class="field"><label>Establecimiento / Campo</label><select id="i_estab"><option value="">— Seleccionar —</option></select></div>
+      <div class="frow2">
+        <div class="field"><label>Grano</label><select id="i_grano" onchange="onGranoChange()"><option value="">— Grano —</option></select></div>
+        <div class="field"><label>Campaña</label><input id="i_camp" placeholder="2025/26"></div>
+      </div>
+      <div class="field"><label>Contrato (opcional)</label><select id="i_contrato" onchange="onContratoChange()"><option value="">— Sin contrato —</option></select></div>
+      <div class="contrato-badge" id="contrato_info"></div>
+      <div class="field"><label>Tipo de flete</label>
+        <div class="tipo-grid">
+          <div class="tipo-btn tb-lat" id="tb_lat" onclick="setTipo('latour')">⭐ Flete LATOUR<small>Prioridad en planta</small></div>
+          <div class="tipo-btn" id="tb_lib" onclick="setTipo('libre')">Flete productor<small>Transporte propio</small></div>
+        </div>
+      </div>
+      <div class="field"><label>Prioridad de calado</label>
+        <div class="prio-grid">
+          <div class="prio-btn" id="pb_alta" onclick="setPrio('alta')">🔴 Alta</div>
+          <div class="prio-btn pb-media" id="pb_media" onclick="setPrio('media')">🔵 Media</div>
+          <div class="prio-btn" id="pb_norm" onclick="setPrio('normal')">⚪ Normal</div>
+        </div>
+      </div>
+      <div class="field"><label>Operaciones</label>
+        <div class="ops-wrap" id="ops_wrap">
+          <div class="op-pill on" data-op="Descarga" onclick="toggleOp(this)">Descarga</div>
+          <div class="op-pill" data-op="Carga" onclick="toggleOp(this)">Carga</div>
+          <div class="op-pill" data-op="Zaranda" onclick="toggleOp(this)">Zaranda</div>
+          <div class="op-pill" data-op="Secado" onclick="toggleOp(this)">Secado</div>
+          <div class="op-pill" data-op="Fumigación" onclick="toggleOp(this)">Fumigación</div>
+        </div>
+      </div>
+      <div class="field"><label>Carta de porte N°</label><input id="i_cp" placeholder="N° (opcional)"></div>
+      <div class="divider"></div>
+      <button class="btn-ingresar" onclick="registrarIngreso()">🟡 Registrar ingreso</button>
+      <div class="divider"></div>
+      <div class="ptitle">Egresados hoy</div>
+      <div id="egresados_list" style="display:flex;flex-direction:column;gap:5px;"></div>
+    </div>
+
+    <!-- FORM EGRESO -->
+    <div class="fform hidden" id="form_egr">
+      <div class="ptitle">Registrar salida a puerto</div>
+      <div class="field"><label>Patente</label><input id="e_pat" placeholder="ABC 123" maxlength="10" oninput="this.value=this.value.toUpperCase();buscarPatente(this.value,'egr')"></div>
+      <div class="frow2">
+        <div class="field"><label>Transportista</label><select id="e_trans"><option value="">— Seleccionar —</option></select></div>
+        <div class="field"><label>Chofer</label><input id="e_chofer" placeholder="Nombre (opcional)"></div>
+      </div>
+      <div class="frow2">
+        <div class="field"><label>Grano</label><select id="e_grano"><option value="">— Grano —</option></select></div>
+        <div class="field"><label>Campaña</label><input id="e_camp" placeholder="2025/26"></div>
+      </div>
+      <div class="field"><label>Destino / Puerto</label><input id="e_destino" placeholder="Ej: Rosario, Bahía Blanca..."></div>
+      <div class="field"><label>Tramo de flete</label>
+        <div class="tramo-grid">
+          <div class="tramo-btn" id="tr_ldirecto" onclick="setTramo('ldirecto')">Campo → Puerto <small>Largo directo</small></div>
+          <div class="tramo-btn tb-lplanta" id="tr_lplanta" onclick="setTramo('lplanta')">Planta → Puerto <small>Largo planta</small></div>
+        </div>
+      </div>
+      <div class="frow2">
+        <div class="field"><label>Carta de porte salida</label><input id="e_cp" placeholder="N° CP salida"></div>
+        <div class="field"><label>Contrato destino</label><input id="e_cto" placeholder="N° (opcional)"></div>
+      </div>
+      <div class="frow2">
+        <div class="field"><label>Bruto salida (kg)</label><input type="number" id="e_bruto" placeholder="0" oninput="calcNetoSalida()"></div>
+        <div class="field"><label>Tara salida (kg)</label><input type="number" id="e_tara" placeholder="0" oninput="calcNetoSalida()"></div>
+      </div>
+      <div class="field"><label>Neto salida (kg)</label><input type="number" id="e_neto" readonly style="color:var(--cya);font-weight:600;"></div>
+      <div class="divider"></div>
+      <button class="btn-egresar" onclick="registrarEgreso()">🔵 Registrar salida</button>
+      <div class="divider"></div>
+      <div class="ptitle">En tránsito</div>
+      <div id="transito_list" style="display:flex;flex-direction:column;gap:5px;"></div>
+    </div>
+  </div>
+
+  <!-- PANEL DERECHO: tabs + cola + historial -->
+  <div style="display:flex;flex-direction:column;overflow:hidden;">
+
+    <!-- TABS DERECHO -->
+    <div style="background:var(--sur);border-bottom:1px solid var(--bd);display:flex;flex-shrink:0;">
+      <div class="rtab active" id="rtab_cola" onclick="setRTab('cola')">🚛 Cola activa</div>
+      <div class="rtab" id="rtab_hist" onclick="setRTab('hist')">📋 Historial completo</div>
+    </div>
+
+    <!-- BADGE FILTRO ACTIVO -->
+    <div id="filtro_badge" class="filtro-badge" style="display:none;">
+      <span id="filtro_label">Filtrando...</span>
+      <button onclick="limpiarFiltro()">✕ Quitar filtro</button>
+    </div>
+
+    <!-- COLA UNIFICADA -->
+    <div class="qpanel" id="qpanel">
+      <div style="text-align:center;padding:50px 20px;color:var(--mu);"><div style="font-size:36px;opacity:.3;margin-bottom:10px;">🚛</div><div>Sin movimientos activos.</div></div>
+    </div>
+
+    <!-- HISTORIAL COMPLETO -->
+    <div id="panel_hist" style="display:none;overflow-y:auto;padding:14px 16px;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center;">
+        <input id="h_buscar" placeholder="🔍 Patente, productor, transportista..." oninput="renderHistorial()"
+          style="background:var(--sur2);border:1px solid var(--bd);border-radius:6px;padding:7px 10px;color:var(--tx);font-size:12px;outline:none;flex:1;min-width:180px;">
+        <select id="h_tipo" onchange="renderHistorial()"
+          style="background:var(--sur2);border:1px solid var(--bd);border-radius:6px;padding:7px 10px;color:var(--tx);font-size:12px;outline:none;">
+          <option value="">Todos</option>
+          <option value="ingreso">Solo ingresos</option>
+          <option value="egreso">Solo egresos</option>
+        </select>
+        <select id="h_grano" onchange="renderHistorial()"
+          style="background:var(--sur2);border:1px solid var(--bd);border-radius:6px;padding:7px 10px;color:var(--tx);font-size:12px;outline:none;">
+          <option value="">Todos los granos</option>
+        </select>
+        <select id="h_fecha" onchange="renderHistorial()"
+          style="background:var(--sur2);border:1px solid var(--bd);border-radius:6px;padding:7px 10px;color:var(--tx);font-size:12px;outline:none;">
+          <option value="hoy">Hoy</option>
+          <option value="ayer">Ayer</option>
+          <option value="semana">Última semana</option>
+          <option value="mes">Último mes</option>
+          <option value="todo">Todo el historial</option>
+        </select>
+        <button onclick="exportarCSV()" style="padding:7px 14px;border-radius:6px;border:1px solid var(--bd);background:var(--sur);color:var(--mu);font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;">⬇ CSV</button>
+      </div>
+      <div id="h_resumen" style="margin-bottom:10px;font-size:11px;color:var(--mu);"></div>
+      <div class="htable-wrap" style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:11px;">
+          <thead id="hthead"></thead>
+          <tbody id="htbody"></tbody>
+        </table>
+      </div>
+      <div id="hist_empty" style="text-align:center;padding:40px;color:var(--mu);font-size:12px;display:none;">Sin registros para los filtros seleccionados.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL ROMANEO INGRESO -->
+<div class="overlay" id="overlay_rom" onclick="closeOverlay('rom',event)">
+<div class="modal" onclick="event.stopPropagation()">
+  <div class="modal-hdr">
+    <div class="modal-title">📋 Romaneo — <span id="m_pat" style="font-family:var(--mono);color:var(--gold)"></span></div>
+    <button class="modal-close" onclick="cerrarModal('rom')">✕</button>
+  </div>
+  <div class="modal-sec">Identificación</div>
+  <div class="mgrid">
+    <div class="mfield"><label>Productor</label><input id="m_prod" readonly></div>
+    <div class="mfield"><label>Transportista</label><input id="m_trans" readonly></div>
+    <div class="mfield"><label>Grano</label><input id="m_grano" readonly></div>
+    <div class="mfield"><label>Campaña</label><input id="m_camp" readonly></div>
+    <div class="mfield"><label>Carta de porte</label><input id="m_cp" placeholder="N° carta de porte"></div>
+    <div class="mfield"><label>Establecimiento</label><input id="m_estab" readonly></div>
+  </div>
+  <div class="modal-sec">Pesada</div>
+  <div class="mgrid3">
+    <div class="mfield"><label>Bruto (kg)</label><input type="number" id="m_bruto" placeholder="0" oninput="calcNeto()"></div>
+    <div class="mfield"><label>Tara (kg)</label><input type="number" id="m_tara" placeholder="0" oninput="calcNeto()"></div>
+    <div class="mfield"><label>Neto (kg)</label><input type="number" id="m_neto" readonly></div>
+  </div>
+  <div class="modal-sec">Calidad</div>
+  <div class="mgrid">
+    <div class="mfield"><label>Humedad %</label><div class="hum-row"><input type="number" id="m_hum" placeholder="0.0" step="0.1" oninput="calcMerma()" style="flex:1;"><div class="hum-chip" id="m_hum_chip">—</div></div></div>
+    <div class="mfield"><label>Hum. base % (merma)</label><input type="number" id="m_hum_base" value="13.5" step="0.1" oninput="calcMerma()"></div>
+    <div class="mfield"><label>Merma (kg)</label><input type="number" id="m_merma" readonly></div>
+    <div class="mfield"><label>Neto seco (kg)</label><input type="number" id="m_nseco" readonly style="font-weight:600;"></div>
+  </div>
+  <div style="margin-top:10px;">
+    <div class="mfield" style="margin-bottom:8px;"><label>Insectos</label><div class="check-row"><div class="check-opt co-ok" id="ins_no" onclick="setIns('No')">✓ No</div><div class="check-opt" id="ins_si" onclick="setIns('Sí')">⚠ Sí</div><div class="check-opt" id="ins_leve" onclick="setIns('Leve')">Leve</div></div></div>
+    <div class="mfield" style="margin-bottom:8px;"><label>Olor</label><div class="check-row"><div class="check-opt co-ok" id="ol_normal" onclick="setOlor('Normal')">✓ Normal</div><div class="check-opt" id="ol_hum" onclick="setOlor('Humedad')">Humedad</div><div class="check-opt" id="ol_rancio" onclick="setOlor('Rancio')">Rancio</div><div class="check-opt" id="ol_otro" onclick="setOlor('Otro')">Otro</div></div></div>
+    <div class="mfield"><label>Observaciones</label><textarea id="m_obs" placeholder="Cuerpos extraños, estado general, novedades..."></textarea></div>
+  </div>
+  <div class="modal-sec">Fotos del camión</div>
+  <div class="foto-upload-area"><input type="file" accept="image/*" multiple capture="environment" id="foto_input" onchange="onFotoSelect(event)"><div class="foto-upload-label"><span>📷</span>Tocá para sacar foto o elegir desde galería</div></div>
+  <div style="margin-top:8px;"><div class="foto-alerta-badge" id="foto_alerta_btn" onclick="toggleAlerta()">⚠ Marcar como fuera de estándar</div></div>
+  <div class="fotos-preview" id="fotos_preview"></div>
+  <div class="neto-box"><div class="nb-lbl">Neto seco a acreditar</div><div class="nb-val" id="nb_val">0 kg</div><div class="nb-sub" id="nb_sub">—</div></div>
+  <button class="btn-guardar" onclick="guardarRomaneoIngreso()">✓ Guardar romaneo y finalizar</button>
+  <div style="margin-top:6px;"><div style="font-size:10px;color:var(--mu);margin-bottom:4px;" id="wa_hint">Guardá primero el romaneo.</div>
+    <a id="btn_wa" class="btn-wa-send disabled" href="#" onclick="return false;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Enviar resultado al productor
+    </a>
+  </div>
+</div>
+</div>
+
+<!-- MODAL CONFIRMACIÓN PUERTO -->
+<div class="overlay" id="overlay_pue" onclick="closeOverlay('pue',event)">
+<div class="modal" onclick="event.stopPropagation()">
+  <div class="modal-hdr">
+    <div class="modal-title" style="color:var(--cya)">🏭 Confirmación en puerto — <span id="p_pat" style="font-family:var(--mono)"></span></div>
+    <button class="modal-close" onclick="cerrarModal('pue')">✕</button>
+  </div>
+  <div class="modal-sec">Datos del viaje</div>
+  <div class="mgrid">
+    <div class="mfield"><label>Transportista</label><input id="p_trans" readonly></div>
+    <div class="mfield"><label>Destino</label><input id="p_destino" readonly></div>
+    <div class="mfield"><label>Grano</label><input id="p_grano" readonly></div>
+    <div class="mfield"><label>Tramo</label><input id="p_tramo" readonly></div>
+    <div class="mfield"><label>CP salida</label><input id="p_cp" readonly></div>
+    <div class="mfield"><label>Contrato destino</label><input id="p_cto" readonly></div>
+  </div>
+  <div class="modal-sec">Pesada salida (planta)</div>
+  <div class="mgrid3">
+    <div class="mfield"><label>Bruto salida (kg)</label><input type="number" id="p_bruto_sal" readonly></div>
+    <div class="mfield"><label>Tara salida (kg)</label><input type="number" id="p_tara_sal" readonly></div>
+    <div class="mfield"><label>Neto salida (kg)</label><input type="number" id="p_neto_sal" readonly style="color:var(--cya);font-weight:600;"></div>
+  </div>
+  <div class="modal-sec">Pesada en puerto (destino)</div>
+  <div class="mgrid3">
+    <div class="mfield"><label>Bruto puerto (kg)</label><input type="number" id="p_bruto_pue" placeholder="0" oninput="calcDespico()"></div>
+    <div class="mfield"><label>Tara puerto (kg)</label><input type="number" id="p_tara_pue" placeholder="0" oninput="calcDespico()"></div>
+    <div class="mfield"><label>Neto puerto (kg)</label><input type="number" id="p_neto_pue" readonly style="font-weight:600;"></div>
+  </div>
+  <div id="despico_box" class="despico-box" style="display:none;">
+    <div style="font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;font-weight:700;">Despico</div>
+    <div class="despico-row"><span class="despico-lbl">Diferencia</span><span class="despico-val" id="d_kg">—</span></div>
+    <div class="despico-row"><span class="despico-lbl">Porcentaje</span><span class="despico-val" id="d_pct">—</span></div>
+    <div id="d_obs" style="font-size:11px;margin-top:4px;"></div>
+  </div>
+  <div class="mfield" style="margin-top:12px;"><label>Observaciones en destino</label><textarea id="p_obs" placeholder="Novedades, diferencias, rechazos..."></textarea></div>
+  <button class="btn-guardar-cya" onclick="confirmarPuerto()">✓ Confirmar descarga en puerto</button>
+</div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
+  <button class="lightbox-close" onclick="cerrarLightbox()">✕</button>
+  <img id="lightbox_img" src="" alt="">
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+let M={}, cola=[], transito=[], egresados=[], despachados=[], nid=1;
+let modoActual='ing', tipoSel='latour', prioSel='media', tramoSel='lplanta';
+let opsSel=new Set(['Descarga']);
+let modalRomId=null, modalPueId=null;
+let insVal='No', olorVal='Normal', fotoAlerta=false, fotosModal=[];
+
+async function leerMaestro(){
+  const GH_MAESTRO=`https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/latour_maestro.json`;
+  try{
+    const res=await fetch(GH_MAESTRO+'?v='+Date.now(),{cache:'no-store'});
+    if(res.ok){
+      const data=await res.json();
+      M=data;
+      try{localStorage.setItem('latour_maestro',JSON.stringify(data));}catch(e){}
+      return 'server';
+    }
+  }catch(e){}
+  try{
+    const r=localStorage.getItem('latour_maestro');
+    if(r){M=JSON.parse(r);return 'local';}
+  }catch(e){}
+  return false;
+}
+// ── COLA: leer desde GitHub (fuente de verdad) con fallback a localStorage ──
+const GH_USER  = 'latour-srl';
+const GH_REPO  = 'sistema-latour';
+const GH_TOKEN = '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';
+const GH_FILE  = 'latour_cola.json';
+const GH_RAW   = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/${GH_FILE}`;
+const GH_API   = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FILE}`;
+
+async function leerColaServidor(){
+  try{
+    const res=await fetch(GH_RAW+'?v='+Date.now(),{cache:'no-store'});
+    if(res.ok){
+      const d=await res.json();
+      cola=d.cola||[]; egresados=d.egresados||[]; nid=d.nid||1;
+      transito=d.transito||[]; despachados=d.despachados||[];
+      try{
+        localStorage.setItem('latour_cola',JSON.stringify({cola,egresados,nid,ts:Date.now()}));
+        localStorage.setItem('latour_transito',JSON.stringify({transito,despachados,ts:Date.now()}));
+      }catch(e){}
+      return true;
+    }
+  }catch(e){}
+  return false;
+}
+function leerCola(){
+  try{
+    const r=localStorage.getItem('latour_cola');
+    if(r){ const d=JSON.parse(r); cola=d.cola||[]; egresados=d.egresados||[]; nid=d.nid||1; }
+    const t=localStorage.getItem('latour_transito');
+    if(t){ const d=JSON.parse(t); transito=d.transito||[]; despachados=d.despachados||[]; }
+  }catch(e){}
+}
+function guardarCola(){
+  localStorage.setItem('latour_cola',JSON.stringify({cola,egresados,nid,ts:Date.now()}));
+  localStorage.setItem('latour_transito',JSON.stringify({transito,despachados,ts:Date.now()}));
+}
+
+// ── PUBLICAR A GITHUB DIRECTO ──
+let _ghSha = null;
+
+async function publicarCola(){
+  guardarCola();
+  const payload = {cola,egresados,nid,transito,despachados,ts:Date.now()};
+  const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload,null,2))));
+
+  try{
+    // obtener SHA actual del archivo (necesario para actualizarlo)
+    if(!_ghSha){
+      const r = await fetch(GH_API, {headers:{'Authorization':'token '+GH_TOKEN}});
+      if(r.ok){ const d=await r.json(); _ghSha=d.sha; }
+    }
+
+    const body = JSON.stringify({
+      message: 'Actualización cola — '+new Date().toLocaleString('es-AR'),
+      content: content,
+      sha: _ghSha,
+      branch: 'main'
+    });
+
+    const res = await fetch(GH_API, {
+      method: 'PUT',
+      headers: {'Authorization':'token '+GH_TOKEN, 'Content-Type':'application/json'},
+      body: body
+    });
+
+    if(res.ok){
+      const d = await res.json();
+      _ghSha = d.content.sha; // actualizar SHA para próxima vez
+      toast('✓ Cola sincronizada');
+    } else {
+      _ghSha = null; // resetear SHA para reintentar
+      toast('⚠ Error al sincronizar — reintentando...');
+    }
+  }catch(e){
+    console.warn('Error publicando a GitHub:', e);
+    toast('⚠ Sin conexión — datos guardados localmente');
+  }
+}
+
+function setModo(m){
+  modoActual=m;
+  document.getElementById('tab_ing').className='modo-tab'+(m==='ing'?' active-ing':'');
+  document.getElementById('tab_egr').className='modo-tab'+(m==='egr'?' active-egr':'');
+  document.getElementById('form_ing').className='fform'+(m==='ing'?'':' hidden');
+  document.getElementById('form_egr').className='fform'+(m==='egr'?'':' hidden');
+  if(m==='egr')renderTransito();
+}
+
+function poblarSelects(){
+  const prod=M.productores||[], trans=M.transportistas||[], estab=M.establecimientos||[], granos=M.granos||[], contratos=M.contratos||[];
+  const sel=(id,items)=>{ const el=document.getElementById(id); const cur=el.value; el.innerHTML='<option value="">— Seleccionar —</option>'+items.map(x=>`<option value="${x.nombre}">${x.nombre}</option>`).join(''); if(cur)el.value=cur; };
+  sel('i_prod',prod); sel('i_trans',trans); sel('i_estab',estab); sel('e_trans',trans);
+  ['i_grano','e_grano'].forEach(id=>{ document.getElementById(id).innerHTML='<option value="">— Grano —</option>'+granos.map(g=>`<option value="${g.nombre}">${g.nombre}</option>`).join(''); });
+  document.getElementById('i_contrato').innerHTML='<option value="">— Sin contrato —</option>'+contratos.map(c=>`<option value="${c._id}">[${c.numero||'—'}] ${c.productor} · ${c.grano}</option>`).join('');
+}
+function onProductorChange(){
+  const prod=document.getElementById('i_prod').value;
+  const estab=(M.establecimientos||[]).filter(e=>!prod||e.productor===prod);
+  document.getElementById('i_estab').innerHTML='<option value="">— Seleccionar —</option>'+estab.map(e=>`<option value="${e.nombre}">${e.nombre}${e.partido?' · '+e.partido:''}</option>`).join('');
+  const contratos=(M.contratos||[]).filter(c=>!prod||c.productor===prod);
+  document.getElementById('i_contrato').innerHTML='<option value="">— Sin contrato —</option>'+contratos.map(c=>`<option value="${c._id}">[${c.numero||'—'}] ${c.grano} · ${c.tn_contrat||'?'}tn</option>`).join('');
+}
+function onGranoChange(){ const g=(M.granos||[]).find(x=>x.nombre===document.getElementById('i_grano').value); if(g&&g.campania)document.getElementById('i_camp').value=g.campania; }
+function onContratoChange(){
+  const id=parseInt(document.getElementById('i_contrato').value);
+  const badge=document.getElementById('contrato_info');
+  if(!id){badge.style.display='none';return;}
+  const c=(M.contratos||[]).find(x=>x._id===id); if(!c){badge.style.display='none';return;}
+  const ent=parseFloat(c.tn_entregadas)||0, ctr=parseFloat(c.tn_contrat)||0;
+  badge.style.display='block';
+  badge.innerHTML=`<strong>${c.numero||'CTR'}</strong> · ${c.grano} · <strong>${ent}</strong>/${ctr}tn · <strong style="color:var(--grn)">${ctr-ent>0?ctr-ent+' tn disp.':'⚠ Completo'}</strong>`;
+  if(c.productor)document.getElementById('i_prod').value=c.productor;
+  if(c.grano)document.getElementById('i_grano').value=c.grano;
+  if(c.campania)document.getElementById('i_camp').value=c.campania;
+}
+function buscarPatente(pat,modo){
+  if(pat.length<6)return;
+  const t=(M.transportistas||[]).find(x=>(x.patentes||'').toUpperCase().includes(pat));
+  if(t){
+    const id=modo==='ing'?'i_trans':'e_trans';
+    const el=document.getElementById(id);
+    if(el.querySelector(`option[value="${t.nombre}"]`))el.value=t.nombre;
+    if(modo==='ing'){ if(t.tipo==='Trabaja con LATOUR')setTipo('latour'); else if(t.tipo==='Flete propio productor')setTipo('libre'); }
+  }
+}
+function setTipo(t){ tipoSel=t; document.getElementById('tb_lat').className='tipo-btn'+(t==='latour'?' tb-lat':''); document.getElementById('tb_lib').className='tipo-btn'+(t==='libre'?' tb-lib':''); }
+function setPrio(p){ prioSel=p; ['alta','media','normal'].forEach(x=>{ document.getElementById('pb_'+x.substring(0,4)=='alta'?'pb_alta':x==='media'?'pb_media':'pb_norm').className='prio-btn'; }); document.getElementById(p==='alta'?'pb_alta':p==='media'?'pb_media':'pb_norm').className='prio-btn pb-'+p; }
+setPrio('media');
+function setTramo(t){
+  tramoSel=t;
+  
+  document.getElementById('tr_ldirecto').className='tramo-btn'+(t==='ldirecto'?' tb-ldirecto':'');
+  document.getElementById('tr_lplanta').className='tramo-btn'+(t==='lplanta'?' tb-lplanta':'');
+}
+setTramo('lplanta');
+function toggleOp(el){ const op=el.dataset.op; if(opsSel.has(op)){opsSel.delete(op);el.classList.remove('on');}else{opsSel.add(op);el.classList.add('on');} }
+
+function calcNetoSalida(){ const b=parseFloat(document.getElementById('e_bruto').value)||0,t=parseFloat(document.getElementById('e_tara').value)||0,n=b-t; document.getElementById('e_neto').value=n>0?n.toFixed(0):''; }
+
+function registrarIngreso(){
+  const pat=document.getElementById('i_pat').value.trim().toUpperCase();
+  if(!pat){alert('Ingresá la patente.');return;}
+  if(cola.find(c=>c.patente===pat)){alert(`${pat} ya está en planta.`);return;}
+  cola.push({id:nid++,tipo_op:'ingreso',patente:pat,productor:document.getElementById('i_prod').value||'—',transportista:document.getElementById('i_trans').value||'—',establecimiento:document.getElementById('i_estab').value||'—',grano:document.getElementById('i_grano').value||'—',campania:document.getElementById('i_camp').value||'—',cp:document.getElementById('i_cp').value.trim()||'',contrato_id:document.getElementById('i_contrato').value||'',tipo:tipoSel,prioridad:prioSel,ops:[...opsSel],opsDone:[],estado:'espera',horaIngreso:new Date().toISOString(),horaInicioProceso:null,silo:'',tipDescarga:'',servicios:[],fotos:[],fueraDeEstandar:false});
+  guardarCola(); limpiarIng(); renderCola(); toast(`✓ Ingreso — ${pat}`); publicarCola();
+}
+function registrarEgreso(){
+  const pat=document.getElementById('e_pat').value.trim().toUpperCase();
+  if(!pat){alert('Ingresá la patente.');return;}
+  const grano=document.getElementById('e_grano').value, trans=document.getElementById('e_trans').value;
+  if(!grano||!trans){alert('Completá grano y transportista.');return;}
+  const bruto=parseFloat(document.getElementById('e_bruto').value)||0, tara=parseFloat(document.getElementById('e_tara').value)||0;
+  if(!bruto||!tara){alert('Ingresá bruto y tara de salida.');return;}
+  transito.push({id:nid++,tipo_op:'egreso',patente:pat,transportista:trans,chofer:document.getElementById('e_chofer').value.trim()||'',grano,campania:document.getElementById('e_camp').value||'—',destino:document.getElementById('e_destino').value.trim()||'—',tramo:tramoSel,cp:document.getElementById('e_cp').value.trim()||'',contrato_destino:document.getElementById('e_cto').value.trim()||'',pesada_salida:{bruto,tara,neto:bruto-tara},estado:'transito',horaSalida:new Date().toISOString()});
+  guardarCola(); limpiarEgr(); renderCola(); renderTransito(); toast(`✓ Salida — ${pat}`); publicarCola();
+}
+function limpiarIng(){ ['i_pat','i_camp','i_cp'].forEach(id=>document.getElementById(id).value=''); ['i_prod','i_trans','i_estab','i_grano','i_contrato'].forEach(id=>document.getElementById(id).value=''); document.getElementById('contrato_info').style.display='none'; setTipo('latour'); setPrio('media'); opsSel=new Set(['Descarga']); document.querySelectorAll('.op-pill').forEach(el=>el.classList.toggle('on',el.dataset.op==='Descarga')); }
+function limpiarEgr(){ ['e_pat','e_chofer','e_destino','e_cp','e_cto','e_camp','e_bruto','e_tara','e_neto'].forEach(id=>document.getElementById(id).value=''); ['e_trans','e_grano'].forEach(id=>document.getElementById(id).value=''); setTramo('lplanta'); }
+
+function iniciarCalado(id){ const c=cola.find(x=>x.id===id); if(!c)return; c.estado='calado'; c.horaInicioProceso=new Date().toISOString(); guardarCola(); renderCola(); }
+function quitarCola(id){ if(!confirm('¿Quitar?'))return; cola=cola.filter(x=>x.id!==id); guardarCola(); renderCola(); }
+function quitarTransito(id){ if(!confirm('¿Quitar?'))return; transito=transito.filter(x=>x.id!==id); guardarCola(); renderCola(); }
+
+function abrirRomaneo(id){
+  const c=cola.find(x=>x.id===id); if(!c)return;
+  modalRomId=id; insVal='No'; olorVal='Normal'; fotoAlerta=c.fueraDeEstandar||false; fotosModal=[...(c.fotos||[])];
+  document.getElementById('m_pat').textContent=c.patente;
+  ['m_prod','m_trans','m_grano','m_camp','m_estab'].forEach(id=>document.getElementById(id).value=c[{m_prod:'productor',m_trans:'transportista',m_grano:'grano',m_camp:'campania',m_estab:'establecimiento'}[id]]||'');
+  document.getElementById('m_cp').value=c.cp||'';
+  ['m_bruto','m_tara','m_neto','m_hum','m_merma','m_nseco'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('m_hum_base').value='13.5'; document.getElementById('m_obs').value='';
+  document.getElementById('nb_val').textContent='0 kg'; document.getElementById('nb_sub').textContent='—';
+  document.getElementById('m_hum_chip').className='hum-chip'; document.getElementById('m_hum_chip').textContent='—';
+  if(c.romaneo){const r=c.romaneo; if(r.bruto)document.getElementById('m_bruto').value=r.bruto; if(r.tara)document.getElementById('m_tara').value=r.tara; if(r.hum)document.getElementById('m_hum').value=r.hum; if(r.hum_base)document.getElementById('m_hum_base').value=r.hum_base; if(r.obs)document.getElementById('m_obs').value=r.obs; calcNeto(); if(r.insectos)setIns(r.insectos); if(r.olor)setOlor(r.olor);}else{setIns('No');setOlor('Normal');}
+  document.getElementById('foto_alerta_btn').className='foto-alerta-badge'+(fotoAlerta?' on':'');
+  const g=(M.granos||[]).find(x=>x.nombre===c.grano); if(g&&g.hum_base)document.getElementById('m_hum_base').value=g.hum_base;
+  renderFotosPreview();
+  document.getElementById('wa_hint').textContent='Guardá primero el romaneo.';
+  const bwa=document.getElementById('btn_wa'); bwa.className='btn-wa-send disabled'; bwa.href='#'; bwa.onclick=()=>false;
+  document.getElementById('overlay_rom').classList.add('open');
+}
+function abrirModalPuerto(id){
+  const e=transito.find(x=>x.id===id); if(!e)return;
+  modalPueId=id;
+  document.getElementById('p_pat').textContent=e.patente;
+  document.getElementById('p_trans').value=e.transportista||'';
+  document.getElementById('p_destino').value=e.destino||'';
+  document.getElementById('p_grano').value=e.grano||'';
+  document.getElementById('p_tramo').value={corto:'Campo → Planta (Corto)',ldirecto:'Campo → Puerto (Largo directo)',lplanta:'Planta → Puerto (Largo planta)'}[e.tramo]||e.tramo||'';
+  document.getElementById('p_cp').value=e.cp||'';
+  document.getElementById('p_cto').value=e.contrato_destino||'';
+  const ps=e.pesada_salida||{};
+  document.getElementById('p_bruto_sal').value=ps.bruto||'';
+  document.getElementById('p_tara_sal').value=ps.tara||'';
+  document.getElementById('p_neto_sal').value=ps.neto||'';
+  ['p_bruto_pue','p_tara_pue','p_neto_pue'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('p_obs').value=''; document.getElementById('despico_box').style.display='none';
+  document.getElementById('overlay_pue').classList.add('open');
+}
+function cerrarModal(m){ document.getElementById('overlay_'+m).classList.remove('open'); if(m==='rom')modalRomId=null; if(m==='pue')modalPueId=null; }
+function closeOverlay(m,e){ if(e.target===document.getElementById('overlay_'+m))cerrarModal(m); }
+
+function calcNeto(){ const b=parseFloat(document.getElementById('m_bruto').value)||0,t=parseFloat(document.getElementById('m_tara').value)||0,n=b-t; document.getElementById('m_neto').value=n>0?n.toFixed(0):''; calcMerma(); }
+function calcMerma(){
+  const neto=parseFloat(document.getElementById('m_neto').value)||0,hum=parseFloat(document.getElementById('m_hum').value)||0,base=parseFloat(document.getElementById('m_hum_base').value)||13.5;
+  const chip=document.getElementById('m_hum_chip');
+  if(hum){chip.textContent=hum.toFixed(1)+'%';chip.className='hum-chip '+(hum>base+2?'hc-bad':hum<=base?'hc-ok':'');}else{chip.textContent='—';chip.className='hum-chip';}
+  let merma=0,nseco=neto; if(hum>base&&neto>0){merma=neto*(hum-base)/(100-base);nseco=neto-merma;}
+  document.getElementById('m_merma').value=merma>0?merma.toFixed(0):'0';
+  document.getElementById('m_nseco').value=nseco>0?nseco.toFixed(0):'';
+  document.getElementById('nb_val').textContent=(nseco>0?N(nseco):0)+' kg';
+  document.getElementById('nb_sub').textContent=merma>0?`Merma: ${N(merma)} kg`:'Sin merma';
+}
+function setIns(v){ insVal=v; ['ins_no','ins_si','ins_leve'].forEach(id=>document.getElementById(id).className='check-opt'); document.getElementById({No:'ins_no','Sí':'ins_si',Leve:'ins_leve'}[v]||'ins_no').className='check-opt '+(v==='No'?'co-ok':'co-bad'); }
+function setOlor(v){ olorVal=v; ['ol_normal','ol_hum','ol_rancio','ol_otro'].forEach(id=>document.getElementById(id).className='check-opt'); document.getElementById({Normal:'ol_normal',Humedad:'ol_hum',Rancio:'ol_rancio',Otro:'ol_otro'}[v]||'ol_normal').className='check-opt '+(v==='Normal'?'co-ok':'co-bad'); }
+
+function calcDespico(){
+  const b=parseFloat(document.getElementById('p_bruto_pue').value)||0,t=parseFloat(document.getElementById('p_tara_pue').value)||0,n=b-t;
+  document.getElementById('p_neto_pue').value=n>0?n.toFixed(0):'';
+  const nSal=parseFloat(document.getElementById('p_neto_sal').value)||0;
+  if(n>0&&nSal>0){
+    const diff=nSal-n, pct=((diff/nSal)*100).toFixed(2);
+    const box=document.getElementById('despico_box');
+    box.style.display='block'; box.className='despico-box '+(Math.abs(diff)>500?'alerta':'ok');
+    document.getElementById('d_kg').textContent=(diff>=0?'+':'')+N(diff)+' kg';
+    document.getElementById('d_pct').textContent=(diff>=0?'+':'')+pct+'%';
+    document.getElementById('d_obs').textContent=diff===0?'✓ Sin diferencia':diff>0?`Faltaron ${N(diff)} kg en destino`:`Sobraron ${N(Math.abs(diff))} kg en destino`;
+  }
+}
+
+function onFotoSelect(e){ [...e.target.files].forEach(f=>{ const r=new FileReader(); r.onload=ev=>{fotosModal.push({dataUrl:ev.target.result,name:f.name});renderFotosPreview();}; r.readAsDataURL(f); }); e.target.value=''; }
+function renderFotosPreview(){ document.getElementById('fotos_preview').innerHTML=fotosModal.map((f,i)=>`<div class="foto-prev-wrap"><img src="${f.dataUrl}" onclick="abrirLightbox('${f.dataUrl}')"><button class="foto-del" onclick="eliminarFoto(${i})">✕</button></div>`).join(''); }
+function eliminarFoto(i){fotosModal.splice(i,1);renderFotosPreview();}
+function toggleAlerta(){ fotoAlerta=!fotoAlerta; document.getElementById('foto_alerta_btn').className='foto-alerta-badge'+(fotoAlerta?' on':''); }
+function abrirLightbox(src){ document.getElementById('lightbox_img').src=src; document.getElementById('lightbox').classList.add('open'); }
+function cerrarLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
+function N(v){return new Intl.NumberFormat('es-AR').format(Math.round(v));}
+
+function guardarRomaneoIngreso(){
+  const c=cola.find(x=>x.id===modalRomId); if(!c)return;
+  const bruto=parseFloat(document.getElementById('m_bruto').value)||0,tara=parseFloat(document.getElementById('m_tara').value)||0;
+  const hum=parseFloat(document.getElementById('m_hum').value)||0,hum_base=parseFloat(document.getElementById('m_hum_base').value)||13.5;
+  const merma=parseFloat(document.getElementById('m_merma').value)||0,nseco=parseFloat(document.getElementById('m_nseco').value)||bruto-tara;
+  c.romaneo={bruto,tara,neto:bruto-tara,hum,hum_base,merma,nseco,cp:document.getElementById('m_cp').value,insectos:insVal,olor:olorVal,obs:document.getElementById('m_obs').value.trim()};
+  c.fotos=[...fotosModal]; c.fueraDeEstandar=fotoAlerta; c.horaEgreso=new Date().toISOString();
+  egresados.push({...c}); cola=cola.filter(x=>x.id!==modalRomId);
+  guardarCola(); renderCola(); toast('✓ Romaneo — '+c.patente); habilitarWA(c); publicarCola();
+}
+function confirmarPuerto(){
+  const e=transito.find(x=>x.id===modalPueId); if(!e)return;
+  const bruto=parseFloat(document.getElementById('p_bruto_pue').value)||0,tara=parseFloat(document.getElementById('p_tara_pue').value)||0,neto=bruto-tara;
+  const nSal=parseFloat(document.getElementById('p_neto_sal').value)||0;
+  e.pesada_puerto={bruto,tara,neto};
+  e.despico={kg:nSal-neto,pct:nSal>0?parseFloat(((nSal-neto)/nSal*100).toFixed(2)):0,obs:document.getElementById('p_obs').value.trim()};
+  e.horaConfirmacion=new Date().toISOString(); e.estado='confirmado';
+  despachados.push({...e}); transito=transito.filter(x=>x.id!==modalPueId);
+  guardarCola(); renderCola(); renderTransito(); cerrarModal('pue');
+  toast(`✓ Puerto OK — ${e.patente} · Despico: ${e.despico.kg>=0?'+':''}${N(e.despico.kg)} kg`);
+}
+
+function getTelProductor(n){ const p=(M.productores||[]).find(x=>x.nombre===n); return p?(p.telefono||p.tel||''):''; }
+function habilitarWA(c){
+  const r=c.romaneo||{},nseco=r.nseco||0;
+  const msg=`🚛 *Resultado de descarga — Planta Latour*\n\nEstimado ${c.productor},\n\nConfirmamos la descarga del camión *${c.patente}*.\n\n📋 *Detalle:*\n▪️ *Grano:* ${c.grano} ${c.campania||''}\n▪️ *C. Porte:* ${r.cp||c.cp||'—'}\n▪️ *Bruto:* ${N(r.bruto)} kg\n▪️ *Tara:* ${N(r.tara)} kg\n▪️ *Neto:* ${N(r.neto)} kg\n▪️ *Humedad:* ${r.hum?r.hum+'%':'—'}\n▪️ *Merma:* ${r.merma?N(r.merma)+' kg':'—'}\n━━━━━━━━━━━━━━\n▪️ *Neto seco acreditado:* *${N(nseco)} kg*${c.fueraDeEstandar?'\n⚠️ *Carga fuera de estándar* — fotos registradas.':''}\n\nCualquier consulta respondé este mensaje. ✅\n\n_Balanza · Juan Carlos Latour S.R.L._`;
+  const tel=getTelProductor(c.productor).replace(/\D/g,'');
+  const bwa=document.getElementById('btn_wa');
+  bwa.className='btn-wa-send'; bwa.href=`https://wa.me/${tel||''}?text=${encodeURIComponent(msg)}`; bwa.target='_blank'; bwa.onclick=null;
+  document.getElementById('wa_hint').textContent=tel?`Listo para enviar a ${c.productor}`:'Sin teléfono — WA sin número.';
+}
+
+function tDesde(iso){ if(!iso)return '—'; const m=Math.round((Date.now()-new Date(iso))/60000); if(m<1)return '<1 min'; if(m<60)return m+' min'; return Math.floor(m/60)+'h '+(m%60)+'m'; }
+function tClass(iso){ const m=Math.round((Date.now()-new Date(iso))/60000); return m>60?'a':m>30?'w':''; }
+function horaStr(iso){ return iso?new Date(iso).toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'}):'—'; }
+function tramoLabel(t){ return {corto:'Campo→Planta',ldirecto:'Campo→Puerto',lplanta:'Planta→Puerto'}[t]||t; }
+const EST_ING={espera:{lbl:'⏳ Esperando',c:'var(--mu)'},calado:{lbl:'🔬 Calado',c:'var(--gold)'},descarga:{lbl:'⬇ Descarga',c:'var(--grn)'},listo:{lbl:'✓ Listo',c:'var(--blu)'}};
+
+function renderCola(){
+  updateStats();
+  const qp=document.getElementById('qpanel');
+
+  // Aplicar filtro activo
+  let colaFiltrada=[...cola];
+  let transitoFiltrado=[...transito];
+  if(filtroActivo==='planta'){ transitoFiltrado=[]; }
+  else if(filtroActivo==='transito'){ colaFiltrada=[]; }
+
+  if(!colaFiltrada.length&&!transitoFiltrado.length){ qp.innerHTML='<div style="text-align:center;padding:50px 20px;color:var(--mu);"><div style="font-size:36px;opacity:.3;margin-bottom:10px;">🚛</div><div>Sin movimientos'+(filtroActivo?' para este filtro':'.')+' </div></div>'; renderEgresados(); return; }
+  const ps=p=>p==='alta'?0:p==='media'?1:2;
+  const sorted=[...colaFiltrada].sort((a,b)=>{ if(a.tipo!==b.tipo)return a.tipo==='latour'?-1:1; const d=ps(a.prioridad)-ps(b.prioridad); return d||new Date(a.horaIngreso)-new Date(b.horaIngreso); });
+  let html='';
+  if(sorted.length){
+    html+='<div class="sec-hdr sh-ing">🟡 Ingresos en planta</div>';
+    sorted.forEach((c,i)=>{
+      const esProc=c.estado!=='espera';
+      const fotoCount=(c.fotos||[]).length;
+      const fs=fotoCount?`<div class="foto-strip">${(c.fotos||[]).slice(0,4).map(f=>`<img class="foto-thumb" src="${f.dataUrl}" onclick="abrirLightbox('${f.dataUrl}')">`).join('')}${fotoCount>4?`<span style="font-size:10px;color:var(--mu);align-self:center;">+${fotoCount-4}</span>`:''}</div>`:'';
+      const chips=[c.tipo==='latour'?`<span class="chip ch-l">⭐</span>`:'',c.grano&&c.grano!=='—'?`<span class="chip ch-g">${c.grano}</span>`:''].filter(Boolean).join('');
+      const est=EST_ING[c.estado]||EST_ING.espera;
+      const accs=esProc
+        ?`<div style="font-size:10px;color:${est.c};font-weight:700;text-align:right;white-space:nowrap;">${est.lbl}</div><button class="bsm bsm-rom" onclick="abrirRomaneo(${c.id})">📋 Romaneo</button><button class="bsm bsm-del" onclick="quitarCola(${c.id})">✕</button>`
+        :`<button class="bsm bsm-ini" onclick="iniciarCalado(${c.id})">▶ Calado</button><button class="bsm bsm-rom" onclick="abrirRomaneo(${c.id})">📋 Romaneo</button><button class="bsm bsm-del" onclick="quitarCola(${c.id})">✕</button>`;
+      html+=`<div class="ccard ${c.tipo==='latour'?'cl':''} ${esProc?'cp':''}">
+        <div class="prio-dot pd-${c.prioridad}"></div>
+        <div class="tbadge-num">${i+1}</div>
+        <div class="cinfo">
+          <div class="cpat"><span class="op-badge op-ing">↓ ING</span>${c.patente}${c.fueraDeEstandar?' <span style="color:var(--red);font-size:11px">⚠</span>':''}</div>
+          <div class="cmeta">${chips}<span>${c.productor}</span></div>
+          <div style="font-size:11px;color:var(--mu);margin-bottom:3px;">${c.establecimiento!=='—'?c.establecimiento+' · ':''} ${horaStr(c.horaIngreso)} · CP: ${c.cp||'—'}</div>
+          <div class="ctime ${tClass(c.horaIngreso)}">${est.lbl} · ${tDesde(c.horaInicioProceso||c.horaIngreso)}</div>
+          ${fs}
+        </div>
+        <div class="cacts">${accs}</div>
+      </div>`;
+    });
+  }
+  if(transitoFiltrado.length){
+    html+='<div class="sec-hdr" style="color:var(--cya);">🔵 En tránsito a puerto</div>';
+    transitoFiltrado.forEach(e=>{
+      html+=`<div class="ccard transito">
+        <div class="prio-dot" style="background:var(--cya);box-shadow:0 0 5px var(--cya);"></div>
+        <div class="tbadge-num">↑</div>
+        <div class="cinfo">
+          <div class="cpat"><span class="op-badge op-egr">↑ EGR</span>${e.patente}</div>
+          <div class="cmeta"><span class="chip ch-tramo">${tramoLabel(e.tramo)}</span><span class="chip ch-g">${e.grano}</span></div>
+          <div style="font-size:11px;color:var(--mu);margin-bottom:3px;">${e.transportista} → ${e.destino}</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--cya);">Neto salida: ${N(e.pesada_salida.neto)} kg</div>
+          <div class="ctime">Salida ${horaStr(e.horaSalida)} · ${tDesde(e.horaSalida)} en ruta</div>
+        </div>
+        <div class="cacts">
+          <button class="bsm bsm-pue" onclick="abrirModalPuerto(${e.id})">🏭 Puerto</button>
+          <button class="bsm bsm-del" onclick="quitarTransito(${e.id})">✕</button>
+        </div>
+      </div>`;
+    });
+  }
+  qp.innerHTML=html;
+  renderEgresados();
+}
+
+function renderTransito(){
+  const el=document.getElementById('transito_list');
+  if(!el)return;
+  if(!transito.length){ el.innerHTML='<div style="font-size:11px;color:var(--mu);font-style:italic;">Sin viajes en tránsito.</div>'; return; }
+  el.innerHTML=transito.map(e=>`<div class="egr-card"><div style="font-family:var(--mono);font-size:12px;color:var(--cya);flex:1;">${e.patente}</div><div style="font-size:11px;color:var(--mu);">${e.grano} → ${e.destino}</div><div style="font-family:var(--mono);font-size:10px;color:var(--mu);">${horaStr(e.horaSalida)}</div></div>`).join('');
+}
+
+function renderEgresados(){
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  const list=egresados.filter(e=>new Date(e.horaEgreso||e.horaIngreso)>=hoy);
+  const el=document.getElementById('egresados_list'); if(!el)return;
+  if(!list.length){ el.innerHTML='<div style="font-size:11px;color:var(--mu);font-style:italic;">Sin egresos aún.</div>'; return; }
+  el.innerHTML=[...list].reverse().map(e=>{
+    const r=e.romaneo||{},nseco=r.nseco||0;
+    const tel=getTelProductor(e.productor).replace(/\D/g,'');
+    const msg=`🚛 *Resultado de descarga — Planta Latour*\n\nEstimado ${e.productor},\n\nCamión *${e.patente}* — ${e.grano}\n▪️ *Neto seco:* *${N(nseco)} kg*\n\n_Balanza · Juan Carlos Latour S.R.L._`;
+    return `<div class="egr-card"><div style="font-family:var(--mono);font-size:12px;color:var(--mu);flex:1;">${e.patente}${e.fueraDeEstandar?' ⚠':''}</div><div style="font-size:11px;color:var(--mu);">${e.productor}</div>${nseco?`<div style="font-family:var(--mono);font-size:12px;color:var(--grn);font-weight:500;">${N(nseco)} kg</div>`:''}<a class="egr-wa" href="https://wa.me/${tel||''}?text=${encodeURIComponent(msg)}" target="_blank">📲 WA</a></div>`;
+  }).join('');
+}
+
+let filtroActivo = null;
+
+function filtrarStat(tipo){
+  // Si hacen click en el mismo filtro activo, lo quitan
+  if(filtroActivo===tipo){ limpiarFiltro(); return; }
+  filtroActivo=tipo;
+  // Marcar stat activo
+  ['stb0','stb1','stb2','stb3','stb4'].forEach(id=>document.getElementById(id).classList.remove('activo'));
+  const mapa={planta:'stb0',ingresos:'stb1',transito:'stb2',puerto:'stb3',historial:'stb4'};
+  if(mapa[tipo]) document.getElementById(mapa[tipo]).classList.add('activo');
+
+  if(tipo==='historial'){
+    // Abrir historial con filtro de hoy
+    setRTab('hist');
+    limpiarFiltro();
+    return;
+  }
+  if(tipo==='ingresos'||tipo==='puerto'){
+    // Mostrar en historial filtrado
+    setRTab('hist');
+    document.getElementById('h_tipo').value= tipo==='ingresos'?'ingreso':'egreso';
+    document.getElementById('h_fecha').value='hoy';
+  } else {
+    // Mostrar en cola filtrada
+    setRTab('cola');
+  }
+
+  const labels={
+    planta:'Mostrando: camiones en planta',
+    ingresos:'Mostrando: ingresos de hoy',
+    transito:'Mostrando: camiones en tránsito',
+    puerto:'Mostrando: confirmados en puerto hoy',
+    historial:'Historial completo'
+  };
+  document.getElementById('filtro_badge').style.display='flex';
+  document.getElementById('filtro_label').textContent=labels[tipo]||'';
+  renderCola();
+  renderHistorial();
+}
+
+function limpiarFiltro(){
+  filtroActivo=null;
+  document.getElementById('filtro_badge').style.display='none';
+  ['stb0','stb1','stb2','stb3','stb4'].forEach(id=>document.getElementById(id).classList.remove('activo'));
+  renderCola();
+}
+
+function updateStats(){
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  document.getElementById('st0').textContent=cola.length;
+  document.getElementById('st1').textContent=egresados.filter(e=>new Date(e.horaEgreso||e.horaIngreso)>=hoy).length;
+  document.getElementById('st2').textContent=transito.length;
+  document.getElementById('st3').textContent=despachados.filter(e=>new Date(e.horaConfirmacion||e.horaSalida)>=hoy).length;
+  document.getElementById('st4').textContent=(egresados.filter(e=>new Date(e.horaEgreso||e.horaIngreso)>=hoy).length)+(despachados.filter(e=>new Date(e.horaConfirmacion||e.horaSalida)>=hoy).length);
+}
+
+setInterval(()=>{ document.getElementById('clock').textContent=new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit',second:'2-digit'}); },1000);
+function toast(msg){ const el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show'); setTimeout(()=>el.classList.remove('show'),2400); }
+window.addEventListener('storage',e=>{ if(e.key==='latour_cola'||e.key==='latour_transito'){leerCola();renderCola();renderTransito();} if(e.key==='latour_maestro'){leerMaestro().then(()=>poblarSelects());} });
+setInterval(()=>{leerCola();renderCola();renderTransito();},15000);
+
+
+// ── RIGHT TABS ──
+function setRTab(t){
+  document.getElementById('rtab_cola').className='rtab'+(t==='cola'?' active':'');
+  document.getElementById('rtab_hist').className='rtab'+(t==='hist'?' active':'');
+  document.getElementById('qpanel').style.display=t==='cola'?'flex':'none';
+  document.getElementById('panel_hist').style.display=t==='hist'?'block':'none';
+  if(t==='hist') renderHistorial();
+}
+
+// ── HISTORIAL COMPLETO ──
+function renderHistorial(){
+  const buscar=(document.getElementById('h_buscar').value||'').toLowerCase();
+  const tipo=document.getElementById('h_tipo').value;
+  const grano=document.getElementById('h_grano').value;
+  const fechaFiltro=document.getElementById('h_fecha').value||'hoy';
+
+  // calcular rango de fechas
+  const ahora=new Date();
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  const ayer=new Date(hoy); ayer.setDate(ayer.getDate()-1);
+  const semana=new Date(hoy); semana.setDate(semana.getDate()-7);
+  const mes=new Date(hoy); mes.setDate(mes.getDate()-30);
+
+  function enRango(iso){
+    const d=new Date(iso||0);
+    if(fechaFiltro==='hoy') return d>=hoy;
+    if(fechaFiltro==='ayer') return d>=ayer && d<hoy;
+    if(fechaFiltro==='semana') return d>=semana;
+    if(fechaFiltro==='mes') return d>=mes;
+    return true; // todo
+  }
+
+  // poblar select de granos dinámicamente
+  const selGrano=document.getElementById('h_grano');
+  const granosDisp=[...new Set([
+    ...egresados.map(e=>e.grano),
+    ...despachados.map(e=>e.grano)
+  ].filter(Boolean))].sort();
+  const valActual=selGrano.value;
+  selGrano.innerHTML='<option value="">Todos los granos</option>'+granosDisp.map(g=>`<option value="${g}"${g===valActual?'selected':''}>${g}</option>`).join('');
+
+  let listIng=egresados.filter(e=>enRango(e.horaEgreso||e.horaIngreso));
+  let listEgr=despachados.filter(e=>enRango(e.horaConfirmacion||e.horaSalida));
+
+  let all=[];
+  if(!tipo||tipo==='ingreso') all=[...all,...listIng.map(e=>({...e,_tipo:'ingreso'}))];
+  if(!tipo||tipo==='egreso')  all=[...all,...listEgr.map(e=>({...e,_tipo:'egreso'}))];
+  if(grano) all=all.filter(e=>e.grano===grano);
+  if(buscar) all=all.filter(e=>
+    (e.patente||'').toLowerCase().includes(buscar)||
+    (e.productor||'').toLowerCase().includes(buscar)||
+    (e.transportista||'').toLowerCase().includes(buscar)||
+    (e.grano||'').toLowerCase().includes(buscar)||
+    (e.destino||'').toLowerCase().includes(buscar)
+  );
+  all.sort((a,b)=>new Date(b.horaEgreso||b.horaConfirmacion||b.horaIngreso)-new Date(a.horaEgreso||a.horaConfirmacion||a.horaIngreso));
+
+  // resumen
+  const ingCount=all.filter(x=>x._tipo==='ingreso').length;
+  const egrCount=all.filter(x=>x._tipo==='egreso').length;
+  const totalNeto=all.filter(x=>x._tipo==='ingreso').reduce((s,e)=>s+(e.romaneo?.nseco||0),0);
+  document.getElementById('h_resumen').innerHTML=
+    `<span style="color:var(--gold)">↓ ${ingCount} ingresos</span> &nbsp;·&nbsp; <span style="color:var(--cya)">↑ ${egrCount} egresos</span>`+
+    (totalNeto?` &nbsp;·&nbsp; <span style="color:var(--grn)">Neto seco total: ${N(totalNeto)} kg</span>`:'');
+
+  const thead=document.getElementById('hthead');
+  const tbody=document.getElementById('htbody');
+  const empty=document.getElementById('hist_empty');
+
+  if(!all.length){tbody.innerHTML='';thead.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
+
+  thead.innerHTML=`<th>Tipo</th><th>Fecha</th><th>Hora</th><th>Patente</th><th>Productor / Trans.</th><th>Grano</th><th>Bruto kg</th><th>Tara kg</th><th>Neto seco kg</th><th>Hum%</th><th>Merma kg</th><th>Destino/Silo</th><th>Despico kg</th><th>Estándar</th>`;
+
+  tbody.innerHTML=all.map(e=>{
+    const r=e.romaneo||{};
+    const ps=e.pesada_salida||{};
+    const pp=e.pesada_puerto||{};
+    const d=e.despico||{};
+    const esIng=e._tipo==='ingreso';
+    const fechaHora=new Date(e.horaEgreso||e.horaConfirmacion||e.horaIngreso||e.horaSalida);
+    const fecha=fechaHora.toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'2-digit'});
+    const hora=fechaHora.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
+    return `<tr>
+      <td><span class="op-badge ${esIng?'op-ing':'op-egr'}">${esIng?'↓ ING':'↑ EGR'}</span></td>
+      <td class="tm" style="color:var(--mu)">${fecha}</td>
+      <td class="tm">${hora}</td>
+      <td class="tm ${esIng&&e.tipo==='latour'?'tok':''}">${e.patente||'—'}${esIng&&e.tipo==='latour'?' ⭐':''}</td>
+      <td style="max-width:130px;overflow:hidden;text-overflow:ellipsis;">${esIng?(e.productor||'—'):(e.transportista||'—')}</td>
+      <td>${e.grano||'—'}</td>
+      <td class="tm">${esIng?(r.bruto?N(r.bruto):'—'):(ps.bruto?N(ps.bruto):'—')}</td>
+      <td class="tm">${esIng?(r.tara?N(r.tara):'—'):(ps.tara?N(ps.tara):'—')}</td>
+      <td class="tm tok" style="font-weight:600;">${esIng?(r.nseco?N(r.nseco):'—'):(pp.neto?N(pp.neto):'—')}</td>
+      <td class="tm ${r.hum>15.5?'talert':''}">${esIng?(r.hum?r.hum+'%':'—'):'—'}</td>
+      <td class="tm">${esIng?(r.merma?N(r.merma):'—'):'—'}</td>
+      <td>${esIng?(e.silo||'—'):(e.destino||'—')}</td>
+      <td class="tm ${d.kg&&Math.abs(d.kg)>500?'talert':''}">${!esIng&&d.kg!=null?(d.kg>=0?'+':'')+N(d.kg)+' kg':'—'}</td>
+      <td class="${e.fueraDeEstandar?'talert':'tok'}">${esIng?(e.fueraDeEstandar?'⚠ Fuera':'✓ Ok'):'—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ── EXPORT CSV ──
+function exportarCSV(){
+  const hoy=new Date(); hoy.setHours(0,0,0,0);
+  const listIng=egresados.filter(e=>new Date(e.horaEgreso||e.horaIngreso)>=hoy).map(e=>({...e,_tipo:'ingreso'}));
+  const listEgr=despachados.filter(e=>new Date(e.horaConfirmacion||e.horaSalida)>=hoy).map(e=>({...e,_tipo:'egreso'}));
+  const all=[...listIng,...listEgr];
+  if(!all.length){alert('Sin movimientos para exportar.');return;}
+  const cols=['Tipo','Fecha','Hora','Patente','Productor/Trans.','Grano','Campaña','C.Porte','Flete','Bruto','Tara','Neto','Hum%','Merma','Neto seco','Destino/Silo','Tramo','Despico kg','Despico%','Estándar','Obs'];
+  const rows=all.map(e=>{
+    const r=e.romaneo||{}, ps=e.pesada_salida||{}, pp=e.pesada_puerto||{}, d=e.despico||{};
+    const esIng=e._tipo==='ingreso';
+    return [
+      esIng?'INGRESO':'EGRESO',
+      new Date(e.horaEgreso||e.horaConfirmacion||e.horaIngreso).toLocaleDateString('es-AR'),
+      horaStr(e.horaEgreso||e.horaConfirmacion||e.horaIngreso),
+      e.patente||'',
+      esIng?(e.productor||''):(e.transportista||''),
+      e.grano||'', e.campania||'',
+      (r.cp||e.cp||''),
+      esIng?(e.tipo==='latour'?'LATOUR':'Propio'):'',
+      esIng?(r.bruto||''):(ps.bruto||''),
+      esIng?(r.tara||''):(ps.tara||''),
+      esIng?(r.neto||''):(ps.neto||''),
+      esIng?(r.hum||''):'',
+      esIng?(Math.round(r.merma||0)||''):'',
+      esIng?(Math.round(r.nseco||0)||''):(pp.neto||''),
+      esIng?(e.silo||''):(e.destino||''),
+      esIng?'':(e.tramo||''),
+      !esIng&&d.kg!=null?d.kg:'',
+      !esIng&&d.pct!=null?d.pct+'%':'',
+      esIng?(e.fueraDeEstandar?'Fuera de estándar':'Ok'):'',
+      esIng?(r.obs||''):(d.obs||'')
+    ];
+  });
+  const csv=[cols,...rows].map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
+  a.download=`Balanza_LATOUR_${new Date().toLocaleDateString('es-AR').replace(/\//g,'-')}.csv`;
+  a.click();
+}
+
+// ── LIMPIAR DATOS ──
+function limpiarDatos(){
+  if(!confirm('¿Borrar TODOS los datos de hoy? (camiones en planta, tránsito, historial)\nEsta acción no se puede deshacer.'))return;
+  localStorage.removeItem('latour_cola');
+  localStorage.removeItem('latour_transito');
+  cola=[]; transito=[]; egresados=[]; despachados=[]; nid=1;
+  renderCola(); renderTransito(); toast('✓ Datos limpiados'); publicarCola();
+}
+
+// ── INIT ──
+document.getElementById('maestro_st').textContent='⟳ Cargando maestro...';
+document.getElementById('maestro_st').className='maestro-status ms-warn';
+
+// arrancar con datos del servidor (carpeta compartida), fallback a localStorage
+leerColaServidor().then(ok=>{
+  if(!ok) leerCola();
+  renderCola(); renderTransito();
+});
+
+leerMaestro().then(ok=>{
+  const st=document.getElementById('maestro_st');
+  if(ok==='server'){
+    st.className='maestro-status ms-ok';
+    st.textContent='✓ Maestro — servidor';
+  } else if(ok==='local'){
+    st.className='maestro-status ms-warn';
+    st.textContent='⚠ Maestro — copia local';
+  } else {
+    st.className='maestro-status ms-warn';
+    st.textContent='⚠ Sin maestro';
+  }
+  poblarSelects();
+});
+
+// refrescar maestro cada 5 minutos
+setInterval(()=>{
+  leerMaestro().then(ok=>{
+    if(ok) poblarSelects();
+  });
+}, 300000);
+</script>
+</body>
+</html>
