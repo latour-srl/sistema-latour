@@ -2400,8 +2400,16 @@
         "pct": 0,
         "obs": ""
       },
-      "horaConfirmacion": "2026-03-31T19:30:59.848Z"
+      "horaConfirmacion": "2026-03-31T19:30:59.848Z",
+      "_auditoría": [
+        {
+          "operario": "Juan",
+          "motivo": "prueba",
+          "fecha": "2026-03-31T19:31:36.165Z",
+          "accion": "edición"
+        }
+      ]
     }
   ],
-  "ts": 1774985459850
+  "ts": 1774985499724
 }
