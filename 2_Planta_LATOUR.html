@@ -545,7 +545,6 @@ function renderSilos(){
   }
   document.getElementById('silos_grid').innerHTML=silos.map(s=>{
     const enDesc=cola.filter(c=>c.silo===s.nombre);
-    const cap=parseFloat(s.cap_tn)||0;
     const hoy=new Date(); hoy.setHours(0,0,0,0);
 
     // Total acumulado (histórico completo)
@@ -564,6 +563,10 @@ function renderSilos(){
 
     // Grano más reciente
     const granoActual=s.grano||(ingresosTotal.length?ingresosTotal[ingresosTotal.length-1].grano:null);
+
+    // Capacidad según cereal almacenado
+    const capPorCereal=s.cap_por_cereal||{};
+    const cap=granoActual&&capPorCereal[granoActual]?parseFloat(capPorCereal[granoActual]):parseFloat(s.cap_tn)||0;
 
     const pct=cap>0?Math.min(100,Math.round(totalTn/cap*100)):0;
     const barCls=pct>90?'lleno':pct>70?'casi':'';
