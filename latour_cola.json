@@ -25,210 +25,7 @@
       "servicios": [],
       "fotos": [],
       "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-039"
-    },
-    {
-      "id": 100,
-      "tipo_op": "ingreso",
-      "patente": "CWT155 / EBI024",
-      "chasis": "CWT155",
-      "acoplado": "EBI024",
-      "ctg": "10130580041",
-      "productor": "Agropecuaria Latour SA",
-      "transportista": "Logistica S.N",
-      "establecimiento": "—",
-      "grano": "Maíz",
-      "campania": "2025/26",
-      "cp": "960",
-      "tipo": "latour",
-      "prioridad": "normal",
-      "ops": [
-        "Descarga"
-      ],
-      "opsDone": [],
-      "estado": "espera",
-      "horaIngreso": "2026-03-28T08:34:50Z",
-      "horaInicioProceso": "2026-03-28T08:34:50Z",
-      "silo": "MZ607",
-      "tipDescarga": "Hidráulica",
-      "servicios": [],
-      "fotos": [],
-      "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-042"
-    },
-    {
-      "id": 101,
-      "tipo_op": "ingreso",
-      "patente": "AE016JO / AE016JT",
-      "chasis": "AE016JO",
-      "acoplado": "AE016JT",
-      "ctg": "10130579975",
-      "productor": "Agropecuaria Latour SA",
-      "transportista": "Agrop. Latour",
-      "establecimiento": "—",
-      "grano": "Maíz",
-      "campania": "2025/26",
-      "cp": "959",
-      "tipo": "latour",
-      "prioridad": "normal",
-      "ops": [
-        "Descarga"
-      ],
-      "opsDone": [],
-      "estado": "espera",
-      "horaIngreso": "2026-03-28T08:34:14Z",
-      "horaInicioProceso": "2026-03-28T08:34:14Z",
-      "silo": "MZ606",
-      "tipDescarga": "Hidráulica",
-      "servicios": [],
-      "fotos": [],
-      "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-041"
-    },
-    {
-      "id": 102,
-      "tipo_op": "ingreso",
-      "patente": "DDY664 / AF310LE",
-      "chasis": "DDY664",
-      "acoplado": "AF310LE",
-      "ctg": "10130579843",
-      "productor": "Agropecuaria Latour SA",
-      "transportista": "Logistica S.N",
-      "establecimiento": "—",
-      "grano": "Maíz",
-      "campania": "2025/26",
-      "cp": "958",
-      "tipo": "latour",
-      "prioridad": "normal",
-      "ops": [
-        "Descarga"
-      ],
-      "opsDone": [],
-      "estado": "espera",
-      "horaIngreso": "2026-03-28T08:33:34Z",
-      "horaInicioProceso": "2026-03-28T08:33:34Z",
-      "silo": "MZ605",
-      "tipDescarga": "Hidráulica",
-      "servicios": [],
-      "fotos": [],
-      "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-040"
-    },
-    {
-      "id": 103,
-      "tipo_op": "ingreso",
-      "patente": "NFH828 / DOP558",
-      "chasis": "NFH828",
-      "acoplado": "DOP558",
-      "ctg": "10130572143",
-      "productor": "DeLaMata HNOS S.R.L",
-      "transportista": "",
-      "establecimiento": "—",
-      "grano": "Maíz",
-      "campania": "2025/26",
-      "cp": "70",
-      "tipo": "libre",
-      "prioridad": "normal",
-      "ops": [
-        "Descarga"
-      ],
-      "opsDone": [],
-      "estado": "espera",
-      "horaIngreso": "2026-03-27T17:59:37Z",
-      "horaInicioProceso": "2026-03-27T17:59:37Z",
-      "silo": "MZ604",
-      "tipDescarga": "Hidráulica",
-      "servicios": [],
-      "fotos": [],
-      "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-038"
-    },
-    {
-      "id": 104,
-      "tipo_op": "ingreso",
-      "patente": "UNB011 / JWO129",
-      "chasis": "UNB011",
-      "acoplado": "JWO129",
-      "ctg": "10130571966",
-      "productor": "DeLaMata HNOS S.R.L",
-      "transportista": "",
-      "establecimiento": "—",
-      "grano": "Maíz",
-      "campania": "2025/26",
-      "cp": "69",
-      "tipo": "libre",
-      "prioridad": "normal",
-      "ops": [
-        "Descarga"
-      ],
-      "opsDone": [],
-      "estado": "espera",
-      "horaIngreso": "2026-03-27T16:53:37Z",
-      "horaInicioProceso": "2026-03-27T16:53:37Z",
-      "silo": "MZ603",
-      "tipDescarga": "Hidráulica",
-      "servicios": [],
-      "fotos": [],
-      "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-037"
-    },
-    {
-      "id": 106,
-      "tipo_op": "ingreso",
-      "patente": "AD647TH / AD827BP",
-      "chasis": "AD647TH",
-      "acoplado": "AD827BP",
-      "ctg": "10130562282",
-      "productor": "Agrijo SA",
-      "transportista": "",
-      "establecimiento": "—",
-      "grano": "Maíz",
-      "campania": "2025/26",
-      "cp": "2663",
-      "tipo": "libre",
-      "prioridad": "normal",
-      "ops": [
-        "Descarga"
-      ],
-      "opsDone": [],
-      "estado": "espera",
-      "horaIngreso": "2026-03-27T16:04:26Z",
-      "horaInicioProceso": "2026-03-27T16:04:26Z",
-      "silo": "MZ601",
-      "tipDescarga": "Hidráulica",
-      "servicios": [],
-      "fotos": [],
-      "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-035"
-    },
-    {
-      "id": 108,
-      "tipo_op": "ingreso",
-      "patente": "ELX856 / UFG989",
-      "chasis": "ELX856",
-      "acoplado": "UFG989",
-      "ctg": "10130561624",
-      "productor": "DeLaMata HNOS S.R.L",
-      "transportista": "",
-      "establecimiento": "—",
-      "grano": "Maíz",
-      "campania": "2025/26",
-      "cp": "68",
-      "tipo": "libre",
-      "prioridad": "normal",
-      "ops": [
-        "Descarga"
-      ],
-      "opsDone": [],
-      "estado": "espera",
-      "horaIngreso": "2026-03-27T15:37:33Z",
-      "horaInicioProceso": "2026-03-27T15:37:33Z",
-      "silo": "MZ599",
-      "tipDescarga": "Hidráulica",
-      "servicios": [],
-      "fotos": [],
-      "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-033"
+      "cod_traz": "MZ-25/26-046"
     }
   ],
   "egresados": [
@@ -241,7 +38,7 @@
       "ctg": "10130549409",
       "productor": "Agropecuaria Latour SA",
       "transportista": "Logistica S.N",
-      "establecimiento": "—",
+      "establecimiento": "La Porteña",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "954",
@@ -254,7 +51,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T10:20:41Z",
       "horaInicioProceso": "2026-03-27T10:20:41Z",
-      "silo": "2",
+      "silo": "Silo 2",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -273,7 +70,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-27T10:20:41Z",
-      "cod_traz": "MZ-25/26-023"
+      "cod_traz": "MZ-25/26-025"
     },
     {
       "id": 119,
@@ -284,7 +81,7 @@
       "ctg": "10130549371",
       "productor": "Agropecuaria Latour SA",
       "transportista": "Agrop. Latour",
-      "establecimiento": "—",
+      "establecimiento": "La Porteña",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "953",
@@ -297,7 +94,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T10:17:49Z",
       "horaInicioProceso": "2026-03-27T10:17:49Z",
-      "silo": "2",
+      "silo": "Silo 2",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -316,7 +113,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-27T10:17:49Z",
-      "cod_traz": "MZ-25/26-022"
+      "cod_traz": "MZ-25/26-024"
     },
     {
       "id": 120,
@@ -326,8 +123,8 @@
       "acoplado": "DOP558",
       "ctg": "10130545302",
       "productor": "De la Mata Raul Alberto",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Gallo, Mirta",
+      "establecimiento": "La Julia(KM 409)",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "53",
@@ -340,7 +137,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T08:15:18Z",
       "horaInicioProceso": "2026-03-27T08:15:18Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -359,7 +156,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-27T08:15:18Z",
-      "cod_traz": "MZ-25/26-021"
+      "cod_traz": "MZ-25/26-023"
     },
     {
       "id": 121,
@@ -369,8 +166,8 @@
       "acoplado": "JWO129",
       "ctg": "10130524747",
       "productor": "De la Mata Raul Alberto",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Perez, Ricardo",
+      "establecimiento": "La Julia(KM 409)",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "51",
@@ -383,7 +180,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-26T17:23:54Z",
       "horaInicioProceso": "2026-03-26T17:23:54Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -402,7 +199,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-26T17:23:54Z",
-      "cod_traz": "MZ-25/26-020"
+      "cod_traz": "MZ-25/26-021"
     },
     {
       "id": 122,
@@ -412,8 +209,8 @@
       "acoplado": "AE016JT",
       "ctg": "10130516742",
       "productor": "De la Mata Raul Alberto",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Agrop. Latour",
+      "establecimiento": "La Julia(KM 409)",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "48",
@@ -426,7 +223,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-26T14:55:14Z",
       "horaInicioProceso": "2026-03-26T14:55:14Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -445,7 +242,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-26T14:55:14Z",
-      "cod_traz": "MZ-25/26-019"
+      "cod_traz": "MZ-25/26-020"
     },
     {
       "id": 123,
@@ -455,8 +252,8 @@
       "acoplado": "UFG989",
       "ctg": "10130516730",
       "productor": "De la Mata Raul Alberto",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Colla Emilia",
+      "establecimiento": "La Julia(KM 409)",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "49",
@@ -469,7 +266,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-26T14:54:30Z",
       "horaInicioProceso": "2026-03-26T14:54:30Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -488,7 +285,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-26T14:54:30Z",
-      "cod_traz": "MZ-25/26-018"
+      "cod_traz": "MZ-25/26-019"
     },
     {
       "id": 124,
@@ -498,8 +295,8 @@
       "acoplado": "AF310LE",
       "ctg": "10130516719",
       "productor": "De la Mata Raul Alberto",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Fuentes, Matias",
+      "establecimiento": "La Julia(KM 409)",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "50",
@@ -512,7 +309,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-26T14:53:53Z",
       "horaInicioProceso": "2026-03-26T14:53:53Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -531,7 +328,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-26T14:53:53Z",
-      "cod_traz": "MZ-25/26-017"
+      "cod_traz": "MZ-25/26-018"
     },
     {
       "id": 125,
@@ -542,7 +339,7 @@
       "ctg": "10130504975",
       "productor": "Agropecuaria Latour SA",
       "transportista": "Agrop. Latour",
-      "establecimiento": "—",
+      "establecimiento": "La Porteña",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "952",
@@ -555,7 +352,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-26T10:31:18Z",
       "horaInicioProceso": "2026-03-26T10:31:18Z",
-      "silo": "2",
+      "silo": "Silo 2",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -574,7 +371,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-26T10:31:18Z",
-      "cod_traz": "MZ-25/26-016"
+      "cod_traz": "MZ-25/26-017"
     },
     {
       "id": 126,
@@ -585,7 +382,7 @@
       "ctg": "10130495239",
       "productor": "Jauregui Maria Cristina",
       "transportista": "Logistica S.N",
-      "establecimiento": "—",
+      "establecimiento": "Doña Filo",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "77",
@@ -598,7 +395,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-26T08:22:19Z",
       "horaInicioProceso": "2026-03-26T08:22:19Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -617,7 +414,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-26T08:22:19Z",
-      "cod_traz": "MZ-25/26-015"
+      "cod_traz": "MZ-25/26-016"
     },
     {
       "id": 127,
@@ -627,8 +424,8 @@
       "acoplado": "GVE872",
       "ctg": "10130473784",
       "productor": "Jauregui Maria Cristina",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Machinandearena",
+      "establecimiento": "Doña Filo",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "76",
@@ -641,7 +438,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-25T16:39:50Z",
       "horaInicioProceso": "2026-03-25T16:39:50Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -660,7 +457,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-25T16:39:50Z",
-      "cod_traz": "MZ-25/26-013"
+      "cod_traz": "MZ-25/26-014"
     },
     {
       "id": 128,
@@ -670,8 +467,8 @@
       "acoplado": "EED441",
       "ctg": "10130472879",
       "productor": "Jauregui Maria Cristina",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Logistica S.N",
+      "establecimiento": "Doña Filo",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "74",
@@ -684,7 +481,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-25T16:17:42Z",
       "horaInicioProceso": "2026-03-25T16:17:42Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -703,7 +500,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-25T16:17:42Z",
-      "cod_traz": "MZ-25/26-012"
+      "cod_traz": "MZ-25/26-013"
     },
     {
       "id": 129,
@@ -714,7 +511,7 @@
       "ctg": "10130472845",
       "productor": "Jauregui Maria Cristina",
       "transportista": "Logistica S.N",
-      "establecimiento": "—",
+      "establecimiento": "Doña Filo",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "73",
@@ -727,7 +524,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-25T16:17:00Z",
       "horaInicioProceso": "2026-03-25T16:17:00Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -746,7 +543,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-25T16:17:00Z",
-      "cod_traz": "MZ-25/26-011"
+      "cod_traz": "MZ-25/26-012"
     },
     {
       "id": 130,
@@ -756,8 +553,8 @@
       "acoplado": "UFG989",
       "ctg": "10130451773",
       "productor": "Jauregui Maria Cristina",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Colla Emilia",
+      "establecimiento": "Doña Filo",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "71",
@@ -770,7 +567,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-25T09:51:27Z",
       "horaInicioProceso": "2026-03-25T09:51:27Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -789,7 +586,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-25T09:51:27Z",
-      "cod_traz": "MZ-25/26-006"
+      "cod_traz": "MZ-25/26-007"
     },
     {
       "id": 131,
@@ -800,7 +597,7 @@
       "ctg": "10130451741",
       "productor": "Jauregui Maria Cristina",
       "transportista": "Cortese Adan",
-      "establecimiento": "—",
+      "establecimiento": "Doña Filo",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "70",
@@ -813,7 +610,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-25T09:50:50Z",
       "horaInicioProceso": "2026-03-25T09:50:50Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -832,7 +629,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-25T09:50:50Z",
-      "cod_traz": "MZ-25/26-005"
+      "cod_traz": "MZ-25/26-006"
     },
     {
       "id": 132,
@@ -843,7 +640,7 @@
       "ctg": "10130451709",
       "productor": "Jauregui Maria Cristina",
       "transportista": "Logistica S.N",
-      "establecimiento": "—",
+      "establecimiento": "Doña Filo",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "72",
@@ -856,7 +653,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-25T09:50:12Z",
       "horaInicioProceso": "2026-03-25T09:50:12Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -875,7 +672,7 @@
         "obs": "Importado desde Romaneo"
       },
       "horaEgreso": "2026-03-25T09:50:12Z",
-      "cod_traz": "MZ-25/26-004"
+      "cod_traz": "MZ-25/26-005"
     },
     {
       "id": 111,
@@ -885,8 +682,8 @@
       "acoplado": "AE788PE",
       "ctg": "10130559516",
       "productor": "Ressia Hugo Alberto",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Hernandez, Walter",
+      "establecimiento": "San Bartolome",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "87",
@@ -899,7 +696,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T14:05:51Z",
       "horaInicioProceso": "2026-03-27T14:05:51Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -920,7 +717,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-030"
+      "cod_traz": "MZ-25/26-034"
     },
     {
       "id": 109,
@@ -930,8 +727,8 @@
       "acoplado": "HXG350",
       "ctg": "10130561548",
       "productor": "De la Mata Raul Alberto",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Simon, Jorge",
+      "establecimiento": "San Bartolome",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "54",
@@ -944,7 +741,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T15:34:02Z",
       "horaInicioProceso": "2026-03-27T15:34:02Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -965,7 +762,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-032"
+      "cod_traz": "MZ-25/26-038"
     },
     {
       "id": 105,
@@ -975,8 +772,8 @@
       "acoplado": "BUY943",
       "ctg": "10130562557",
       "productor": "Agrijo SA",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Cortese Adan",
+      "establecimiento": "San Bartolome",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "2664",
@@ -989,7 +786,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T16:22:01Z",
       "horaInicioProceso": "2026-03-27T16:22:01Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -1010,7 +807,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-036"
+      "cod_traz": "MZ-25/26-043"
     },
     {
       "id": 107,
@@ -1020,8 +817,8 @@
       "acoplado": "FPO348",
       "ctg": "10130559804",
       "productor": "Agrijo SA",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Logistica S.N",
+      "establecimiento": "San Bartolome",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "2659",
@@ -1034,7 +831,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T16:01:28Z",
       "horaInicioProceso": "2026-03-27T16:01:28Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -1055,7 +852,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-034"
+      "cod_traz": "MZ-25/26-040"
     },
     {
       "id": 110,
@@ -1065,8 +862,8 @@
       "acoplado": "DAQ831",
       "ctg": "10130560781",
       "productor": "Ressia Hugo Alberto",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Logistica S.N",
+      "establecimiento": "12 de enero",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "89",
@@ -1079,7 +876,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T14:46:33Z",
       "horaInicioProceso": "2026-03-27T14:46:33Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -1100,7 +897,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-031"
+      "cod_traz": "MZ-25/26-035"
     },
     {
       "id": 112,
@@ -1110,8 +907,8 @@
       "acoplado": "LWN153",
       "ctg": "10130559516",
       "productor": "Ressia Hugo Alberto",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Logistica S.N",
+      "establecimiento": "12 de enero",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "88",
@@ -1124,7 +921,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T14:05:08Z",
       "horaInicioProceso": "2026-03-27T14:05:08Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -1145,7 +942,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-029"
+      "cod_traz": "MZ-25/26-032"
     },
     {
       "id": 113,
@@ -1156,7 +953,7 @@
       "ctg": "10130555327",
       "productor": "Agropecuaria Latour SA",
       "transportista": "Logistica S.N",
-      "establecimiento": "—",
+      "establecimiento": "La Porteña",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "957",
@@ -1169,7 +966,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T13:19:41Z",
       "horaInicioProceso": "2026-03-27T13:19:41Z",
-      "silo": "2",
+      "silo": "Silo 2",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -1190,7 +987,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-028"
+      "cod_traz": "MZ-25/26-031"
     },
     {
       "id": 114,
@@ -1200,8 +997,8 @@
       "acoplado": "AE340QZ",
       "ctg": "10130554977",
       "productor": "Ressia Hugo Alberto",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Logistica S.N",
+      "establecimiento": "12 de enero",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "86",
@@ -1214,7 +1011,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T13:09:06Z",
       "horaInicioProceso": "2026-03-27T13:09:06Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -1235,7 +1032,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-027"
+      "cod_traz": "MZ-25/26-030"
     },
     {
       "id": 115,
@@ -1246,7 +1043,7 @@
       "ctg": "10130554506",
       "productor": "Agropecuaria Latour SA",
       "transportista": "Logistica S.N",
-      "establecimiento": "—",
+      "establecimiento": "La Porteña",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "956",
@@ -1259,7 +1056,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T12:51:35Z",
       "horaInicioProceso": "2026-03-27T12:51:35Z",
-      "silo": "2",
+      "silo": "Silo 2",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -1280,7 +1077,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-026"
+      "cod_traz": "MZ-25/26-029"
     },
     {
       "id": 116,
@@ -1291,7 +1088,7 @@
       "ctg": "10130552851",
       "productor": "Agropecuaria Latour SA",
       "transportista": "Logistica S.N",
-      "establecimiento": "—",
+      "establecimiento": "La Porteña",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "955",
@@ -1304,7 +1101,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T12:05:10Z",
       "horaInicioProceso": "2026-03-27T12:05:10Z",
-      "silo": "2",
+      "silo": "Silo 2",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -1325,7 +1122,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-025"
+      "cod_traz": "MZ-25/26-028"
     },
     {
       "id": 117,
@@ -1335,8 +1132,8 @@
       "acoplado": "WXY571",
       "ctg": "10130552534",
       "productor": "DeLaMata HNOS S.R.L",
-      "transportista": "",
-      "establecimiento": "—",
+      "transportista": "Cortese Adan",
+      "establecimiento": "La Julia(KM 409)",
       "grano": "Maíz",
       "campania": "2025/26",
       "cp": "65",
@@ -1349,7 +1146,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-27T11:59:30Z",
       "horaInicioProceso": "2026-03-27T11:59:30Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "servicios": [],
       "fotos": [],
@@ -1370,7 +1167,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-024"
+      "cod_traz": "MZ-25/26-027"
     },
     {
       "id": 5,
@@ -1398,7 +1195,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-25T14:30:32.913Z",
       "horaInicioProceso": "2026-03-25T14:31:03.089Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "fotos": [],
       "fueraDeEstandar": false,
@@ -1431,7 +1228,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-008"
+      "cod_traz": "MZ-25/26-009"
     },
     {
       "id": 6,
@@ -1459,7 +1256,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-25T14:34:31.177Z",
       "horaInicioProceso": "2026-03-25T14:35:07.049Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "fotos": [],
       "fueraDeEstandar": false,
@@ -1492,7 +1289,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-009"
+      "cod_traz": "MZ-25/26-010"
     },
     {
       "id": 7,
@@ -1520,7 +1317,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-25T14:45:45.593Z",
       "horaInicioProceso": "2026-03-25T14:46:22.977Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "fotos": [],
       "fueraDeEstandar": false,
@@ -1553,7 +1350,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-010"
+      "cod_traz": "MZ-25/26-011"
     },
     {
       "id": 4,
@@ -1581,7 +1378,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-25T14:19:10.425Z",
       "horaInicioProceso": "2026-03-25T14:20:46.721Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "fotos": [
         {
@@ -1619,7 +1416,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-007"
+      "cod_traz": "MZ-25/26-008"
     },
     {
       "id": 8,
@@ -1647,7 +1444,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-25T20:29:34.791Z",
       "horaInicioProceso": null,
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "fotos": [],
       "fueraDeEstandar": false,
@@ -1667,7 +1464,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-014"
+      "cod_traz": "MZ-25/26-015"
     },
     {
       "id": 2,
@@ -1694,7 +1491,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-23T12:22:59.726Z",
       "horaInicioProceso": "2026-03-23T12:30:52.446Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "fotos": [],
       "fueraDeEstandar": false,
@@ -1727,7 +1524,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-002"
+      "cod_traz": "MZ-25/26-003"
     },
     {
       "id": 1,
@@ -1754,7 +1551,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-23T12:21:45.366Z",
       "horaInicioProceso": "2026-03-23T12:29:56.798Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "fotos": [],
       "fueraDeEstandar": false,
@@ -1787,7 +1584,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-001"
+      "cod_traz": "MZ-25/26-002"
     },
     {
       "id": 3,
@@ -1814,7 +1611,7 @@
       "estado": "listo",
       "horaIngreso": "2026-03-23T12:24:17.494Z",
       "horaInicioProceso": "2026-03-23T12:31:14.390Z",
-      "silo": "4",
+      "silo": "Silo 4",
       "tipDescarga": "Hidráulica",
       "fotos": [],
       "fueraDeEstandar": false,
@@ -1847,10 +1644,755 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-003"
+      "cod_traz": "MZ-25/26-004"
+    },
+    {
+      "id": 101,
+      "tipo_op": "ingreso",
+      "patente": "AE016JO / AE016JT",
+      "chasis": "AE016JO",
+      "acoplado": "AE016JT",
+      "ctg": "10130579975",
+      "productor": "Agropecuaria Latour SA",
+      "transportista": "Agrop. Latour",
+      "establecimiento": "La Porteña",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "961",
+      "tipo": "latour",
+      "prioridad": "normal",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "horaIngreso": "2026-03-28T08:34:14Z",
+      "horaInicioProceso": "2026-03-28T08:34:14Z",
+      "silo": "Silo 2",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "cod_traz": "MZ-25/26-049",
+      "horaEgreso": "2026-03-28T13:07:19",
+      "horaInicioDescarga": "2026-03-28T13:07:19",
+      "horaFinDescarga": "2026-03-28T13:07:19",
+      "romaneo": {
+        "bruto": 48800.0,
+        "tara": 16280.0,
+        "neto": 32520.0,
+        "hum": 12.9,
+        "hum_base": 14.5,
+        "merma": 163.0,
+        "nseco": 32357.0,
+        "cp": "961",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      }
+    },
+    {
+      "id": 133,
+      "tipo_op": "ingreso",
+      "patente": "CDF573 / JZV397",
+      "chasis": "CDF573",
+      "acoplado": "JZV397",
+      "productor": "Agrijo SA",
+      "transportista": "Abraham Jose",
+      "establecimiento": "San Bartolome",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "2670",
+      "tipo": "latour",
+      "prioridad": "media",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "horaIngreso": "2026-03-28T12:12:05",
+      "horaEgreso": "2026-03-28T12:12:05",
+      "horaInicioDescarga": "2026-03-28T12:12:05",
+      "horaFinDescarga": "2026-03-28T12:12:05",
+      "silo": "Silo 4",
+      "romaneo": {
+        "bruto": 46880.0,
+        "tara": 14600.0,
+        "neto": 32280.0,
+        "hum": 18.9,
+        "hum_base": 14.5,
+        "merma": 2246.0,
+        "nseco": 30034.0,
+        "cp": "2670",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      },
+      "cod_traz": "MZ-25/26-052"
+    },
+    {
+      "id": 106,
+      "tipo_op": "ingreso",
+      "patente": "AD647TH / AD827BP",
+      "chasis": "AD647TH",
+      "acoplado": "AD827BP",
+      "ctg": "10130562282",
+      "productor": "Agrijo SA",
+      "transportista": "Agrop. Latour",
+      "establecimiento": "12 de enero",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "95",
+      "tipo": "libre",
+      "prioridad": "normal",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "horaIngreso": "2026-03-27T16:04:26Z",
+      "horaInicioProceso": "2026-03-27T16:04:26Z",
+      "silo": "Silo 4",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "cod_traz": "MZ-25/26-042",
+      "horaEgreso": "2026-03-28T10:51:55",
+      "horaInicioDescarga": "2026-03-28T10:51:55",
+      "horaFinDescarga": "2026-03-28T10:51:55",
+      "romaneo": {
+        "bruto": 54180.0,
+        "tara": 18260.0,
+        "neto": 35920.0,
+        "hum": 15.6,
+        "hum_base": 14.5,
+        "merma": 1138.0,
+        "nseco": 34782.0,
+        "cp": "95",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      }
+    },
+    {
+      "id": 134,
+      "tipo_op": "ingreso",
+      "patente": "FFA861 / FDH799",
+      "chasis": "FFA861",
+      "acoplado": "FDH799",
+      "productor": "DeLaMata HNOS S.R.L",
+      "transportista": "Cortese Adan",
+      "establecimiento": "La Julia(KM 409)",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "72",
+      "tipo": "latour",
+      "prioridad": "media",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "horaIngreso": "2026-03-28T09:51:52",
+      "horaEgreso": "2026-03-28T09:51:52",
+      "horaInicioDescarga": "2026-03-28T09:51:52",
+      "horaFinDescarga": "2026-03-28T09:51:52",
+      "silo": "Silo 4",
+      "romaneo": {
+        "bruto": 46860.0,
+        "tara": 14080.0,
+        "neto": 32780.0,
+        "hum": 16.1,
+        "hum_base": 14.5,
+        "merma": 1228.0,
+        "nseco": 31552.0,
+        "cp": "72",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      },
+      "cod_traz": "MZ-25/26-051"
+    },
+    {
+      "id": 100,
+      "tipo_op": "ingreso",
+      "patente": "CWT155 / EBI024",
+      "chasis": "CWT155",
+      "acoplado": "EBI024",
+      "ctg": "10130580041",
+      "productor": "Agropecuaria Latour SA",
+      "transportista": "Logistica S.N",
+      "establecimiento": "La Porteña",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "960",
+      "tipo": "latour",
+      "prioridad": "normal",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "horaIngreso": "2026-03-28T08:34:50Z",
+      "horaInicioProceso": "2026-03-28T08:34:50Z",
+      "silo": "Silo 2",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "cod_traz": "MZ-25/26-050",
+      "horaEgreso": "2026-03-28T08:34:50",
+      "horaInicioDescarga": "2026-03-28T08:34:50",
+      "horaFinDescarga": "2026-03-28T08:34:50",
+      "romaneo": {
+        "bruto": 52960.0,
+        "tara": 14560.0,
+        "neto": 38400.0,
+        "hum": 12.9,
+        "hum_base": 14.5,
+        "merma": 192.0,
+        "nseco": 38208.0,
+        "cp": "960",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      }
+    },
+    {
+      "id": 135,
+      "tipo_op": "ingreso",
+      "patente": "AE016JO / AE016JT",
+      "chasis": "AE016JO",
+      "acoplado": "AE016JT",
+      "productor": "Agropecuaria Latour SA",
+      "transportista": "Agrop. Latour",
+      "establecimiento": "La Porteña",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "959",
+      "tipo": "latour",
+      "prioridad": "media",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "horaIngreso": "2026-03-28T08:34:14",
+      "horaEgreso": "2026-03-28T08:34:14",
+      "horaInicioDescarga": "2026-03-28T08:34:14",
+      "horaFinDescarga": "2026-03-28T08:34:14",
+      "silo": "Silo 2",
+      "romaneo": {
+        "bruto": 55320.0,
+        "tara": 16300.0,
+        "neto": 39020.0,
+        "hum": 13.4,
+        "hum_base": 14.5,
+        "merma": 195.0,
+        "nseco": 38825.0,
+        "cp": "959",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      },
+      "cod_traz": "MZ-25/26-048"
+    },
+    {
+      "id": 102,
+      "tipo_op": "ingreso",
+      "patente": "DDY664 / AF310LE",
+      "chasis": "DDY664",
+      "acoplado": "AF310LE",
+      "ctg": "10130579843",
+      "productor": "Agropecuaria Latour SA",
+      "transportista": "Logistica S.N",
+      "establecimiento": "La Porteña",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "958",
+      "tipo": "latour",
+      "prioridad": "normal",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "horaIngreso": "2026-03-28T08:33:34Z",
+      "horaInicioProceso": "2026-03-28T08:33:34Z",
+      "silo": "Silo 2",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "cod_traz": "MZ-25/26-047",
+      "horaEgreso": "2026-03-28T08:33:34",
+      "horaInicioDescarga": "2026-03-28T08:33:34",
+      "horaFinDescarga": "2026-03-28T08:33:34",
+      "romaneo": {
+        "bruto": 51560.0,
+        "tara": 16420.0,
+        "neto": 35140.0,
+        "hum": 14.4,
+        "hum_base": 14.5,
+        "merma": 176.0,
+        "nseco": 34964.0,
+        "cp": "958",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      }
+    },
+    {
+      "id": 103,
+      "tipo_op": "ingreso",
+      "patente": "NFH828 / DOP558",
+      "chasis": "NFH828",
+      "acoplado": "DOP558",
+      "ctg": "10130572143",
+      "productor": "DeLaMata HNOS S.R.L",
+      "transportista": "Gallo, Mirta",
+      "establecimiento": "La Julia(KM 409)",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "70",
+      "tipo": "libre",
+      "prioridad": "normal",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "horaIngreso": "2026-03-27T17:59:37Z",
+      "horaInicioProceso": "2026-03-27T17:59:37Z",
+      "silo": "Silo 4",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "cod_traz": "MZ-25/26-045",
+      "horaEgreso": "2026-03-27T17:59:37",
+      "horaInicioDescarga": "2026-03-27T17:59:37",
+      "horaFinDescarga": "2026-03-27T17:59:37",
+      "romaneo": {
+        "bruto": 49120.0,
+        "tara": 14880.0,
+        "neto": 34240.0,
+        "hum": 15.5,
+        "hum_base": 14.5,
+        "merma": 1044.0,
+        "nseco": 33196.0,
+        "cp": "70",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      }
+    },
+    {
+      "id": 104,
+      "tipo_op": "ingreso",
+      "patente": "UNB011 / JWO129",
+      "chasis": "UNB011",
+      "acoplado": "JWO129",
+      "ctg": "10130571966",
+      "productor": "DeLaMata HNOS S.R.L",
+      "transportista": "Perez, Ricardo",
+      "establecimiento": "La Julia(KM 409)",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "69",
+      "tipo": "libre",
+      "prioridad": "normal",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "horaIngreso": "2026-03-27T16:53:37Z",
+      "horaInicioProceso": "2026-03-27T16:53:37Z",
+      "silo": "Silo 4",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "cod_traz": "MZ-25/26-044",
+      "horaEgreso": "2026-03-27T16:53:37",
+      "horaInicioDescarga": "2026-03-27T16:53:37",
+      "horaFinDescarga": "2026-03-27T16:53:37",
+      "romaneo": {
+        "bruto": 47780.0,
+        "tara": 15560.0,
+        "neto": 32220.0,
+        "hum": 14.9,
+        "hum_base": 14.5,
+        "merma": 761.0,
+        "nseco": 31459.0,
+        "cp": "69",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      }
+    },
+    {
+      "id": 136,
+      "tipo_op": "ingreso",
+      "patente": "AD647TH / AD827BP",
+      "chasis": "AD647TH",
+      "acoplado": "AD827BP",
+      "productor": "Agrijo SA",
+      "transportista": "Agrop. Latour",
+      "establecimiento": "San Bartolome",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "2663",
+      "tipo": "latour",
+      "prioridad": "media",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "horaIngreso": "2026-03-27T16:04:26",
+      "horaEgreso": "2026-03-27T16:04:26",
+      "horaInicioDescarga": "2026-03-27T16:04:26",
+      "horaFinDescarga": "2026-03-27T16:04:26",
+      "silo": "Silo 4",
+      "romaneo": {
+        "bruto": 52700.0,
+        "tara": 18240.0,
+        "neto": 34460.0,
+        "hum": 16.8,
+        "hum_base": 14.5,
+        "merma": 1564.0,
+        "nseco": 32896.0,
+        "cp": "2663",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      },
+      "cod_traz": "MZ-25/26-041"
+    },
+    {
+      "id": 108,
+      "tipo_op": "ingreso",
+      "patente": "ELX856 / UFG989",
+      "chasis": "ELX856",
+      "acoplado": "UFG989",
+      "ctg": "10130561624",
+      "productor": "DeLaMata HNOS S.R.L",
+      "transportista": "Colla Emilia",
+      "establecimiento": "La Julia(KM 409)",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "68",
+      "tipo": "libre",
+      "prioridad": "normal",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "horaIngreso": "2026-03-27T15:37:33Z",
+      "horaInicioProceso": "2026-03-27T15:37:33Z",
+      "silo": "Silo 4",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "cod_traz": "MZ-25/26-039",
+      "horaEgreso": "2026-03-27T15:37:33",
+      "horaInicioDescarga": "2026-03-27T15:37:33",
+      "horaFinDescarga": "2026-03-27T15:37:33",
+      "romaneo": {
+        "bruto": 47680.0,
+        "tara": 14360.0,
+        "neto": 33320.0,
+        "hum": 15.6,
+        "hum_base": 14.5,
+        "merma": 1055.0,
+        "nseco": 32265.0,
+        "cp": "68",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      }
+    },
+    {
+      "id": 137,
+      "tipo_op": "ingreso",
+      "patente": "EWY513 / HXG350",
+      "chasis": "EWY513",
+      "acoplado": "HXG350",
+      "productor": "De la Mata Raul Alberto",
+      "transportista": "Simon, Jorge",
+      "establecimiento": "La Julia(KM 409)",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "54",
+      "tipo": "latour",
+      "prioridad": "media",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "horaIngreso": "2026-03-27T15:34:02",
+      "horaEgreso": "2026-03-27T15:34:02",
+      "horaInicioDescarga": "2026-03-27T15:34:02",
+      "horaFinDescarga": "2026-03-27T15:34:02",
+      "silo": "Silo 4",
+      "romaneo": {
+        "bruto": 48060.0,
+        "tara": 14120.0,
+        "neto": 33940.0,
+        "hum": 14.6,
+        "hum_base": 14.5,
+        "merma": 683.0,
+        "nseco": 33257.0,
+        "cp": "54",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      },
+      "cod_traz": "MZ-25/26-037"
+    },
+    {
+      "id": 138,
+      "tipo_op": "ingreso",
+      "patente": "CDF573 / JZV397",
+      "chasis": "CDF573",
+      "acoplado": "JZV397",
+      "productor": "Ressia Hugo Alberto",
+      "transportista": "Abraham Jose",
+      "establecimiento": "12 de enero",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "90",
+      "tipo": "latour",
+      "prioridad": "media",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "horaIngreso": "2026-03-27T14:53:21",
+      "horaEgreso": "2026-03-27T14:53:21",
+      "horaInicioDescarga": "2026-03-27T14:53:21",
+      "horaFinDescarga": "2026-03-27T14:53:21",
+      "silo": "Silo 4",
+      "romaneo": {
+        "bruto": 46940.0,
+        "tara": 14500.0,
+        "neto": 32440.0,
+        "hum": 15.3,
+        "hum_base": 14.5,
+        "merma": 914.0,
+        "nseco": 31526.0,
+        "cp": "90",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      },
+      "cod_traz": "MZ-25/26-036"
+    },
+    {
+      "id": 139,
+      "tipo_op": "ingreso",
+      "patente": "TOM989 / AE788PE",
+      "chasis": "TOM989",
+      "acoplado": "AE788PE",
+      "productor": "Ressia Hugo Alberto",
+      "transportista": "Hernandez, Walter",
+      "establecimiento": "12 de enero",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "87",
+      "tipo": "latour",
+      "prioridad": "media",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "horaIngreso": "2026-03-27T14:05:51",
+      "horaEgreso": "2026-03-27T14:05:51",
+      "horaInicioDescarga": "2026-03-27T14:05:51",
+      "horaFinDescarga": "2026-03-27T14:05:51",
+      "silo": "Silo 4",
+      "romaneo": {
+        "bruto": 46900.0,
+        "tara": 12960.0,
+        "neto": 33940.0,
+        "hum": 15.1,
+        "hum_base": 14.5,
+        "merma": 879.0,
+        "nseco": 33061.0,
+        "cp": "87",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      },
+      "cod_traz": "MZ-25/26-033"
+    },
+    {
+      "id": 140,
+      "tipo_op": "ingreso",
+      "patente": "CDF573 / JZV397",
+      "chasis": "CDF573",
+      "acoplado": "JZV397",
+      "productor": "DeLaMata HNOS S.R.L",
+      "transportista": "Abraham Jose",
+      "establecimiento": "La Julia(KM 409)",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "64",
+      "tipo": "latour",
+      "prioridad": "media",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "horaIngreso": "2026-03-27T11:34:42",
+      "horaEgreso": "2026-03-27T11:34:42",
+      "horaInicioDescarga": "2026-03-27T11:34:42",
+      "horaFinDescarga": "2026-03-27T11:34:42",
+      "silo": "Silo 4",
+      "romaneo": {
+        "bruto": 44480.0,
+        "tara": 14500.0,
+        "neto": 29980.0,
+        "hum": 16.0,
+        "hum_base": 14.5,
+        "merma": 1086.0,
+        "nseco": 28894.0,
+        "cp": "64",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      },
+      "cod_traz": "MZ-25/26-026"
+    },
+    {
+      "id": 141,
+      "tipo_op": "ingreso",
+      "patente": "CDF573 / JZV397",
+      "chasis": "CDF573",
+      "acoplado": "JZV397",
+      "productor": "De la Mata Raul Alberto",
+      "transportista": "Abraham Jose",
+      "establecimiento": "La Julia(KM 409)",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "52",
+      "tipo": "latour",
+      "prioridad": "media",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "horaIngreso": "2026-03-26T17:24:43",
+      "horaEgreso": "2026-03-26T17:24:43",
+      "horaInicioDescarga": "2026-03-26T17:24:43",
+      "horaFinDescarga": "2026-03-26T17:24:43",
+      "silo": "Silo 4",
+      "romaneo": {
+        "bruto": 50400.0,
+        "tara": 14540.0,
+        "neto": 35860.0,
+        "hum": 14.7,
+        "hum_base": 14.5,
+        "merma": 764.0,
+        "nseco": 35096.0,
+        "cp": "52",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      },
+      "cod_traz": "MZ-25/26-022"
+    },
+    {
+      "id": 142,
+      "tipo_op": "ingreso",
+      "patente": "CBF723 / JCZ699",
+      "chasis": "CBF723",
+      "acoplado": "JCZ699",
+      "productor": "Jauregui Maria Cristina",
+      "transportista": "Cortese Adan",
+      "establecimiento": "Doña Filo",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "63",
+      "tipo": "latour",
+      "prioridad": "media",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "listo",
+      "tipDescarga": "Hidráulica",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "horaIngreso": "2026-03-19T18:59:44",
+      "horaEgreso": "2026-03-19T18:59:44",
+      "horaInicioDescarga": "2026-03-19T18:59:44",
+      "horaFinDescarga": "2026-03-19T18:59:44",
+      "silo": "Silo 4",
+      "romaneo": {
+        "bruto": 49840.0,
+        "tara": 16260.0,
+        "neto": 33580.0,
+        "hum": 14.2,
+        "hum_base": 14.5,
+        "merma": 168.0,
+        "nseco": 33412.0,
+        "cp": "63",
+        "insectos": "No",
+        "olor": "Normal",
+        "obs": "Importado desde Romaneo"
+      },
+      "cod_traz": "MZ-25/26-001"
     }
   ],
-  "nid": 133,
+  "nid": 143,
   "transito": [
     {
       "id": 9,
@@ -1878,5 +2420,5 @@
     }
   ],
   "despachados": [],
-  "ts": 1774918778679
+  "ts": 1774955336169
 }
