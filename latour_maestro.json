@@ -2047,69 +2047,11 @@
       "cuit": "20120673743"
     }
   ],
-  "granos": [
-    {
-      "nombre": "Soja",
-      "campania": "2025/26",
-      "hum_base": 13.5,
-      "pe_kg_m3": 700,
-      "factor_vs_trigo": 0.875
-    },
-    {
-      "nombre": "Trigo",
-      "campania": "2025/26",
-      "hum_base": 14.0,
-      "pe_kg_m3": 800,
-      "factor_vs_trigo": 1.0
-    },
-    {
-      "nombre": "Maíz",
-      "campania": "2025/26",
-      "hum_base": 14.5,
-      "pe_kg_m3": 720,
-      "factor_vs_trigo": 0.9
-    },
-    {
-      "nombre": "Girasol",
-      "campania": "2025/26",
-      "hum_base": 11.0,
-      "pe_kg_m3": 400,
-      "factor_vs_trigo": 0.5
-    },
-    {
-      "nombre": "Cebada Forrajera",
-      "campania": "2025/26",
-      "hum_base": 13.5,
-      "pe_kg_m3": 600,
-      "factor_vs_trigo": 0.75
-    },
-    {
-      "nombre": "Girasol Oleico",
-      "campania": "2025/26",
-      "hum_base": 11.0,
-      "pe_kg_m3": 400,
-      "factor_vs_trigo": 0.5
-    },
-    {
-      "nombre": "Girasol Confitero",
-      "campania": "2025/26",
-      "hum_base": 11.0,
-      "pe_kg_m3": 400,
-      "factor_vs_trigo": 0.5
-    },
-    {
-      "nombre": "Cebada Cervecera",
-      "campania": "2025/26",
-      "hum_base": 13.5,
-      "pe_kg_m3": 650,
-      "factor_vs_trigo": 0.8125
-    }
-  ],
   "silos": [
     {
       "nombre": "Silo 1",
       "tipo": "Silo metálico",
-      "cap_tn_trigo": 1500.0,
+      "cap_tn_trigo": 1500,
       "cap_por_cereal": {
         "Soja": 1312,
         "Trigo": 1500,
@@ -2119,12 +2061,13 @@
         "Girasol Oleico": 750,
         "Girasol Confitero": 750,
         "Cebada Cervecera": 1219
-      }
+      },
+      "cap_tn": 830
     },
     {
       "nombre": "Silo 2",
       "tipo": "Silo metálico",
-      "cap_tn_trigo": 1500.0,
+      "cap_tn_trigo": 1500,
       "cap_por_cereal": {
         "Soja": 1312,
         "Trigo": 1500,
@@ -2134,12 +2077,13 @@
         "Girasol Oleico": 750,
         "Girasol Confitero": 750,
         "Cebada Cervecera": 1219
-      }
+      },
+      "cap_tn": 830
     },
     {
       "nombre": "Silo 3",
       "tipo": "Silo metálico",
-      "cap_tn_trigo": 1500.0,
+      "cap_tn_trigo": 1500,
       "cap_por_cereal": {
         "Soja": 1312,
         "Trigo": 1500,
@@ -2149,12 +2093,13 @@
         "Girasol Oleico": 750,
         "Girasol Confitero": 750,
         "Cebada Cervecera": 1219
-      }
+      },
+      "cap_tn": 1530
     },
     {
       "nombre": "Silo 4",
       "tipo": "Silo metálico",
-      "cap_tn_trigo": 1500.0,
+      "cap_tn_trigo": 1500,
       "cap_por_cereal": {
         "Soja": 1312,
         "Trigo": 1500,
@@ -2164,12 +2109,13 @@
         "Girasol Oleico": 750,
         "Girasol Confitero": 750,
         "Cebada Cervecera": 1219
-      }
+      },
+      "cap_tn": 1530
     },
     {
       "nombre": "Silo 5",
       "tipo": "Silo metálico",
-      "cap_tn_trigo": 750.0,
+      "cap_tn_trigo": 750,
       "cap_por_cereal": {
         "Soja": 656,
         "Trigo": 750,
@@ -2179,12 +2125,13 @@
         "Girasol Oleico": 375,
         "Girasol Confitero": 375,
         "Cebada Cervecera": 609
-      }
+      },
+      "cap_tn": 1530
     },
     {
       "nombre": "Silo 6",
       "tipo": "Silo metálico",
-      "cap_tn_trigo": 750.0,
+      "cap_tn_trigo": 750,
       "cap_por_cereal": {
         "Soja": 656,
         "Trigo": 750,
@@ -2194,12 +2141,13 @@
         "Girasol Oleico": 375,
         "Girasol Confitero": 375,
         "Cebada Cervecera": 609
-      }
+      },
+      "cap_tn": 1530
     },
     {
       "nombre": "Silo 7",
       "tipo": "Silo metálico",
-      "cap_tn_trigo": 8000.0,
+      "cap_tn_trigo": 8000,
       "cap_por_cereal": {
         "Soja": 7000,
         "Trigo": 8000,
@@ -2209,7 +2157,8 @@
         "Girasol Oleico": 4000,
         "Girasol Confitero": 4000,
         "Cebada Cervecera": 6500
-      }
+      },
+      "cap_tn": 8000
     },
     {
       "nombre": "Silobolsa 1",
@@ -2302,31 +2251,94 @@
       "cap_por_cereal": {}
     }
   ],
-  "destinos_flete": [
+  "granos": [
+    {
+      "nombre": "Soja",
+      "campania": "2025/26",
+      "hum_base": 13.5,
+      "pe_kg_m3": 700,
+      "factor_vs_trigo": 0.875
+    },
+    {
+      "nombre": "Trigo",
+      "campania": "2025/26",
+      "hum_base": 14,
+      "pe_kg_m3": 800,
+      "factor_vs_trigo": 1
+    },
+    {
+      "nombre": "Maíz",
+      "campania": "2025/26",
+      "hum_base": 14.5,
+      "pe_kg_m3": 720,
+      "factor_vs_trigo": 0.9
+    },
+    {
+      "nombre": "Girasol",
+      "campania": "2025/26",
+      "hum_base": 11,
+      "pe_kg_m3": 400,
+      "factor_vs_trigo": 0.5
+    },
+    {
+      "nombre": "Cebada Forrajera",
+      "campania": "2025/26",
+      "hum_base": 13.5,
+      "pe_kg_m3": 600,
+      "factor_vs_trigo": 0.75
+    },
+    {
+      "nombre": "Girasol Oleico",
+      "campania": "2025/26",
+      "hum_base": 11,
+      "pe_kg_m3": 400,
+      "factor_vs_trigo": 0.5
+    },
+    {
+      "nombre": "Girasol Confitero",
+      "campania": "2025/26",
+      "hum_base": 11,
+      "pe_kg_m3": 400,
+      "factor_vs_trigo": 0.5
+    },
+    {
+      "nombre": "Cebada Cervecera",
+      "campania": "2025/26",
+      "hum_base": 13.5,
+      "pe_kg_m3": 650,
+      "factor_vs_trigo": 0.8125
+    }
+  ],
+  "destinos": [
     {
       "nombre": "Daireaux",
-      "km": 120,
-      "tarifa_tn": 22000
+      "empresa": "",
+      "km": "120",
+      "tarifa_tn": "22000"
     },
     {
       "nombre": "Junín",
-      "km": 200,
-      "tarifa_tn": 27000
+      "empresa": "",
+      "km": "200",
+      "tarifa_tn": "27000"
     },
     {
       "nombre": "Bahía Blanca",
-      "km": 340,
-      "tarifa_tn": 34000
+      "empresa": "",
+      "km": "340",
+      "tarifa_tn": "34000"
     },
     {
       "nombre": "Rosario",
-      "km": 430,
-      "tarifa_tn": 38000
+      "empresa": "",
+      "km": "430",
+      "tarifa_tn": "38000"
     },
     {
       "nombre": "Las Palmas",
-      "km": 480,
-      "tarifa_tn": 41000
+      "empresa": "",
+      "km": "480",
+      "tarifa_tn": "41000"
     }
   ],
   "contratos": []
