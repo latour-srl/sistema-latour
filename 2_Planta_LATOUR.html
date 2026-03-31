@@ -546,21 +546,37 @@ function renderSilos(){
   document.getElementById('silos_grid').innerHTML=silos.map(s=>{
     const enDesc=cola.filter(c=>c.silo===s.nombre);
     const cap=parseFloat(s.cap_tn)||0;
-    // sumar neto seco de camiones egresados hoy asignados a este silo
     const hoy=new Date(); hoy.setHours(0,0,0,0);
-    const ocupKg=egresados
-      .filter(e=>e.silo===s.nombre&&new Date(e.horaIngreso)>=hoy)
-      .reduce((sum,e)=>sum+((e.romaneo&&e.romaneo.nseco)||0),0);
-    const ocupTn=ocupKg/1000;
-    const pct=cap>0?Math.min(100,Math.round(ocupTn/cap*100)):0;
+
+    // Total acumulado (histórico completo)
+    const ingresosTotal=egresados.filter(e=>e.silo===s.nombre&&e.romaneo&&e.romaneo.nseco>0);
+    const totalKg=ingresosTotal.reduce((sum,e)=>sum+(e.romaneo.nseco||0),0);
+    const totalTn=totalKg/1000;
+
+    // Solo hoy
+    const ingresosHoy=ingresosTotal.filter(e=>new Date(e.horaIngreso)>=hoy);
+    const hoyKg=ingresosHoy.reduce((sum,e)=>sum+(e.romaneo.nseco||0),0);
+    const hoyTn=hoyKg/1000;
+
+    // Humedad promedio ponderada
+    const sumHumPeso=ingresosTotal.reduce((sum,e)=>sum+(parseFloat(e.romaneo.hum)||0)*(e.romaneo.nseco||0),0);
+    const humProm=totalKg>0?(sumHumPeso/totalKg).toFixed(1):null;
+
+    // Grano más reciente
+    const granoActual=s.grano||(ingresosTotal.length?ingresosTotal[ingresosTotal.length-1].grano:null);
+
+    const pct=cap>0?Math.min(100,Math.round(totalTn/cap*100)):0;
     const barCls=pct>90?'lleno':pct>70?'casi':'';
     const tags=enDesc.map(c=>`<span class="silo-tag">${c.patente}</span>`).join('');
+
     return `<div class="silo-card">
       <div class="silo-name">${s.nombre}</div>
-      <div class="silo-tipo">${s.tipo||'—'} · ${s.descarga||'—'}</div>
+      <div class="silo-tipo">${s.tipo||'—'} · ${s.descarga||'—'}${granoActual&&granoActual!=='—'?' · <span style="color:var(--blu)">'+granoActual+'</span>':''}</div>
       <div class="silo-stat"><span class="silo-lbl">Capacidad</span><span class="silo-val">${cap?N(cap)+' tn':'—'}</span></div>
-      <div class="silo-stat"><span class="silo-lbl">Ingresado hoy</span><span class="silo-val" style="color:var(--grn)">${ocupTn>0?N(ocupTn)+' tn':'—'}</span></div>
-      <div class="silo-stat"><span class="silo-lbl">Grano</span><span class="silo-val" style="font-size:12px;color:var(--blu)">${s.grano||'—'}</span></div>
+      <div class="silo-stat"><span class="silo-lbl">Stock acumulado</span><span class="silo-val" style="color:var(--grn)">${totalTn>0?N(Math.round(totalTn*1000)/1000)+' tn':'—'}</span></div>
+      <div class="silo-stat"><span class="silo-lbl">Ingresado hoy</span><span class="silo-val" style="color:var(--cya)">${hoyTn>0?N(Math.round(hoyTn*1000)/1000)+' tn':'—'}</span></div>
+      <div class="silo-stat"><span class="silo-lbl">Hum. promedio</span><span class="silo-val" style="color:${humProm&&parseFloat(humProm)>14.5?'var(--red)':'var(--mu)'}">${humProm?humProm+'%':'—'}</span></div>
+      <div class="silo-stat"><span class="silo-lbl">Camiones</span><span class="silo-val">${ingresosTotal.length||'—'}</span></div>
       <div class="silo-bar-wrap"><div class="silo-bar ${barCls}" style="width:${pct}%"></div></div>
       <div class="silo-camiones">${enDesc.length?`${enDesc.length} camión/es en playa: ${tags}`:'Sin camiones asignados ahora'}</div>
     </div>`;
