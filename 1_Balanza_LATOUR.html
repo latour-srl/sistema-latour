@@ -531,7 +531,7 @@ let insVal='No', olorVal='Normal', fotoAlerta=false, fotosModal=[];
 // ── GITHUB BACKEND ──
 const GH_USER  = 'latour-srl';
 const GH_REPO  = 'sistema-latour';
-const GH_TOKEN = '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';
+const GH_TOKEN = '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';
 const GH_RAW   = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/latour_cola.json`;
 const GH_API   = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/latour_cola.json`;
 let _ghSha = null;
@@ -743,6 +743,22 @@ function quitarTransito(id){ if(!confirm('¿Quitar?'))return; transito=transito.
 
 function abrirRomaneo(id){
   const c=cola.find(x=>x.id===id); if(!c)return;
+  
+  // Verificar si fue descargado en Planta
+  const descargado = c.estado==='listo' || c.estado==='descarga' || c.horaFinDescarga;
+  if(!descargado){
+    const motivos = [
+      '📦 Reguló carga — salió directo a puerto',
+      '🔄 Otro motivo'
+    ];
+    const opcion = confirm(
+      `⚠ ${c.patente} no fue descargado en Planta.\n\n¿El camión reguló carga y salió directo a puerto?\n\nAceptar = Sí, salió directo\nCancelar = Volver`
+    );
+    if(!opcion) return;
+    c.salidaDirecta = true;
+    c.motivoSinDescarga = 'Reguló carga — salió directo a puerto';
+  }
+  
   modalRomId=id; insVal='No'; olorVal='Normal'; fotoAlerta=c.fueraDeEstandar||false; fotosModal=[...(c.fotos||[])];
   document.getElementById('m_pat').textContent=c.patente;
   ['m_prod','m_trans','m_grano','m_camp','m_estab'].forEach(id=>document.getElementById(id).value=c[{m_prod:'productor',m_trans:'transportista',m_grano:'grano',m_camp:'campania',m_estab:'establecimiento'}[id]]||'');
@@ -1090,7 +1106,7 @@ function renderHistorial(){
   if(!all.length){tbody.innerHTML='';thead.innerHTML='';empty.style.display='block';return;}
   empty.style.display='none';
 
-  thead.innerHTML=`<th>Tipo</th><th>Fecha</th><th>Hora</th><th>Patente</th><th>Productor / Trans.</th><th>Grano</th><th>Bruto kg</th><th>Tara kg</th><th>Neto seco kg</th><th>Hum%</th><th>Merma kg</th><th>Cód. Traz.</th><th>Destino</th><th>Despico kg</th><th>Estándar</th>`;
+  thead.innerHTML=`<th>Tipo</th><th>Fecha</th><th>Hora</th><th>Patente</th><th>Productor / Trans.</th><th>Grano</th><th>Bruto kg</th><th>Tara kg</th><th>Neto seco kg</th><th>Hum%</th><th>Merma kg</th><th>Cód. Traz.</th><th>Destino</th><th>Despico kg</th><th>Estándar</th><th>Acciones</th>`;
 
   tbody.innerHTML=all.map(e=>{
     const r=e.romaneo||{};
@@ -1117,8 +1133,70 @@ function renderHistorial(){
       <td>${esIng?'—':(e.destino||'—')}</td>
       <td class="tm ${d.kg&&Math.abs(d.kg)>500?'talert':''}">${!esIng&&d.kg!=null?(d.kg>=0?'+':'')+N(d.kg)+' kg':'—'}</td>
       <td class="${e.fueraDeEstandar?'talert':'tok'}">${esIng?(e.fueraDeEstandar?'⚠ Fuera':'✓ Ok'):'—'}</td>
+      <td style="white-space:nowrap;">
+        <button onclick="abrirEditarRegistro(${e.id},'${e._tipo}')" style="background:var(--blu-d);border:1px solid var(--blu-b);color:var(--blu);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:10px;margin-right:3px;">✏ Editar</button>
+        <button onclick="eliminarRegistro(${e.id},'${e._tipo}')" style="background:var(--red-d);border:1px solid var(--red-b);color:var(--red);border-radius:4px;padding:2px 7px;cursor:pointer;font-size:10px;">✕ Eliminar</button>
+      </td>
     </tr>`;
   }).join('');
+}
+
+// ── EDITAR / ELIMINAR REGISTROS DEL HISTORIAL ──
+function pedirAuditoria(accion){
+  const operario = prompt(`${accion}\n\nNombre del operario:`);
+  if(!operario) return null;
+  const motivo = prompt(`Motivo de la ${accion.toLowerCase()}:`);
+  if(!motivo) return null;
+  return {operario: operario.trim(), motivo: motivo.trim(), fecha: new Date().toISOString()};
+}
+
+function eliminarRegistro(id, tipo){
+  const audit = pedirAuditoria('Eliminación de registro');
+  if(!audit) return;
+  if(!confirm(`¿Confirmás eliminar este registro?\n\nOperario: ${audit.operario}\nMotivo: ${audit.motivo}`)) return;
+  
+  if(tipo==='ingreso'){
+    egresados=egresados.filter(e=>e.id!==id);
+  } else {
+    despachados=despachados.filter(e=>e.id!==id);
+  }
+  guardarCola(); renderHistorial(); renderCola(); publicarCola();
+  toast('✓ Registro eliminado');
+}
+
+function abrirEditarRegistro(id, tipo){
+  const lista = tipo==='ingreso' ? egresados : despachados;
+  const e = lista.find(x=>x.id===id);
+  if(!e) return;
+  
+  const audit = pedirAuditoria('Edición de registro');
+  if(!audit) return;
+
+  // Mostrar campos editables según tipo
+  if(tipo==='ingreso'){
+    const r = e.romaneo||{};
+    const nuevoNseco = prompt(`Neto seco (kg)\nActual: ${r.nseco||'—'}`, r.nseco||'');
+    if(nuevoNseco!==null && nuevoNseco.trim()){
+      if(!e.romaneo) e.romaneo={};
+      e.romaneo.nseco = parseFloat(nuevoNseco);
+    }
+    const nuevaHum = prompt(`Humedad %\nActual: ${r.hum||'—'}`, r.hum||'');
+    if(nuevaHum!==null && nuevaHum.trim()) e.romaneo.hum = parseFloat(nuevaHum);
+    const nuevoSilo = prompt(`Silo\nActual: ${e.silo||'—'}`, e.silo||'');
+    if(nuevoSilo!==null && nuevoSilo.trim()) e.silo = nuevoSilo.trim();
+    const nuevoCodTraz = prompt(`Código trazabilidad\nActual: ${e.cod_traz||'—'}`, e.cod_traz||'');
+    if(nuevoCodTraz!==null && nuevoCodTraz.trim()) e.cod_traz = nuevoCodTraz.trim();
+  } else {
+    const nuevoDest = prompt(`Destino\nActual: ${e.destino||'—'}`, e.destino||'');
+    if(nuevoDest!==null && nuevoDest.trim()) e.destino = nuevoDest.trim();
+  }
+
+  // Guardar log de auditoría en el registro
+  if(!e._auditoría) e._auditoría=[];
+  e._auditoría.push({...audit, accion:'edición'});
+
+  guardarCola(); renderHistorial(); publicarCola();
+  toast('✓ Registro editado');
 }
 
 // ── EXPORT CSV ──
