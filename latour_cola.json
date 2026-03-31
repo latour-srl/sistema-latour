@@ -1,5 +1,34 @@
 {
-  "cola": [],
+  "cola": [
+    {
+      "id": 143,
+      "tipo_op": "ingreso",
+      "patente": "FDI104 / OJL431",
+      "chasis": "FDI104",
+      "acoplado": "OJL431",
+      "productor": "Sucesores de Jorge Costa S.R.L",
+      "transportista": "Logistica S.N",
+      "establecimiento": "El Tropel",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "1395",
+      "cod_traz": "MZ-25/26-053",
+      "tipo": "latour",
+      "prioridad": "normal",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "espera",
+      "horaIngreso": "2026-03-31T19:49:53.753Z",
+      "horaInicioProceso": null,
+      "silo": "",
+      "tipDescarga": "",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false
+    }
+  ],
   "egresados": [
     {
       "id": 118,
@@ -2364,7 +2393,7 @@
       "cod_traz": "MZ-25/26-001"
     }
   ],
-  "nid": 143,
+  "nid": 144,
   "transito": [],
   "despachados": [
     {
@@ -2411,5 +2440,5 @@
       ]
     }
   ],
-  "ts": 1774985499724
+  "ts": 1774986593765
 }
