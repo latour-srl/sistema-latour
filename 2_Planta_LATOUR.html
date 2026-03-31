@@ -272,7 +272,7 @@ async function leerColaServidor(){
     if(res.ok){
       const meta=await res.json();
       _ghSha=meta.sha;
-      const content=atob(meta.content.replace(/\n/g,''));
+      const content=decodeURIComponent(escape(atob(meta.content.replace(/\n/g,''))));
       const d=JSON.parse(content);
       const colaRemota=d.cola||[];
       const estadosAvanzados=['descarga','servicios','listo'];

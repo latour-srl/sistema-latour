@@ -551,7 +551,8 @@ async function leerColaServidor(){
     if(res.ok){
       const meta=await res.json();
       _ghSha=meta.sha;
-      const d=JSON.parse(atob(meta.content.replace(/\n/g,'')));
+      const raw=meta.content.replace(/\n/g,'');
+      const d=JSON.parse(decodeURIComponent(escape(atob(raw))));
       cola=d.cola||[];egresados=d.egresados||[];nid=d.nid||1;
       transito=d.transito||[];despachados=d.despachados||[];
       try{localStorage.setItem('latour_cola',JSON.stringify({cola,egresados,nid,ts:Date.now()}));localStorage.setItem('latour_transito',JSON.stringify({transito,despachados,ts:Date.now()}));}catch(e){}
