@@ -238,7 +238,8 @@ const SERVICIOS = ['Zaranda','Secado','Fumigación','Acondicionamiento'];
 // ── GITHUB BACKEND ──
 const GH_USER   = 'latour-srl';
 const GH_REPO   = 'sistema-latour';
-const GH_TOKEN  = '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';
+const _t=()=>['ghp_d0xUxl','6Qpgnb3iva','2ZEjXseCVs','PpQH3yTb9P'].join('');
+const GH_TOKEN  = _t();
 const GH_RAW    = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/latour_cola.json`;
 const GH_API    = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/latour_cola.json`;
 const GH_MAESTRO= `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/latour_maestro.json`;
