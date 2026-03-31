@@ -55,6 +55,14 @@ header{background:var(--sur);border-bottom:1px solid var(--bd);padding:12px 20px
 .field label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--mu);}
 .field input,.field select{background:var(--sur2);border:1px solid var(--bd);border-radius:6px;padding:8px 10px;color:var(--tx);font-family:var(--sans);font-size:13px;outline:none;transition:border-color .15s;width:100%;}
 .field input:focus,.field select:focus{border-color:var(--gold);}
+/* combo editable: select + input superpuestos */
+.combo-wrap{position:relative;}
+.combo-wrap select{width:100%;}
+.combo-wrap input.combo-input{position:absolute;inset:0;background:var(--sur2);border:1px solid var(--gold-b);border-radius:6px;padding:8px 10px;color:var(--tx);font-size:13px;display:none;z-index:2;}
+.combo-wrap input.combo-input.visible{display:block;}
+.combo-wrap .combo-edit-btn{position:absolute;right:30px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--mu);cursor:pointer;font-size:11px;z-index:3;padding:2px 4px;}
+.combo-wrap .combo-edit-btn:hover{color:var(--gold);}
+.field input:focus,.field select:focus{border-color:var(--gold);}
 .field input::placeholder{color:var(--mu2);}
 .frow2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
 .tipo-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
@@ -209,38 +217,61 @@ table tr:hover td{background:var(--sur2);}
     <div class="fform" id="form_ing">
       <div class="ptitle">Registrar ingreso de cereal</div>
 
-      <!-- TRANSPORTISTA con botón manual -->
+      <!-- TRANSPORTISTA editable -->
       <div class="field">
         <label>Transportista</label>
-        <div style="display:flex;gap:6px;align-items:center;">
-          <select id="i_trans" style="flex:1;" onchange="onTransportistaChange()"><option value="">— Seleccionar —</option></select>
-          <button onclick="toggleTransManual()" title="Agregar transportista manual" style="padding:7px 10px;border-radius:6px;border:1px solid var(--bd);background:var(--sur2);color:var(--mu);cursor:pointer;font-size:13px;flex-shrink:0;">✏️</button>
-        </div>
-        <input id="i_trans_manual" placeholder="Nombre transportista (manual)" style="display:none;margin-top:5px;background:var(--sur2);border:1px solid var(--gold-b);border-radius:6px;padding:8px 10px;color:var(--tx);font-size:13px;width:100%;">
-      </div>
-
-      <!-- CHASIS y ACOPLADO separados -->
-      <div class="frow2">
-        <div class="field">
-          <label>Chasis (patente)</label>
-          <select id="i_chasis" onchange="onChasisChange()"><option value="">— Seleccionar —</option></select>
-        </div>
-        <div class="field">
-          <label>Acoplado (patente)</label>
-          <select id="i_acoplado"><option value="">— Seleccionar —</option></select>
+        <div class="combo-wrap">
+          <select id="i_trans" onchange="onTransportistaChange()"><option value="">— Seleccionar —</option></select>
+          <input class="combo-input" id="i_trans_txt" placeholder="Escribir transportista...">
+          <button class="combo-edit-btn" onclick="toggleCombo('i_trans','i_trans_txt')" title="Escribir manualmente">✏</button>
         </div>
       </div>
 
+      <!-- CHASIS y ACOPLADO editables -->
       <div class="frow2">
-        <div class="field"><label>Productor</label><select id="i_prod" onchange="onProductorChange()"><option value="">— Seleccionar —</option></select></div>
-        <div class="field"><label>Establecimiento / Campo</label><select id="i_estab"><option value="">— Seleccionar —</option></select></div>
+        <div class="field">
+          <label>Chasis</label>
+          <div class="combo-wrap">
+            <select id="i_chasis" onchange="onChasisChange()"><option value="">— Seleccionar —</option></select>
+            <input class="combo-input" id="i_chasis_txt" placeholder="Escribir chasis..." oninput="this.value=this.value.toUpperCase()">
+            <button class="combo-edit-btn" onclick="toggleCombo('i_chasis','i_chasis_txt')" title="Escribir manualmente">✏</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Acoplado</label>
+          <div class="combo-wrap">
+            <select id="i_acoplado"><option value="">— Seleccionar —</option></select>
+            <input class="combo-input" id="i_acoplado_txt" placeholder="Escribir acoplado..." oninput="this.value=this.value.toUpperCase()">
+            <button class="combo-edit-btn" onclick="toggleCombo('i_acoplado','i_acoplado_txt')" title="Escribir manualmente">✏</button>
+          </div>
+        </div>
       </div>
+
+      <!-- PRODUCTOR editable -->
+      <div class="frow2">
+        <div class="field">
+          <label>Productor</label>
+          <div class="combo-wrap">
+            <select id="i_prod" onchange="onProductorChange()"><option value="">— Seleccionar —</option></select>
+            <input class="combo-input" id="i_prod_txt" placeholder="Escribir productor...">
+            <button class="combo-edit-btn" onclick="toggleCombo('i_prod','i_prod_txt')" title="Escribir manualmente">✏</button>
+          </div>
+        </div>
+        <!-- ESTABLECIMIENTO editable -->
+        <div class="field">
+          <label>Establecimiento / Campo</label>
+          <div class="combo-wrap">
+            <select id="i_estab"><option value="">— Seleccionar —</option></select>
+            <input class="combo-input" id="i_estab_txt" placeholder="Escribir establecimiento...">
+            <button class="combo-edit-btn" onclick="toggleCombo('i_estab','i_estab_txt')" title="Escribir manualmente">✏</button>
+          </div>
+        </div>
+      </div>
+
       <div class="frow2">
         <div class="field"><label>Grano</label><select id="i_grano" onchange="onGranoChange()"><option value="">— Grano —</option></select></div>
         <div class="field"><label>Campaña</label><input id="i_camp" placeholder="2025/26"></div>
       </div>
-      <div class="field"><label>Contrato (opcional)</label><select id="i_contrato" onchange="onContratoChange()"><option value="">— Sin contrato —</option></select></div>
-      <div class="contrato-badge" id="contrato_info"></div>
       <div class="field"><label>Tipo de flete</label>
         <div class="tipo-grid">
           <div class="tipo-btn tb-lat" id="tb_lat" onclick="setTipo('latour')">⭐ Flete LATOUR<small>Prioridad en planta</small></div>
@@ -274,16 +305,45 @@ table tr:hover td{background:var(--sur2);}
     <!-- FORM EGRESO -->
     <div class="fform hidden" id="form_egr">
       <div class="ptitle">Registrar salida a puerto</div>
-      <div class="field"><label>Patente</label><input id="e_pat" placeholder="ABC 123" maxlength="10" oninput="this.value=this.value.toUpperCase();buscarPatente(this.value,'egr')"></div>
+
+      <!-- TRANSPORTISTA editable -->
+      <div class="field">
+        <label>Transportista</label>
+        <div class="combo-wrap">
+          <select id="e_trans" onchange="onTransportistaEgrChange()"><option value="">— Seleccionar —</option></select>
+          <input class="combo-input" id="e_trans_txt" placeholder="Escribir transportista...">
+          <button class="combo-edit-btn" onclick="toggleCombo('e_trans','e_trans_txt')" title="Escribir manualmente">✏</button>
+        </div>
+      </div>
+
+      <!-- CHASIS y ACOPLADO editables -->
       <div class="frow2">
-        <div class="field"><label>Transportista</label><select id="e_trans"><option value="">— Seleccionar —</option></select></div>
+        <div class="field">
+          <label>Chasis</label>
+          <div class="combo-wrap">
+            <select id="e_chasis" onchange="onChasisEgrChange()"><option value="">— Seleccionar —</option></select>
+            <input class="combo-input" id="e_chasis_txt" placeholder="Escribir chasis..." oninput="this.value=this.value.toUpperCase()">
+            <button class="combo-edit-btn" onclick="toggleCombo('e_chasis','e_chasis_txt')" title="Escribir manualmente">✏</button>
+          </div>
+        </div>
+        <div class="field">
+          <label>Acoplado</label>
+          <div class="combo-wrap">
+            <select id="e_acoplado"><option value="">— Seleccionar —</option></select>
+            <input class="combo-input" id="e_acoplado_txt" placeholder="Escribir acoplado..." oninput="this.value=this.value.toUpperCase()">
+            <button class="combo-edit-btn" onclick="toggleCombo('e_acoplado','e_acoplado_txt')" title="Escribir manualmente">✏</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="frow2">
         <div class="field"><label>Chofer</label><input id="e_chofer" placeholder="Nombre (opcional)"></div>
+        <div class="field"><label>Grano</label><select id="e_grano"><option value="">— Grano —</option></select></div>
       </div>
       <div class="frow2">
-        <div class="field"><label>Grano</label><select id="e_grano"><option value="">— Grano —</option></select></div>
         <div class="field"><label>Campaña</label><input id="e_camp" placeholder="2025/26"></div>
+        <div class="field"><label>Destino / Puerto</label><input id="e_destino" placeholder="Ej: Rosario..."></div>
       </div>
-      <div class="field"><label>Destino / Puerto</label><input id="e_destino" placeholder="Ej: Rosario, Bahía Blanca..."></div>
       <div class="field"><label>Tramo de flete</label>
         <div class="tramo-grid">
           <div class="tramo-btn" id="tr_ldirecto" onclick="setTramo('ldirecto')">Campo → Puerto <small>Largo directo</small></div>
@@ -524,115 +584,83 @@ function setModo(m){
   if(m==='egr')renderTransito();
 }
 
-function poblarSelects(){
-  const prod=M.productores||[], trans=M.transportistas||[], estab=M.establecimientos||[], granos=M.granos||[], contratos=M.contratos||[];
-  const sel=(id,items)=>{ const el=document.getElementById(id); const cur=el.value; el.innerHTML='<option value="">— Seleccionar —</option>'+items.map(x=>`<option value="${x.nombre}">${x.nombre}</option>`).join(''); if(cur)el.value=cur; };
-  sel('i_prod',prod); sel('i_estab',estab); sel('e_trans',trans);
-  // transportista con opción manual
-  const elTrans=document.getElementById('i_trans');
-  const curTrans=elTrans.value;
-  elTrans.innerHTML='<option value="">— Seleccionar —</option>'+trans.map(x=>`<option value="${x.nombre}">${x.nombre}</option>`).join('');
-  if(curTrans) elTrans.value=curTrans;
-  // poblar chasis y acoplado desde patentes de transportistas
-  poblarPatentes();
-  ['i_grano','e_grano'].forEach(id=>{ document.getElementById(id).innerHTML='<option value="">— Grano —</option>'+granos.map(g=>`<option value="${g.nombre}">${g.nombre}</option>`).join(''); });
-  document.getElementById('i_contrato').innerHTML='<option value="">— Sin contrato —</option>'+contratos.map(c=>`<option value="${c._id}">[${c.numero||'—'}] ${c.productor} · ${c.grano}</option>`).join('');
+// ── HELPER COMBOS EDITABLES ──
+function getComboVal(selId, txtId){
+  const txt=document.getElementById(txtId);
+  if(txt&&txt.classList.contains('visible')&&txt.value.trim()) return txt.value.trim();
+  return document.getElementById(selId).value;
 }
-
-function poblarPatentes(){
-  // Poblar chasis y acoplado filtrando por transportista seleccionado
-  const transNombre = getTransportistaActual();
-  const trans = M.transportistas||[];
-  let patentes = [];
-  if(transNombre){
-    const t = trans.find(x=>x.nombre===transNombre);
-    if(t && t.patentes){
-      patentes = t.patentes.split(',').map(p=>p.trim()).filter(Boolean);
-    }
+function toggleCombo(selId, txtId){
+  const sel=document.getElementById(selId), txt=document.getElementById(txtId);
+  if(txt.classList.contains('visible')){
+    txt.classList.remove('visible'); txt.value=''; sel.style.visibility='visible';
   } else {
-    // Sin filtro: todas las patentes de todos los transportistas
-    trans.forEach(t=>{ if(t.patentes) t.patentes.split(',').forEach(p=>{ const pt=p.trim(); if(pt&&!patentes.includes(pt)) patentes.push(pt); }); });
+    txt.classList.add('visible'); sel.style.visibility='hidden'; txt.focus();
   }
-  patentes.sort();
-  const opts = '<option value="">— Seleccionar —</option>'+patentes.map(p=>`<option value="${p}">${p}</option>`).join('');
-  document.getElementById('i_chasis').innerHTML = opts;
-  document.getElementById('i_acoplado').innerHTML = opts;
+}
+function resetCombo(selId, txtId){
+  const sel=document.getElementById(selId), txt=document.getElementById(txtId);
+  if(sel) sel.value='';
+  if(txt){ txt.classList.remove('visible'); txt.value=''; if(sel) sel.style.visibility='visible'; }
 }
 
-function getTransportistaActual(){
-  const manual = document.getElementById('i_trans_manual');
-  if(manual && manual.style.display!=='none' && manual.value.trim()) return manual.value.trim();
-  return document.getElementById('i_trans').value;
+function poblarSelects(){
+  const prod=M.productores||[], trans=M.transportistas||[], estab=M.establecimientos||[], granos=M.granos||[];
+  const sel=(id,items)=>{ const el=document.getElementById(id); if(!el)return; const cur=el.value; el.innerHTML='<option value="">— Seleccionar —</option>'+items.map(x=>`<option value="${x.nombre}">${x.nombre}</option>`).join(''); if(cur)el.value=cur; };
+  sel('i_prod',prod); sel('i_estab',estab); sel('i_trans',trans); sel('e_trans',trans);
+  poblarPatentes('i_chasis','i_acoplado', getComboVal('i_trans','i_trans_txt'));
+  poblarPatentes('e_chasis','e_acoplado', getComboVal('e_trans','e_trans_txt'));
+  ['i_grano','e_grano'].forEach(id=>{ const el=document.getElementById(id); if(el) el.innerHTML='<option value="">— Grano —</option>'+granos.map(g=>`<option value="${g.nombre}">${g.nombre}</option>`).join(''); });
 }
+
+function poblarPatentes(chasisId, acopladoId, transNombre){
+  const trans=M.transportistas||[];
+  let patentes=[];
+  if(transNombre){ const t=trans.find(x=>x.nombre===transNombre); if(t&&t.patentes) patentes=t.patentes.split(',').map(p=>p.trim()).filter(Boolean); }
+  else { trans.forEach(t=>{ if(t.patentes) t.patentes.split(',').forEach(p=>{ const pt=p.trim(); if(pt&&!patentes.includes(pt)) patentes.push(pt); }); }); }
+  patentes.sort();
+  const opts='<option value="">— Seleccionar —</option>'+patentes.map(p=>`<option value="${p}">${p}</option>`).join('');
+  const ch=document.getElementById(chasisId); if(ch) ch.innerHTML=opts;
+  const ac=document.getElementById(acopladoId); if(ac) ac.innerHTML=opts;
+}
+
+function getTransportistaActual(){ return getComboVal('i_trans','i_trans_txt'); }
 
 function onTransportistaChange(){
-  const t = (M.transportistas||[]).find(x=>x.nombre===document.getElementById('i_trans').value);
+  const t=(M.transportistas||[]).find(x=>x.nombre===document.getElementById('i_trans').value);
   if(t){ if(t.tipo==='Trabaja con LATOUR')setTipo('latour'); else if(t.tipo==='Flete propio productor')setTipo('libre'); }
-  poblarPatentes();
+  poblarPatentes('i_chasis','i_acoplado', getComboVal('i_trans','i_trans_txt'));
 }
-
+function onTransportistaEgrChange(){
+  poblarPatentes('e_chasis','e_acoplado', getComboVal('e_trans','e_trans_txt'));
+}
 function onChasisChange(){
-  // Si seleccionan chasis, filtra acoplados del mismo transportista excluyendo el chasis elegido
-  const chasis = document.getElementById('i_chasis').value;
-  const transNombre = getTransportistaActual();
-  const trans = M.transportistas||[];
-  let patentes = [];
-  if(transNombre){
-    const t = trans.find(x=>x.nombre===transNombre);
-    if(t && t.patentes) patentes = t.patentes.split(',').map(p=>p.trim()).filter(Boolean);
-  } else {
-    trans.forEach(t=>{ if(t.patentes) t.patentes.split(',').forEach(p=>{ const pt=p.trim(); if(pt&&!patentes.includes(pt)) patentes.push(pt); }); });
-  }
-  patentes = patentes.filter(p=>p!==chasis).sort();
-  document.getElementById('i_acoplado').innerHTML = '<option value="">— Seleccionar —</option>'+patentes.map(p=>`<option value="${p}">${p}</option>`).join('');
+  const chasis=getComboVal('i_chasis','i_chasis_txt');
+  let patentes=[];
+  const transNombre=getTransportistaActual();
+  const trans=M.transportistas||[];
+  if(transNombre){ const t=trans.find(x=>x.nombre===transNombre); if(t&&t.patentes) patentes=t.patentes.split(',').map(p=>p.trim()).filter(Boolean); }
+  else { trans.forEach(t=>{ if(t.patentes) t.patentes.split(',').forEach(p=>{ const pt=p.trim(); if(pt&&!patentes.includes(pt)) patentes.push(pt); }); }); }
+  patentes=patentes.filter(p=>p!==chasis).sort();
+  const ac=document.getElementById('i_acoplado'); if(ac) ac.innerHTML='<option value="">— Seleccionar —</option>'+patentes.map(p=>`<option value="${p}">${p}</option>`).join('');
 }
-
-function toggleTransManual(){
-  const sel = document.getElementById('i_trans');
-  const manual = document.getElementById('i_trans_manual');
-  if(manual.style.display==='none'){
-    manual.style.display='block';
-    sel.style.opacity='.4';
-    sel.value='';
-    manual.focus();
-  } else {
-    manual.style.display='none';
-    manual.value='';
-    sel.style.opacity='1';
-    poblarPatentes();
-  }
+function onChasisEgrChange(){
+  const chasis=getComboVal('e_chasis','e_chasis_txt');
+  let patentes=[];
+  const transNombre=getComboVal('e_trans','e_trans_txt');
+  const trans=M.transportistas||[];
+  if(transNombre){ const t=trans.find(x=>x.nombre===transNombre); if(t&&t.patentes) patentes=t.patentes.split(',').map(p=>p.trim()).filter(Boolean); }
+  else { trans.forEach(t=>{ if(t.patentes) t.patentes.split(',').forEach(p=>{ const pt=p.trim(); if(pt&&!patentes.includes(pt)) patentes.push(pt); }); }); }
+  patentes=patentes.filter(p=>p!==chasis).sort();
+  const ac=document.getElementById('e_acoplado'); if(ac) ac.innerHTML='<option value="">— Seleccionar —</option>'+patentes.map(p=>`<option value="${p}">${p}</option>`).join('');
 }
-
 function onProductorChange(){
-  const prod=document.getElementById('i_prod').value;
+  const prod=getComboVal('i_prod','i_prod_txt');
   const estab=(M.establecimientos||[]).filter(e=>!prod||e.productor===prod);
-  document.getElementById('i_estab').innerHTML='<option value="">— Seleccionar —</option>'+estab.map(e=>`<option value="${e.nombre}">${e.nombre}${e.partido?' · '+e.partido:''}</option>`).join('');
-  const contratos=(M.contratos||[]).filter(c=>!prod||c.productor===prod);
-  document.getElementById('i_contrato').innerHTML='<option value="">— Sin contrato —</option>'+contratos.map(c=>`<option value="${c._id}">[${c.numero||'—'}] ${c.grano} · ${c.tn_contrat||'?'}tn</option>`).join('');
+  const el=document.getElementById('i_estab'); if(el) el.innerHTML='<option value="">— Seleccionar —</option>'+estab.map(e=>`<option value="${e.nombre}">${e.nombre}${e.partido?' · '+e.partido:''}</option>`).join('');
 }
 function onGranoChange(){ const g=(M.granos||[]).find(x=>x.nombre===document.getElementById('i_grano').value); if(g&&g.campania)document.getElementById('i_camp').value=g.campania; }
-function onContratoChange(){
-  const id=parseInt(document.getElementById('i_contrato').value);
-  const badge=document.getElementById('contrato_info');
-  if(!id){badge.style.display='none';return;}
-  const c=(M.contratos||[]).find(x=>x._id===id); if(!c){badge.style.display='none';return;}
-  const ent=parseFloat(c.tn_entregadas)||0, ctr=parseFloat(c.tn_contrat)||0;
-  badge.style.display='block';
-  badge.innerHTML=`<strong>${c.numero||'CTR'}</strong> · ${c.grano} · <strong>${ent}</strong>/${ctr}tn · <strong style="color:var(--grn)">${ctr-ent>0?ctr-ent+' tn disp.':'⚠ Completo'}</strong>`;
-  if(c.productor)document.getElementById('i_prod').value=c.productor;
-  if(c.grano)document.getElementById('i_grano').value=c.grano;
-  if(c.campania)document.getElementById('i_camp').value=c.campania;
-}
-function buscarPatente(pat,modo){
-  if(pat.length<6)return;
-  const t=(M.transportistas||[]).find(x=>(x.patentes||'').toUpperCase().includes(pat));
-  if(t){
-    const id=modo==='ing'?'i_trans':'e_trans';
-    const el=document.getElementById(id);
-    if(el.querySelector(`option[value="${t.nombre}"]`))el.value=t.nombre;
-    if(modo==='ing'){ if(t.tipo==='Trabaja con LATOUR')setTipo('latour'); else if(t.tipo==='Flete propio productor')setTipo('libre'); }
-  }
-}
+function buscarPatente(pat,modo){ /* mantenido por compatibilidad */ }
 function setTipo(t){ tipoSel=t; document.getElementById('tb_lat').className='tipo-btn'+(t==='latour'?' tb-lat':''); document.getElementById('tb_lib').className='tipo-btn'+(t==='libre'?' tb-lib':''); }
 function setPrio(p){ prioSel=p; ['alta','media','normal'].forEach(x=>{ document.getElementById('pb_'+x.substring(0,4)=='alta'?'pb_alta':x==='media'?'pb_media':'pb_norm').className='prio-btn'; }); document.getElementById(p==='alta'?'pb_alta':p==='media'?'pb_media':'pb_norm').className='prio-btn pb-'+p; }
 setPrio('media');
@@ -648,22 +676,23 @@ function toggleOp(el){ const op=el.dataset.op; if(opsSel.has(op)){opsSel.delete(
 function calcNetoSalida(){ const b=parseFloat(document.getElementById('e_bruto').value)||0,t=parseFloat(document.getElementById('e_tara').value)||0,n=b-t; document.getElementById('e_neto').value=n>0?n.toFixed(0):''; }
 
 function registrarIngreso(){
-  const chasis=document.getElementById('i_chasis').value.trim().toUpperCase();
-  const acoplado=document.getElementById('i_acoplado').value.trim().toUpperCase();
+  const chasis=getComboVal('i_chasis','i_chasis_txt').toUpperCase();
+  const acoplado=getComboVal('i_acoplado','i_acoplado_txt').toUpperCase();
   const transportista=getTransportistaActual();
-  if(!chasis){alert('Seleccioná el chasis.');return;}
+  const productor=getComboVal('i_prod','i_prod_txt');
+  const establecimiento=getComboVal('i_estab','i_estab_txt');
+  if(!chasis){alert('Seleccioná o escribí el chasis.');return;}
   const pat=acoplado?chasis+' / '+acoplado:chasis;
   if(cola.find(c=>c.chasis===chasis)){alert(`${chasis} ya está en planta.`);return;}
   cola.push({
     id:nid++,tipo_op:'ingreso',
     patente:pat, chasis, acoplado,
-    productor:document.getElementById('i_prod').value||'—',
+    productor:productor||'—',
     transportista:transportista||'—',
-    establecimiento:document.getElementById('i_estab').value||'—',
+    establecimiento:establecimiento||'—',
     grano:document.getElementById('i_grano').value||'—',
     campania:document.getElementById('i_camp').value||'—',
     cp:document.getElementById('i_cp').value.trim()||'',
-    contrato_id:document.getElementById('i_contrato').value||'',
     tipo:tipoSel,prioridad:prioSel,ops:[...opsSel],opsDone:[],
     estado:'espera',horaIngreso:new Date().toISOString(),horaInicioProceso:null,
     silo:'',tipDescarga:'',servicios:[],fotos:[],fueraDeEstandar:false
@@ -671,28 +700,36 @@ function registrarIngreso(){
   guardarCola(); limpiarIng(); renderCola(); toast(`✓ Ingreso — ${pat}`); publicarCola();
 }
 function registrarEgreso(){
-  const pat=document.getElementById('e_pat').value.trim().toUpperCase();
-  if(!pat){alert('Ingresá la patente.');return;}
-  const grano=document.getElementById('e_grano').value, trans=document.getElementById('e_trans').value;
+  const chasis=getComboVal('e_chasis','e_chasis_txt').toUpperCase();
+  const acoplado=getComboVal('e_acoplado','e_acoplado_txt').toUpperCase();
+  const trans=getComboVal('e_trans','e_trans_txt');
+  const grano=document.getElementById('e_grano').value;
+  if(!chasis){alert('Seleccioná o escribí el chasis.');return;}
   if(!grano||!trans){alert('Completá grano y transportista.');return;}
   const bruto=parseFloat(document.getElementById('e_bruto').value)||0, tara=parseFloat(document.getElementById('e_tara').value)||0;
   if(!bruto||!tara){alert('Ingresá bruto y tara de salida.');return;}
-  transito.push({id:nid++,tipo_op:'egreso',patente:pat,transportista:trans,chofer:document.getElementById('e_chofer').value.trim()||'',grano,campania:document.getElementById('e_camp').value||'—',destino:document.getElementById('e_destino').value.trim()||'—',tramo:tramoSel,cp:document.getElementById('e_cp').value.trim()||'',contrato_destino:document.getElementById('e_cto').value.trim()||'',pesada_salida:{bruto,tara,neto:bruto-tara},estado:'transito',horaSalida:new Date().toISOString()});
+  const pat=acoplado?chasis+' / '+acoplado:chasis;
+  transito.push({id:nid++,tipo_op:'egreso',patente:pat,chasis,acoplado,transportista:trans,chofer:document.getElementById('e_chofer').value.trim()||'',grano,campania:document.getElementById('e_camp').value||'—',destino:document.getElementById('e_destino').value.trim()||'—',tramo:tramoSel,cp:document.getElementById('e_cp').value.trim()||'',contrato_destino:document.getElementById('e_cto').value.trim()||'',pesada_salida:{bruto,tara,neto:bruto-tara},estado:'transito',horaSalida:new Date().toISOString()});
   guardarCola(); limpiarEgr(); renderCola(); renderTransito(); toast(`✓ Salida — ${pat}`); publicarCola();
 }
 function limpiarIng(){
   ['i_camp','i_cp'].forEach(id=>document.getElementById(id).value='');
-  ['i_prod','i_trans','i_estab','i_grano','i_contrato','i_chasis','i_acoplado'].forEach(id=>document.getElementById(id).value='');
-  const manual=document.getElementById('i_trans_manual');
-  manual.style.display='none'; manual.value='';
-  document.getElementById('i_trans').style.opacity='1';
-  document.getElementById('contrato_info').style.display='none';
+  ['i_grano'].forEach(id=>document.getElementById(id).value='');
+  resetCombo('i_trans','i_trans_txt'); resetCombo('i_chasis','i_chasis_txt');
+  resetCombo('i_acoplado','i_acoplado_txt'); resetCombo('i_prod','i_prod_txt');
+  resetCombo('i_estab','i_estab_txt');
   setTipo('latour'); setPrio('media');
   opsSel=new Set(['Descarga']);
   document.querySelectorAll('.op-pill').forEach(el=>el.classList.toggle('on',el.dataset.op==='Descarga'));
-  poblarPatentes();
+  poblarPatentes('i_chasis','i_acoplado','');
 }
-function limpiarEgr(){ ['e_pat','e_chofer','e_destino','e_cp','e_cto','e_camp','e_bruto','e_tara','e_neto'].forEach(id=>document.getElementById(id).value=''); ['e_trans','e_grano'].forEach(id=>document.getElementById(id).value=''); setTramo('lplanta'); }
+function limpiarEgr(){
+  ['e_chofer','e_destino','e_cp','e_cto','e_camp','e_bruto','e_tara','e_neto'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  document.getElementById('e_grano').value='';
+  resetCombo('e_trans','e_trans_txt'); resetCombo('e_chasis','e_chasis_txt');
+  resetCombo('e_acoplado','e_acoplado_txt');
+  setTramo('lplanta');
+}
 
 function iniciarCalado(id){ const c=cola.find(x=>x.id===id); if(!c)return; c.estado='calado'; c.horaInicioProceso=new Date().toISOString(); guardarCola(); renderCola(); }
 function quitarCola(id){ if(!confirm('¿Quitar?'))return; cola=cola.filter(x=>x.id!==id); guardarCola(); renderCola(); }
