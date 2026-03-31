@@ -684,7 +684,9 @@ function registrarIngreso(){
   const establecimiento=getComboVal('i_estab','i_estab_txt');
   if(!chasis){alert('Seleccioná o escribí el chasis.');return;}
   const pat=acoplado?chasis+' / '+acoplado:chasis;
-  if(cola.find(c=>c.chasis===chasis)){alert(`${chasis} ya está en planta.`);return;}
+  if(cola.find(c=>c.chasis===chasis)){
+    if(!confirm(`${chasis} ya está en planta. ¿Es un nuevo viaje con otra carta de porte?`)) return;
+  }
   const grano=document.getElementById('i_grano').value||'—';
   const campania=document.getElementById('i_camp').value||'—';
   const cod_traz=generarCodTrazabilidad(grano, campania);
@@ -851,6 +853,7 @@ function confirmarPuerto(){
   despachados.push({...e}); transito=transito.filter(x=>x.id!==modalPueId);
   guardarCola(); renderCola(); renderTransito(); cerrarModal('pue');
   toast(`✓ Puerto OK — ${e.patente} · Despico: ${e.despico.kg>=0?'+':''}${N(e.despico.kg)} kg`);
+  publicarCola();
 }
 
 function getTelProductor(n){ const p=(M.productores||[]).find(x=>x.nombre===n); return p?(p.telefono||p.tel||''):''; }
