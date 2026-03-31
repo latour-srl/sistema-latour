@@ -1,33 +1,5 @@
 {
-  "cola": [
-    {
-      "id": 10,
-      "tipo_op": "ingreso",
-      "patente": "CDF573",
-      "productor": "De la Mata Raul Alberto",
-      "transportista": "Abraham Jose",
-      "establecimiento": "La Julia(KM 409)",
-      "grano": "Maíz",
-      "campania": "2025/26",
-      "cp": "",
-      "contrato_id": "",
-      "tipo": "latour",
-      "prioridad": "normal",
-      "ops": [
-        "Descarga"
-      ],
-      "opsDone": [],
-      "estado": "espera",
-      "horaIngreso": "2026-03-27T19:36:50.689Z",
-      "horaInicioProceso": null,
-      "silo": "",
-      "tipDescarga": "",
-      "servicios": [],
-      "fotos": [],
-      "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-046"
-    }
-  ],
+  "cola": [],
   "egresados": [
     {
       "id": 118,
@@ -2420,5 +2392,5 @@
     }
   ],
   "despachados": [],
-  "ts": 1774955336169
+  "ts": 1774959668087
 }
