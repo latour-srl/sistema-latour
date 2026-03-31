@@ -440,6 +440,7 @@ table tr:hover td{background:var(--sur2);}
     <div class="mfield"><label>Campaña</label><input id="m_camp" readonly></div>
     <div class="mfield"><label>Carta de porte</label><input id="m_cp" placeholder="N° carta de porte"></div>
     <div class="mfield"><label>Establecimiento</label><input id="m_estab" readonly></div>
+    <div class="mfield" style="grid-column:1/-1;"><label style="color:var(--pur);">🔬 Código de trazabilidad</label><input id="m_cod_traz" placeholder="Ej: MZ-25/26-001" style="font-family:var(--mono);color:var(--pur);font-weight:600;"></div>
   </div>
   <div class="modal-sec">Pesada</div>
   <div class="mgrid3">
@@ -744,6 +745,7 @@ function abrirRomaneo(id){
   document.getElementById('m_pat').textContent=c.patente;
   ['m_prod','m_trans','m_grano','m_camp','m_estab'].forEach(id=>document.getElementById(id).value=c[{m_prod:'productor',m_trans:'transportista',m_grano:'grano',m_camp:'campania',m_estab:'establecimiento'}[id]]||'');
   document.getElementById('m_cp').value=c.cp||'';
+  document.getElementById('m_cod_traz').value=c.cod_traz||'';
   ['m_bruto','m_tara','m_neto','m_hum','m_merma','m_nseco'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('m_hum_base').value='13.5'; document.getElementById('m_obs').value='';
   document.getElementById('nb_val').textContent='0 kg'; document.getElementById('nb_sub').textContent='—';
@@ -834,6 +836,7 @@ function guardarRomaneoIngreso(){
   const hum=parseFloat(document.getElementById('m_hum').value)||0,hum_base=parseFloat(document.getElementById('m_hum_base').value)||13.5;
   const merma=parseFloat(document.getElementById('m_merma').value)||0,nseco=parseFloat(document.getElementById('m_nseco').value)||bruto-tara;
   c.romaneo={bruto,tara,neto:bruto-tara,hum,hum_base,merma,nseco,cp:document.getElementById('m_cp').value,insectos:insVal,olor:olorVal,obs:document.getElementById('m_obs').value.trim()};
+  c.cod_traz=document.getElementById('m_cod_traz').value.trim()||c.cod_traz||'';
   c.fotos=[...fotosModal]; c.fueraDeEstandar=fotoAlerta; c.horaEgreso=new Date().toISOString();
   egresados.push({...c}); cola=cola.filter(x=>x.id!==modalRomId);
   guardarCola(); renderCola(); toast('✓ Romaneo — '+c.patente); habilitarWA(c); publicarCola();
