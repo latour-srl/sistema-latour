@@ -792,12 +792,9 @@ function setIns(v){ insVal=v; ['ins_no','ins_si','ins_leve'].forEach(id=>documen
 function setOlor(v){ olorVal=v; ['ol_normal','ol_hum','ol_rancio','ol_otro'].forEach(id=>document.getElementById(id).className='check-opt'); document.getElementById({Normal:'ol_normal',Humedad:'ol_hum',Rancio:'ol_rancio',Otro:'ol_otro'}[v]||'ol_normal').className='check-opt '+(v==='Normal'?'co-ok':'co-bad'); }
 
 function generarCodTrazabilidad(grano, campania){
-  // Prefijos por grano
   const prefijos = {'Maíz':'MZ','Soja':'SO','Girasol':'GI','Trigo':'TR','Cebada':'CB','Sorgo':'SR','Maní':'MN'};
   const pref = prefijos[grano] || grano.substring(0,2).toUpperCase();
-  // Campaña abreviada: 2025/26 → 25/26
   const camp = (campania||'').replace(/20(\d{2})\/(\d{2})/,'$1/$2') || '—';
-  // Buscar el último correlativo para este grano+campaña
   const todos = [...cola, ...egresados, ...transito, ...despachados];
   let max = 0;
   todos.forEach(c=>{
@@ -808,6 +805,8 @@ function generarCodTrazabilidad(grano, campania){
   });
   return `${pref}-${camp}-${String(max+1).padStart(3,'0')}`;
 }
+
+function calcDespico(){
   const b=parseFloat(document.getElementById('p_bruto_pue').value)||0,t=parseFloat(document.getElementById('p_tara_pue').value)||0,n=b-t;
   document.getElementById('p_neto_pue').value=n>0?n.toFixed(0):'';
   const nSal=parseFloat(document.getElementById('p_neto_sal').value)||0;
