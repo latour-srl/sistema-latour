@@ -1645,7 +1645,7 @@
       "servicios": [],
       "fotos": [],
       "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-049",
+      "cod_traz": "MZ-25/26-048",
       "horaEgreso": "2026-03-28T13:07:19",
       "horaInicioDescarga": "2026-03-28T13:07:19",
       "horaFinDescarga": "2026-03-28T13:07:19",
@@ -1690,7 +1690,7 @@
       "horaEgreso": "2026-03-28T12:12:05",
       "horaInicioDescarga": "2026-03-28T12:12:05",
       "horaFinDescarga": "2026-03-28T12:12:05",
-      "silo": "Silo 4",
+      "silo": "Silo 7",
       "romaneo": {
         "bruto": 46880.0,
         "tara": 14600.0,
@@ -1704,7 +1704,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-052"
+      "cod_traz": "MZ-25/26-051"
     },
     {
       "id": 106,
@@ -1778,7 +1778,7 @@
       "horaEgreso": "2026-03-28T09:51:52",
       "horaInicioDescarga": "2026-03-28T09:51:52",
       "horaFinDescarga": "2026-03-28T09:51:52",
-      "silo": "Silo 4",
+      "silo": "Silo 7",
       "romaneo": {
         "bruto": 46860.0,
         "tara": 14080.0,
@@ -1792,7 +1792,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-051"
+      "cod_traz": "MZ-25/26-050"
     },
     {
       "id": 100,
@@ -1821,7 +1821,7 @@
       "servicios": [],
       "fotos": [],
       "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-050",
+      "cod_traz": "MZ-25/26-049",
       "horaEgreso": "2026-03-28T08:34:50",
       "horaInicioDescarga": "2026-03-28T08:34:50",
       "horaFinDescarga": "2026-03-28T08:34:50",
@@ -1880,7 +1880,7 @@
         "olor": "Normal",
         "obs": "Importado desde Romaneo"
       },
-      "cod_traz": "MZ-25/26-048"
+      "cod_traz": "MZ-25/26-047"
     },
     {
       "id": 102,
@@ -1909,7 +1909,7 @@
       "servicios": [],
       "fotos": [],
       "fueraDeEstandar": false,
-      "cod_traz": "MZ-25/26-047",
+      "cod_traz": "MZ-25/26-046",
       "horaEgreso": "2026-03-28T08:33:34",
       "horaInicioDescarga": "2026-03-28T08:33:34",
       "horaFinDescarga": "2026-03-28T08:33:34",
@@ -2391,8 +2391,8 @@
       "horaEgreso": "2026-03-31T07:49:00Z",
       "horaInicioDescarga": "2026-03-31T07:49:00Z",
       "horaFinDescarga": "2026-03-31T07:49:00Z",
-      "silo": "Silo 4",
-      "cod_traz": "MZ-25/26-053",
+      "silo": "Silo 7",
+      "cod_traz": "MZ-25/26-052",
       "romaneo": {
         "bruto": 47500,
         "tara": 16400,
@@ -2435,8 +2435,8 @@
       "horaEgreso": "2026-03-31T07:51:00Z",
       "horaInicioDescarga": "2026-03-31T07:51:00Z",
       "horaFinDescarga": "2026-03-31T07:51:00Z",
-      "silo": "Silo 4",
-      "cod_traz": "MZ-25/26-054",
+      "silo": "Silo 7",
+      "cod_traz": "MZ-25/26-053",
       "romaneo": {
         "bruto": 54060,
         "tara": 18160,
@@ -2479,8 +2479,8 @@
       "horaEgreso": "2026-03-31T07:52:00Z",
       "horaInicioDescarga": "2026-03-31T07:52:00Z",
       "horaFinDescarga": "2026-03-31T07:52:00Z",
-      "silo": "Silo 4",
-      "cod_traz": "MZ-25/26-055",
+      "silo": "Silo 7",
+      "cod_traz": "MZ-25/26-054",
       "romaneo": {
         "bruto": 54520,
         "tara": 16160,
@@ -2523,8 +2523,8 @@
       "horaEgreso": "2026-03-31T07:53:00Z",
       "horaInicioDescarga": "2026-03-31T07:53:00Z",
       "horaFinDescarga": "2026-03-31T07:53:00Z",
-      "silo": "Silo 4",
-      "cod_traz": "MZ-25/26-056",
+      "silo": "Silo 7",
+      "cod_traz": "MZ-25/26-055",
       "romaneo": {
         "bruto": 46880,
         "tara": 15620,
@@ -2567,8 +2567,8 @@
       "horaEgreso": "2026-03-31T07:54:00Z",
       "horaInicioDescarga": "2026-03-31T07:54:00Z",
       "horaFinDescarga": "2026-03-31T07:54:00Z",
-      "silo": "Silo 4",
-      "cod_traz": "MZ-25/26-057",
+      "silo": "Silo 7",
+      "cod_traz": "MZ-25/26-056",
       "romaneo": {
         "bruto": 45600,
         "tara": 15400,
@@ -2611,8 +2611,8 @@
       "horaEgreso": "2026-03-31T08:12:00Z",
       "horaInicioDescarga": "2026-03-31T08:12:00Z",
       "horaFinDescarga": "2026-03-31T08:12:00Z",
-      "silo": "Silo 4",
-      "cod_traz": "MZ-25/26-058",
+      "silo": "Silo 7",
+      "cod_traz": "MZ-25/26-057",
       "romaneo": {
         "bruto": 45040,
         "tara": 14420,
@@ -2655,8 +2655,8 @@
       "horaEgreso": "2026-03-31T08:13:00Z",
       "horaInicioDescarga": "2026-03-31T08:13:00Z",
       "horaFinDescarga": "2026-03-31T08:13:00Z",
-      "silo": "Silo 4",
-      "cod_traz": "MZ-25/26-059",
+      "silo": "Silo 7",
+      "cod_traz": "MZ-25/26-058",
       "romaneo": {
         "bruto": 44060,
         "tara": 13960,
@@ -2699,8 +2699,8 @@
       "horaEgreso": "2026-03-31T11:56:00Z",
       "horaInicioDescarga": "2026-03-31T11:56:00Z",
       "horaFinDescarga": "2026-03-31T11:56:00Z",
-      "silo": "Silo 4",
-      "cod_traz": "MZ-25/26-060",
+      "silo": "Silo 7",
+      "cod_traz": "MZ-25/26-059",
       "romaneo": {
         "bruto": 47340,
         "tara": 15680,
@@ -2743,8 +2743,8 @@
       "horaEgreso": "2026-03-31T16:14:00Z",
       "horaInicioDescarga": "2026-03-31T16:14:00Z",
       "horaFinDescarga": "2026-03-31T16:14:00Z",
-      "silo": "Silo 4",
-      "cod_traz": "MZ-25/26-061",
+      "silo": "Silo 7",
+      "cod_traz": "MZ-25/26-060",
       "romaneo": {
         "bruto": 45520,
         "tara": 16180,
@@ -2787,8 +2787,8 @@
       "horaEgreso": "2026-03-31T16:28:00Z",
       "horaInicioDescarga": "2026-03-31T16:28:00Z",
       "horaFinDescarga": "2026-03-31T16:28:00Z",
-      "silo": "Silo 4",
-      "cod_traz": "MZ-25/26-062",
+      "silo": "Silo 7",
+      "cod_traz": "MZ-25/26-061",
       "romaneo": {
         "bruto": 45360,
         "tara": 13800,
@@ -2804,7 +2804,7 @@
       }
     }
   ],
-  "nid": 153,
+  "nid": 164,
   "transito": [
     {
       "id": 9,
@@ -2832,5 +2832,5 @@
     }
   ],
   "despachados": [],
-  "ts": 1774988610966
+  "ts": 1774989910812
 }
