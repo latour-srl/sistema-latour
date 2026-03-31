@@ -264,9 +264,16 @@ async function leerMaestro(){
 
 async function leerColaServidor(){
   try{
-    const res=await fetch(GH_RAW+'?v='+Date.now(),{cache:'no-store'});
+    // Usar API en vez de raw para evitar caché de hasta 5 minutos
+    const res=await fetch(GH_API,{
+      headers:{'Authorization':'token '+GH_TOKEN},
+      cache:'no-store'
+    });
     if(res.ok){
-      const d=await res.json();
+      const meta=await res.json();
+      _ghSha=meta.sha;
+      const content=atob(meta.content.replace(/\n/g,''));
+      const d=JSON.parse(content);
       const colaRemota=d.cola||[];
       const estadosAvanzados=['descarga','servicios','listo'];
       const colaFinal=colaRemota.map(cr=>{
