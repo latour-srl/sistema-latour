@@ -1,34 +1,5 @@
 {
-  "cola": [
-    {
-      "id": 143,
-      "tipo_op": "ingreso",
-      "patente": "FDI104 / OJL431",
-      "chasis": "FDI104",
-      "acoplado": "OJL431",
-      "productor": "Sucesores de Jorge Costa S.R.L",
-      "transportista": "Logistica S.N",
-      "establecimiento": "El Tropel",
-      "grano": "Maíz",
-      "campania": "2025/26",
-      "cp": "1395",
-      "cod_traz": "MZ-25/26-053",
-      "tipo": "latour",
-      "prioridad": "normal",
-      "ops": [
-        "Descarga"
-      ],
-      "opsDone": [],
-      "estado": "espera",
-      "horaIngreso": "2026-03-31T19:49:53.753Z",
-      "horaInicioProceso": null,
-      "silo": "",
-      "tipDescarga": "",
-      "servicios": [],
-      "fotos": [],
-      "fueraDeEstandar": false
-    }
-  ],
+  "cola": [],
   "egresados": [
     {
       "id": 118,
@@ -2391,6 +2362,48 @@
         "obs": "Importado desde Romaneo"
       },
       "cod_traz": "MZ-25/26-001"
+    },
+    {
+      "id": 143,
+      "tipo_op": "ingreso",
+      "patente": "FDI104 / OJL431",
+      "chasis": "FDI104",
+      "acoplado": "OJL431",
+      "productor": "Sucesores de Jorge Costa S.R.L",
+      "transportista": "Logistica S.N",
+      "establecimiento": "El Tropel",
+      "grano": "Maíz",
+      "campania": "2025/26",
+      "cp": "1395",
+      "cod_traz": "MZ-25/26-053",
+      "tipo": "latour",
+      "prioridad": "normal",
+      "ops": [
+        "Descarga"
+      ],
+      "opsDone": [],
+      "estado": "calado",
+      "horaIngreso": "2026-03-31T19:49:53.753Z",
+      "horaInicioProceso": "2026-03-31T19:49:58.049Z",
+      "silo": "",
+      "tipDescarga": "",
+      "servicios": [],
+      "fotos": [],
+      "fueraDeEstandar": false,
+      "romaneo": {
+        "bruto": 45360,
+        "tara": 13800,
+        "neto": 31560,
+        "hum": 15.3,
+        "hum_base": 14.5,
+        "merma": 295,
+        "nseco": 31265,
+        "cp": "1395",
+        "insectos": "Sí",
+        "olor": "Normal",
+        "obs": ""
+      },
+      "horaEgreso": "2026-03-31T19:52:28.562Z"
     }
   ],
   "nid": 144,
@@ -2440,5 +2453,5 @@
       ]
     }
   ],
-  "ts": 1774986593765
+  "ts": 1774986748565
 }
