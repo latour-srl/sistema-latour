@@ -684,15 +684,18 @@ function registrarIngreso(){
   if(!chasis){alert('Seleccioná o escribí el chasis.');return;}
   const pat=acoplado?chasis+' / '+acoplado:chasis;
   if(cola.find(c=>c.chasis===chasis)){alert(`${chasis} ya está en planta.`);return;}
+  const grano=document.getElementById('i_grano').value||'—';
+  const campania=document.getElementById('i_camp').value||'—';
+  const cod_traz=generarCodTrazabilidad(grano, campania);
   cola.push({
     id:nid++,tipo_op:'ingreso',
     patente:pat, chasis, acoplado,
     productor:productor||'—',
     transportista:transportista||'—',
     establecimiento:establecimiento||'—',
-    grano:document.getElementById('i_grano').value||'—',
-    campania:document.getElementById('i_camp').value||'—',
+    grano, campania,
     cp:document.getElementById('i_cp').value.trim()||'',
+    cod_traz,
     tipo:tipoSel,prioridad:prioSel,ops:[...opsSel],opsDone:[],
     estado:'espera',horaIngreso:new Date().toISOString(),horaInicioProceso:null,
     silo:'',tipDescarga:'',servicios:[],fotos:[],fueraDeEstandar:false
@@ -788,7 +791,23 @@ function calcMerma(){
 function setIns(v){ insVal=v; ['ins_no','ins_si','ins_leve'].forEach(id=>document.getElementById(id).className='check-opt'); document.getElementById({No:'ins_no','Sí':'ins_si',Leve:'ins_leve'}[v]||'ins_no').className='check-opt '+(v==='No'?'co-ok':'co-bad'); }
 function setOlor(v){ olorVal=v; ['ol_normal','ol_hum','ol_rancio','ol_otro'].forEach(id=>document.getElementById(id).className='check-opt'); document.getElementById({Normal:'ol_normal',Humedad:'ol_hum',Rancio:'ol_rancio',Otro:'ol_otro'}[v]||'ol_normal').className='check-opt '+(v==='Normal'?'co-ok':'co-bad'); }
 
-function calcDespico(){
+function generarCodTrazabilidad(grano, campania){
+  // Prefijos por grano
+  const prefijos = {'Maíz':'MZ','Soja':'SO','Girasol':'GI','Trigo':'TR','Cebada':'CB','Sorgo':'SR','Maní':'MN'};
+  const pref = prefijos[grano] || grano.substring(0,2).toUpperCase();
+  // Campaña abreviada: 2025/26 → 25/26
+  const camp = (campania||'').replace(/20(\d{2})\/(\d{2})/,'$1/$2') || '—';
+  // Buscar el último correlativo para este grano+campaña
+  const todos = [...cola, ...egresados, ...transito, ...despachados];
+  let max = 0;
+  todos.forEach(c=>{
+    if(c.cod_traz && c.cod_traz.startsWith(pref+'-'+camp+'-')){
+      const n = parseInt(c.cod_traz.split('-').pop()) || 0;
+      if(n > max) max = n;
+    }
+  });
+  return `${pref}-${camp}-${String(max+1).padStart(3,'0')}`;
+}
   const b=parseFloat(document.getElementById('p_bruto_pue').value)||0,t=parseFloat(document.getElementById('p_tara_pue').value)||0,n=b-t;
   document.getElementById('p_neto_pue').value=n>0?n.toFixed(0):'';
   const nSal=parseFloat(document.getElementById('p_neto_sal').value)||0;
@@ -880,6 +899,7 @@ function renderCola(){
           <div class="cpat"><span class="op-badge op-ing">↓ ING</span>${c.patente}${c.fueraDeEstandar?' <span style="color:var(--red);font-size:11px">⚠</span>':''}</div>
           <div class="cmeta">${chips}<span>${c.productor}</span></div>
           <div style="font-size:11px;color:var(--mu);margin-bottom:3px;">${c.establecimiento!=='—'?c.establecimiento+' · ':''} ${horaStr(c.horaIngreso)} · CP: ${c.cp||'—'}</div>
+          ${c.cod_traz?`<div style="font-family:var(--mono);font-size:11px;color:var(--pur);font-weight:600;">🔬 ${c.cod_traz}</div>`:''}
           <div class="ctime ${tClass(c.horaIngreso)}">${est.lbl} · ${tDesde(c.horaInicioProceso||c.horaIngreso)}</div>
           ${fs}
         </div>
@@ -1065,7 +1085,7 @@ function renderHistorial(){
   if(!all.length){tbody.innerHTML='';thead.innerHTML='';empty.style.display='block';return;}
   empty.style.display='none';
 
-  thead.innerHTML=`<th>Tipo</th><th>Fecha</th><th>Hora</th><th>Patente</th><th>Productor / Trans.</th><th>Grano</th><th>Bruto kg</th><th>Tara kg</th><th>Neto seco kg</th><th>Hum%</th><th>Merma kg</th><th>Destino/Silo</th><th>Despico kg</th><th>Estándar</th>`;
+  thead.innerHTML=`<th>Tipo</th><th>Fecha</th><th>Hora</th><th>Patente</th><th>Productor / Trans.</th><th>Grano</th><th>Bruto kg</th><th>Tara kg</th><th>Neto seco kg</th><th>Hum%</th><th>Merma kg</th><th>Cód. Traz.</th><th>Destino</th><th>Despico kg</th><th>Estándar</th>`;
 
   tbody.innerHTML=all.map(e=>{
     const r=e.romaneo||{};
@@ -1088,7 +1108,8 @@ function renderHistorial(){
       <td class="tm tok" style="font-weight:600;">${esIng?(r.nseco?N(r.nseco):'—'):(pp.neto?N(pp.neto):'—')}</td>
       <td class="tm ${r.hum>15.5?'talert':''}">${esIng?(r.hum?r.hum+'%':'—'):'—'}</td>
       <td class="tm">${esIng?(r.merma?N(r.merma):'—'):'—'}</td>
-      <td>${esIng?(e.silo||'—'):(e.destino||'—')}</td>
+      <td style="font-family:var(--mono);color:var(--pur);font-size:11px;">${esIng?(e.cod_traz||'—'):'—'}</td>
+      <td>${esIng?'—':(e.destino||'—')}</td>
       <td class="tm ${d.kg&&Math.abs(d.kg)>500?'talert':''}">${!esIng&&d.kg!=null?(d.kg>=0?'+':'')+N(d.kg)+' kg':'—'}</td>
       <td class="${e.fueraDeEstandar?'talert':'tok'}">${esIng?(e.fueraDeEstandar?'⚠ Fuera':'✓ Ok'):'—'}</td>
     </tr>`;
