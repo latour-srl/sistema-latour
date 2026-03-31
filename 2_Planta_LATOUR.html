@@ -266,7 +266,8 @@ async function leerColaServidor(){
   try{
     const res=await fetch(GH_RAW+'?v='+Date.now(),{cache:'no-store'});
     if(res.ok){
-      const d=await res.json();
+      const txt=await res.text();
+      const d=JSON.parse(txt);
       const colaRemota=d.cola||[];
       const estadosAvanzados=['descarga','servicios','listo'];
       const colaFinal=colaRemota.map(cr=>{

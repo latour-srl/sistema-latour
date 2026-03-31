@@ -549,7 +549,8 @@ async function leerColaServidor(){
   try{
     const res=await fetch(GH_RAW+'?v='+Date.now(),{cache:'no-store'});
     if(res.ok){
-      const d=await res.json();
+      const txt=await res.text();
+      const d=JSON.parse(txt);
       cola=d.cola||[];egresados=d.egresados||[];nid=d.nid||1;
       transito=d.transito||[];despachados=d.despachados||[];
       try{localStorage.setItem('latour_cola',JSON.stringify({cola,egresados,nid,ts:Date.now()}));localStorage.setItem('latour_transito',JSON.stringify({transito,despachados,ts:Date.now()}));}catch(e){}
